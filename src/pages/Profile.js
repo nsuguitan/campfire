@@ -1,6 +1,6 @@
 const Profile = () => {
   return (
-    <div>
+    <div className='pageContainer'>
       <h1>This is the profile page</h1>
     </div>
   );
