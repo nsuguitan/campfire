@@ -1,6 +1,6 @@
 const Search = () => {
     return (
-      <div>
+      <div className='pageContainer'>
         <h1>This is the Search page</h1>
       </div>
     );

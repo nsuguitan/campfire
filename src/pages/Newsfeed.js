@@ -1,6 +1,6 @@
 const Newsfeed = () => {
   return (
-    <div>
+    <div className='pageContainer'>
       <h1>This is the newsfeed page</h1>
     </div>
   );
