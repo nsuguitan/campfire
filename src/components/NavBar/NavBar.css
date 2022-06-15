@@ -1,0 +1,24 @@
+.navContainer{
+    background-color: white;
+    border-top: 3px solid black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+    position: sticky;
+    bottom: 0px;
+    height: 150px;
+}
+
+#addButton{
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight:bolder;
+    height: 80px;
+    width: 80px;
+    border-radius: 10%;
+}
