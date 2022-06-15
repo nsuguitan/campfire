@@ -9,13 +9,13 @@ import NavBar from "./components/NavBar/NavBar";
 const App = () => {
   return (
     <BrowserRouter>
-      <NavBar/>
       <Routes>
         <Route exact path="/" element={<SignIn />} />
         <Route exact path="/Newsfeed" element={<Newsfeed />} />
         <Route exact path="/Profile" element={<Profile />} />
         <Route exact path="/Search" element={<Search />} />
       </Routes>
+      <NavBar/>
     </BrowserRouter>
   );
 };

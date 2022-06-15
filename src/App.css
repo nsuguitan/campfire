@@ -1,6 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .pageContainer{
   max-width: 1000px;
-  height: 100vw;
-  border: 3px solid black;
+  height: 100vh;
   margin: auto;
+  background-color: rgb(240, 229, 229);
 }
