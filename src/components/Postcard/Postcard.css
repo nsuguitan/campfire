@@ -1,0 +1,12 @@
+.comment-commenter-container{
+    text-align: left;
+    margin: 0 0 15px 0;
+}
+.commenter-container{
+    float:left;
+    margin: 0 10px 0 0;
+}
+
+.load-comments-button{
+    text-transform: none;
+}
