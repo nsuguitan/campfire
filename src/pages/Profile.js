@@ -1,4 +1,5 @@
-//import Postcard from "../components/Postcard/Postcard";
+import { Link } from "react-router-dom";
+import Postcard from "../components/Postcard/Postcard";
 import profilePicture from '../assets/profilePic.jpg';
 import blueFlame from '../assets/blueFlame.jpg';
 import Image1 from '../assets/gridPhoto1.jpg';
@@ -52,16 +53,16 @@ const Profile = () => {
         </div>
       </div>
       <div className='imageGridContainer'>
-        <img src={Image1} className='singleGridPhoto'/>
-        <img src={Image2} className='singleGridPhoto'/>
-        <img src={Image3} className='singleGridPhoto'/>
-        <img src={Image4} className='singleGridPhoto'/>
-        <img src={Image5} className='singleGridPhoto'/>
-        <img src={Image6} className='singleGridPhoto'/>
-        <img src={Image7} className='singleGridPhoto'/>
-        <img src={Image8} className='singleGridPhoto'/>
-        <img src={Image9} className='singleGridPhoto'/>
-        <img src={Image10} className='singleGridPhoto'/>
+        <Link to='/Postcard'><img src={Image1} className='singleGridPhoto'/></Link>
+        <Link to='/Postcard'><img src={Image2} className='singleGridPhoto'/></Link>
+        <Link to='/Postcard'><img src={Image3} className='singleGridPhoto'/></Link>
+        <Link to='/Postcard'><img src={Image4} className='singleGridPhoto'/></Link>
+        <Link to='/Postcard'><img src={Image5} className='singleGridPhoto'/></Link>
+        <Link to='/Postcard'><img src={Image6} className='singleGridPhoto'/></Link>
+        <Link to='/Postcard'><img src={Image7} className='singleGridPhoto'/></Link>
+        <Link to='/Postcard'><img src={Image8} className='singleGridPhoto'/></Link>
+        <Link to='/Postcard'><img src={Image9} className='singleGridPhoto'/></Link>
+        <Link to='/Postcard'><img src={Image10} className='singleGridPhoto'/></Link>
       </div>
 
     </div>
