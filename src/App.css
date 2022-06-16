@@ -4,9 +4,8 @@
 }
 .pageContainer{
   max-width: 800px;
-  height: 100vh;
   margin: auto;
-  background-color: rgb(240, 229, 229);
+  /* background-color: rgb(240, 229, 229); */
 }
 .profilePic{
   height: 200px;
@@ -23,7 +22,8 @@
 .topProfileContainer{
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 .profileDataContainer{
   display: flex;
@@ -31,4 +31,31 @@
 }
 .statEntry{
   padding: 20px;
+}
+.imageGridContainer{
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.singleGridPhoto{
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+  /* border-radius: 10%; */
+}
+.bioContainer{
+  padding-left: 40px;
+}
+.singleGridPhotoContainter{
+  height: 200px;
+  width: 200px;
+  padding: 10px;
+  overflow: hidden;
+  background-size : 'contain',
+}
+.test{
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
 }
