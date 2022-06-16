@@ -1,5 +1,6 @@
 //import Postcard from "../components/Postcard/Postcard";
 import profilePicture from '../assets/profilePic.jpg';
+import blueFlame from '../assets/blueFlame.jpg';
 import Image1 from '../assets/gridPhoto1.jpg';
 import Image2 from '../assets/gridPhoto2.jpg';
 import Image3 from '../assets/gridPhoto3.jpg';
@@ -23,20 +24,20 @@ const Profile = () => {
         <div className='profileStatsContainer'>
           <div className='roastRatingProfileContainer'>
             <h2>Roast Rank:</h2>
-            <h2>Golden</h2>
+            <span>Golden</span>
           </div>
           <div className='profileDataContainer'>
             <div className='statEntry'>
               <h3>100</h3>
-              <h5>Posts</h5>
+              <p>Posts</p>
             </div>
             <div className='statEntry'>
               <h3>200</h3>
-              <h5>Following</h5>
+              <p>Following</p>
             </div>
             <div className='statEntry'>
               <h3>300</h3>
-              <h5>Followers</h5>
+              <p>Followers</p>
             </div>
           </div>
         </div>
@@ -44,13 +45,13 @@ const Profile = () => {
       <div className='bioContainer'>
         <div className='fullName'>
           <h2>Chelsea Merrill</h2>
+          <img src={blueFlame} className='flame'/>
         </div>
         <div className='bio'>
           <p>Former child, future Sith, and current survior of natual selection</p>
         </div>
       </div>
       <div className='imageGridContainer'>
-        <div className='singleGridPhotoContainter'><img src={Image1} className='test'/></div>
         <img src={Image1} className='singleGridPhoto'/>
         <img src={Image2} className='singleGridPhoto'/>
         <img src={Image3} className='singleGridPhoto'/>
