@@ -10,3 +10,9 @@
 .load-comments-button{
     text-transform: none;
 }
+
+#postTime{
+    color: #868686;
+    margin-left: 10px ;
+}
+

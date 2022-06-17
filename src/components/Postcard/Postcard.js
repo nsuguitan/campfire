@@ -52,13 +52,21 @@ const Postcard = () => {
         alt="Puppers"
       />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          sx={{ minHeight: 0, minWidth: 0, padding: 0.5 }}
+          aria-label="add comment"
+        >
           <FontAwesomeIcon icon={faComment} />
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton
+          sx={{ minHeight: 0, minWidth: 0, padding: 0.5 }}
+          aria-label="share"
+        >
           <FontAwesomeIcon icon={faPaperPlane} />
         </IconButton>
+        <p id="postTime">9 hours ago</p>
       </CardActions>
+
       <CardContentNoBottomPadding>
         <ul style={{ listStyleType: "none" }}>
           {comments.map((item, i) => (
