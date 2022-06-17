@@ -1,10 +1,94 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .pageContainer{
-  max-width: 1000px;
-  height: 100vh;
+  max-width: 800px;
   margin: auto;
-  background-color: rgb(240, 229, 229);
+  /* background-color: rgb(240, 229, 229); */
+}
+.profilePic{
+  height: 200px;
+  width: 200px;
+  border-radius: 10%;
+  margin: 15px 0 15px 0;
+}
+.profileStatsContainer{
+  text-align: center;
+  align-items: center;
+  text-align: center;
+}
+.roastRatingProfileContainer{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  text-align: center;
+}
+.roastRatingProfileContainer span{
+  color: gold;
+  font-size: 1.5em;
+}
+.topProfileContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.profileDataContainer{
+  display: flex;
+  flex-direction: row;
+}
+.statEntry{
+  padding: 20px;
+}
+.imageGridContainer{
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.singleGridPhoto{
+  height: 220px;
+  width: 220px;
+  margin: 15px;
+}
+.bioContainer{
+  padding-left: 40px;
+}
+.fullName{
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 5px;;
+}
+.flame{
+  width: 17px;
+  height: auto;
+  padding-left: 7px;
+}
+.searchHeading{
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  height: 100px;
+  align-items: center;
+}
+.searchIcon{
+  height: 40px;
+  width: auto;
+}
+.sarchBar{
+  height: 40px;
+  width: 600px;
+  border: 3px solid black;
+}
+.searchPhotosGrid{
+  display: flex;
+  flex-wrap: wrap;
+}
+.searchImage{
+  height: 200px;
+  width: 200px;
 }
