@@ -15,14 +15,15 @@ import searchImage13 from '../assets/search13.jpg';
 import searchImage14 from '../assets/search14.jpg';
 import searchImage15 from '../assets/search15.jpg';
 import searchImage16 from '../assets/search16.jpg';
+import searchIcon from '../assets/searchIcon.jpg';
 
 
 const Search = () => {
     return (
       <div className='pageContainer'>
         <div className='searchHeading'>
-          <h1>ICON</h1>
-          <input></input>
+          <img src={searchIcon} className='searchIcon'/>
+          <input className='sarchBar'></input>
         </div>
         <div className='searchPhotosGrid'>
           <Link to='/Postcard'><img src={searchImage1} className='searchImage'/></Link>

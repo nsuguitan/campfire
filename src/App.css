@@ -68,10 +68,21 @@
 }
 .searchHeading{
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   position: sticky;
   top: 0px;
   background-color: white;
+  height: 100px;
+  align-items: center;
+}
+.searchIcon{
+  height: 40px;
+  width: auto;
+}
+.sarchBar{
+  height: 40px;
+  width: 600px;
+  border: 3px solid black;
 }
 .searchPhotosGrid{
   display: flex;
