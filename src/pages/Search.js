@@ -1,7 +1,13 @@
 const Search = () => {
     return (
       <div className='pageContainer'>
-        <h1>This is the Search page</h1>
+        <div className='searchHeading'>
+          <h1>ICON</h1>
+          <input></input>
+        </div>
+        <div className='searchPhotosGrid'>
+          <p>pictures here </p>
+        </div>
       </div>
     );
   };
