@@ -66,3 +66,18 @@
   height: auto;
   padding-left: 7px;
 }
+.searchHeading{
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0px;
+  background-color: white;
+}
+.searchPhotosGrid{
+  display: flex;
+  flex-wrap: wrap;
+}
+.searchImage{
+  height: 200px;
+  width: 200px;
+}

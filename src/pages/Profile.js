@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Postcard from "../components/Postcard/Postcard";
 import profilePicture from '../assets/profilePic.jpg';
 import blueFlame from '../assets/blueFlame.jpg';
 import Image1 from '../assets/gridPhoto1.jpg';
