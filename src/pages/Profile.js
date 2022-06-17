@@ -49,7 +49,7 @@ const Profile = () => {
           <img src={blueFlame} className='flame'/>
         </div>
         <div className='bio'>
-          <p>Former child, future Sith, and current survior of natual selection</p>
+          <p>Former child, future Sith, and current survivor of natural selection</p>
         </div>
       </div>
       <div className='imageGridContainer'>
