@@ -1,10 +1,24 @@
-.comment-commenter-container{
-    text-align: left;
-    margin: 0 0 15px 0;
+
+.list-comments-container{
+    display: flex;
+    overflow: hidden;
 }
+
+.comment-commenter-container{
+    float:left;
+width: 90%;
+}
+
 .commenter-container{
     float:left;
     margin: 0 10px 0 0;
+}
+
+.rating-container{
+    padding-left: 5px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 }
 
 .load-comments-button{
@@ -14,5 +28,8 @@
 #postTime{
     color: #868686;
     margin-left: 10px ;
+}
+#rating{
+    padding-left: 5px;
 }
 

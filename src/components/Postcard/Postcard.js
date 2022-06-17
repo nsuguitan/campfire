@@ -9,7 +9,12 @@ import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComment, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
+import {
+  faComment,
+  faPaperPlane,
+  faSquareCaretUp,
+} from "@fortawesome/free-regular-svg-icons";
+import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CardContent, Paper } from "@mui/material";
 import styled from "@emotion/styled";
@@ -70,17 +75,30 @@ const Postcard = () => {
       <CardContentNoBottomPadding>
         <ul style={{ listStyleType: "none" }}>
           {comments.map((item, i) => (
-            <li>
-              <div key={i} className="comment-commenter-container">
-                <div className="commenter-container">
-                  <h4>
-                    <span>
-                      <a>{item.commenter}</a>
-                    </span>
-                  </h4>
+            <li key={i}>
+              <div className="list-comments-container">
+                <div className="comment-commenter-container">
+                  <div className="commenter-container">
+                    <h4>
+                      <span>
+                        <a>{item.commenter}</a>
+                      </span>
+                    </h4>
+                  </div>
+                  <div className="comment-container">
+                    <span>{item.comment}</span>
+                  </div>
                 </div>
-                <div className="comment-container">
-                  <span>{item.comment}</span>
+                <div className="rating-container">
+                  <IconButton
+                    size="small"
+                    sx={{ padding: 0.5 }}
+                    aria-label="add rating"
+                  >
+                    <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
+                  </IconButton>
+                  <FontAwesomeIcon icon={faFireFlameCurved} size="lg" />
+                  <b id="rating">7</b>
                 </div>
               </div>
             </li>
