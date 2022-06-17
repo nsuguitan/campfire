@@ -7,13 +7,13 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import { List, ListItem, ListItemText } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { CardContent } from "@mui/material";
+import { CardContent, Paper } from "@mui/material";
 import styled from "@emotion/styled";
+import { InputBase } from "@mui/material";
 
 const Postcard = () => {
   const CardContentNoBottomPadding = styled(CardContent)(
@@ -102,6 +102,16 @@ const Postcard = () => {
           View all {comments.length} comments
         </Button>
       </CardActions>
+      <Paper
+        sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 1 }}
+      >
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
+          placeholder="Add a comment..."
+          inputProps={{ "aria-label": "search google maps" }}
+        />
+        <Button>Post</Button>
+      </Paper>
     </Card>
   );
 };
