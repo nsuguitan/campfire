@@ -46,7 +46,7 @@ const Newsfeed = () => {
     },
     {
       image: searchImage5,
-      name: 'jRad'
+      name: 'jRod'
     },
     {
       image: searchImage6,
