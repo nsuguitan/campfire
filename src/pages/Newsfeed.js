@@ -1,4 +1,10 @@
 import Postcard from "../components/Postcard/Postcard";
+import searchImage1 from '../assets/search1.jpg';
+import searchImage2 from '../assets/search2.jpg';
+import searchImage3 from '../assets/search3.jpg';
+import searchImage4 from '../assets/search4.jpg';
+import searchImage5 from '../assets/search5.jpg';
+
 import { useEffect } from "react";
 const Newsfeed = () => {
   useEffect(() => {
@@ -21,6 +27,12 @@ const Newsfeed = () => {
   }, []);
   return (
     <div className="pageContainer">
+      <div className='storiesContainer'>
+        <div className='story'>
+          <img className='storyImage' src={searchImage1}/>
+          <p>Username</p>
+        </div>
+      </div>
       <Postcard />
     </div>
   );
