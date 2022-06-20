@@ -92,3 +92,9 @@
   height: 200px;
   width: 200px;
 }
+.storyImage{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  /* border: 3px solid rgb(16, 211, 169);; */
+}

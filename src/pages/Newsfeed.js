@@ -25,13 +25,47 @@ const Newsfeed = () => {
 
     return;
   }, []);
+
+  const storiesArray = [
+    {
+      image: searchImage1,
+      name: 'Your Name'
+    },
+    {
+      image: searchImage2,
+      name: 'atran'
+    },
+    {
+      image: searchImage3,
+      name: 'nsuguitan'
+    },
+    {
+      image: searchImage4,
+      name: 'bigBen'
+    },
+    {
+      image: searchImage5,
+      name: 'jRAD'
+    },
+
+  ]
+
+  const displayStories = () => {
+    return (
+      storiesArray.map( story => (
+        <div className='story'>
+        <img className='storyImage' src={story.image}/>
+        <p>{story.name}</p>
+        </div>
+      ))
+    );
+  };
+
+
   return (
     <div className="pageContainer">
       <div className='storiesContainer'>
-        <div className='story'>
-          <img className='storyImage' src={searchImage1}/>
-          <p>Username</p>
-        </div>
+        {displayStories()} 
       </div>
       <Postcard />
     </div>
