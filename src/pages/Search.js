@@ -17,6 +17,34 @@ import searchImage15 from '../assets/search15.jpg';
 import searchImage16 from '../assets/search16.jpg';
 import searchIcon from '../assets/searchIcon.jpg';
 
+const searchImages = [
+  {image: searchImage1},
+  {image: searchImage2},
+  {image: searchImage3},
+  {image: searchImage4},
+  {image: searchImage5},
+  {image: searchImage6},
+  {image: searchImage7},
+  {image: searchImage8},
+  {image: searchImage9},
+  {image: searchImage10},
+  {image: searchImage11},
+  {image: searchImage12},
+  {image: searchImage13},
+  {image: searchImage14},
+  {image: searchImage15},
+  {image: searchImage16},
+]
+
+const displaySearchImages = () =>{
+  return (
+    searchImages.map(image => (
+      <div className='searchImageButton'>
+        <Link to='/Postcard'><img src={image.image} className='searchImage'/></Link>
+      </div>
+    ))
+  )
+}
 
 const Search = () => {
     return (
@@ -26,22 +54,7 @@ const Search = () => {
           <input className='sarchBar'></input>
         </div>
         <div className='searchPhotosGrid'>
-          <Link to='/Postcard'><img src={searchImage1} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage2} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage3} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage4} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage5} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage6} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage7} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage8} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage9} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage10} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage11} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage12} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage13} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage14} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage15} className='searchImage'/></Link>
-          <Link to='/Postcard'><img src={searchImage16} className='searchImage'/></Link>
+          {displaySearchImages()}
         </div>
       </div>
     );

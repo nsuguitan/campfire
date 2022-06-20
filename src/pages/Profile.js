@@ -12,6 +12,27 @@ import Image8 from '../assets/gridPhoto8.jpg';
 import Image9 from '../assets/gridPhoto9.jpg';
 import Image10 from '../assets/gridPhoto10.jpg';
 
+const profileImages = [
+  {image: Image1},
+  {image: Image2},
+  {image: Image3},
+  {image: Image4},
+  {image: Image5},
+  {image: Image6},
+  {image: Image7},
+  {image: Image8},
+  {image: Image9},
+  {image: Image10}
+]
+const displayProfileImages = () =>{
+  return (
+    profileImages.map(image => (
+      <div className='profileImageButton'>
+        <Link to='/Postcard'><img src={image.image} className='singleGridPhoto'/></Link>
+      </div>
+    ))
+  )
+}
 
 const Profile = () => {
   return (
@@ -52,16 +73,7 @@ const Profile = () => {
         </div>
       </div>
       <div className='imageGridContainer'>
-        <Link to='/Postcard'><img src={Image1} className='singleGridPhoto'/></Link>
-        <Link to='/Postcard'><img src={Image2} className='singleGridPhoto'/></Link>
-        <Link to='/Postcard'><img src={Image3} className='singleGridPhoto'/></Link>
-        <Link to='/Postcard'><img src={Image4} className='singleGridPhoto'/></Link>
-        <Link to='/Postcard'><img src={Image5} className='singleGridPhoto'/></Link>
-        <Link to='/Postcard'><img src={Image6} className='singleGridPhoto'/></Link>
-        <Link to='/Postcard'><img src={Image7} className='singleGridPhoto'/></Link>
-        <Link to='/Postcard'><img src={Image8} className='singleGridPhoto'/></Link>
-        <Link to='/Postcard'><img src={Image9} className='singleGridPhoto'/></Link>
-        <Link to='/Postcard'><img src={Image10} className='singleGridPhoto'/></Link>
+        {displayProfileImages()}
       </div>
 
     </div>
