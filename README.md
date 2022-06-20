@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Campfire
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Campfire is a social media platform dedicated to users who want a safe space - not for themselves, but for their most savage roasts.
+
+# Getting Started 
+
+This project serves as a Javascript capstone for [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-javascript-final-project). It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and leveraged a MERN stack.
 
 ## Available Scripts
 
