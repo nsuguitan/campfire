@@ -4,6 +4,7 @@ import searchImage2 from '../assets/search2.jpg';
 import searchImage3 from '../assets/search3.jpg';
 import searchImage4 from '../assets/search4.jpg';
 import searchImage5 from '../assets/search5.jpg';
+import searchImage6 from '../assets/search6.jpg';
 
 import { useEffect } from "react";
 const Newsfeed = () => {
@@ -45,7 +46,11 @@ const Newsfeed = () => {
     },
     {
       image: searchImage5,
-      name: 'jRAD'
+      name: 'jRad'
+    },
+    {
+      image: searchImage6,
+      name: 'chelmerr'
     },
 
   ]
@@ -67,7 +72,15 @@ const Newsfeed = () => {
       <div className='storiesContainer'>
         {displayStories()} 
       </div>
-      <Postcard />
+      <div className='followHeading'>
+        <p>Following</p>
+        <p>|</p>
+        <p>For You</p>
+      </div>
+      <div className='feedDisplay'>
+        <Postcard />
+      </div>
+      
     </div>
   );
 };
