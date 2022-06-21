@@ -56,20 +56,25 @@ const Postcard = () => {
     if (newComment === "") {
       console.log("You can't post nothing dummy");
     } else {
+      let loadComment = {
+        postId: "62af8ef66a57cf6a0f8bcc06",
+        commentText: newComment,
+        commentUsername: "FOOBAR",
+      };
       console.log("Roasty Toasty Princess says: ", newComment);
-    }
-    // await fetch("http://localhost:5000/record/add", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(newPerson),
-    // }).catch((error) => {
-    //   window.alert(error);
-    //   return;
-    // });
+      await fetch("http://localhost:5000/comments/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loadComment),
+      }).catch((error) => {
+        window.alert(error);
+        return;
+      });
 
-    // setForm({ name: "", position: "", level: "" });
+      setNewComment("");
+    }
     return;
   };
 
@@ -176,6 +181,7 @@ const Postcard = () => {
           variant="standard"
           InputProps={{ disableUnderline: true }}
           onChange={handleCommentInput}
+          value={newComment}
         />
         <Button onClick={postComment}>Post</Button>
       </Paper>
