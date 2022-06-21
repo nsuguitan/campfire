@@ -17,8 +17,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight:bolder;
-    height: 80px;
-    width: 80px;
+    font-weight: bold;
+    height: 70px;
+    width: 70px;
     border-radius: 10%;
+    font-size: 6em;
 }
+
