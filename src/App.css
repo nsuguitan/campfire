@@ -48,6 +48,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 17.5px;
+  margin-top: 40px;
 }
 .singleGridPhoto{
   height: 250px;
