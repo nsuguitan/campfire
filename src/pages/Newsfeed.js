@@ -30,7 +30,7 @@ const Newsfeed = () => {
   const storiesArray = [
     {
       image: searchImage1,
-      name: 'Your Name'
+      name: 'Your Story'
     },
     {
       image: searchImage2,
