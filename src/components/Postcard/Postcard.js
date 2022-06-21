@@ -19,6 +19,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CardContent, Paper } from "@mui/material";
 import styled from "@emotion/styled";
 import { InputBase } from "@mui/material";
+import { useEffect } from "react";
 
 const Postcard = () => {
   const CardContentNoBottomPadding = styled(CardContent)(
@@ -26,6 +27,24 @@ const Postcard = () => {
         padding-bottom: 0;
     `
   );
+  useEffect(() => {
+    async function getComments() {
+      const response = await fetch(`http://localhost:5000/comments/`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      const posts = await response.json();
+      console.log(posts);
+    }
+
+    getComments();
+
+    return;
+  }, []);
 
   const comments = [
     { comment: "Who can roast a corgi?", commenter: "Dog lover" },
