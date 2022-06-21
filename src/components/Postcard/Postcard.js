@@ -27,6 +27,31 @@ const Postcard = () => {
     `
   );
 
+  const marshmellowScaleArray =[
+    {icon: 'uncooked', rating: 1},
+    {icon: 'warmed', rating: 2},
+    {icon: 'toasted', rating: 3},
+    {icon: 'roasted', rating: 4},
+    {icon: 'burned', rating: 5}
+  ]
+
+  const marshmellowRating = () =>{
+    return(
+      marshmellowScaleArray.map(rating => (
+        <div className = 'marshmellow'>
+          <p>{rating.icon}</p>
+        </div>
+      ))
+    )
+  }
+  const marshmellowPopup = () => {
+    return(
+      <div className='ratingScale'>
+        {marshmellowRating()}
+      </div>
+    )
+  }
+
   const comments = [
     { comment: "Who can roast a corgi?", commenter: "Dog lover" },
     {
@@ -89,8 +114,10 @@ const Postcard = () => {
                     <span>{item.comment}</span>
                   </div>
                 </div>
+                {marshmellowPopup()}
                 <div className="rating-container">
                   <IconButton
+                  //this is where the popout needs to go
                     size="small"
                     sx={{ padding: 0.5 }}
                     aria-label="add rating"
