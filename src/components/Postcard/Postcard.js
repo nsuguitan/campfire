@@ -21,6 +21,7 @@ import styled from "@emotion/styled";
 import { InputBase } from "@mui/material";
 
 const Postcard = () => {
+  //set state rating visible false
   const CardContentNoBottomPadding = styled(CardContent)(
     `
         padding-bottom: 0;
@@ -38,13 +39,14 @@ const Postcard = () => {
   const marshmellowRating = () =>{
     return(
       marshmellowScaleArray.map(rating => (
-        <div className = 'marshmellow'>
+        <div className = 'marshmellow' key={rating}>
           <p>{rating.icon}</p>
         </div>
       ))
     )
   }
   const marshmellowPopup = () => {
+    console.log('test')
     return(
       <div className='ratingScale'>
         {marshmellowRating()}
@@ -114,13 +116,14 @@ const Postcard = () => {
                     <span>{item.comment}</span>
                   </div>
                 </div>
-                {marshmellowPopup()}
+                {/* {marshmellowPopup()} */}
                 <div className="rating-container">
                   <IconButton
-                  //this is where the popout needs to go
                     size="small"
                     sx={{ padding: 0.5 }}
                     aria-label="add rating"
+                    onClick= {function(){marshmellowPopup()}}
+                    //set state to true on click
                   >
                     <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
                   </IconButton>
