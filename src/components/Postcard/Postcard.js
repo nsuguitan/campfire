@@ -59,7 +59,7 @@ const Postcard = () => {
       let loadComment = {
         postId: "62af8ef66a57cf6a0f8bcc06",
         commentText: newComment,
-        commentUsername: "FOOBAR",
+        commentUsername: "Anonymous",
       };
       console.log("Roasty Toasty Princess says: ", newComment);
       await fetch("http://localhost:5000/comments/add", {

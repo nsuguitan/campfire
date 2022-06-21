@@ -32,9 +32,9 @@ commentsRoutes.route("/comments/:id").get(function (req, res) {
 commentsRoutes.route("/comments/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
-    postId: ObjectId("62af8ef66a57cf6a0f8bcc06"),
+    postId: ObjectId(req.body.postId),
     commentText: req.body.commentText,
-    commentUsername: "FOOBAR",
+    commentUsername: req.body.commentUsername,
   };
   db_connect.collection("comments").insertOne(myobj, function (err, res) {
     if (err) throw err;
