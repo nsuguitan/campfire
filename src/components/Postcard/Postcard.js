@@ -18,10 +18,11 @@ import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CardContent, Paper } from "@mui/material";
 import styled from "@emotion/styled";
-import { InputBase } from "@mui/material";
-import { useEffect } from "react";
+import { TextField } from "@mui/material";
+import { useEffect, useState } from "react";
 
 const Postcard = () => {
+  const [newComment, setNewComment] = useState("");
   const CardContentNoBottomPadding = styled(CardContent)(
     `
         padding-bottom: 0;
@@ -37,14 +38,40 @@ const Postcard = () => {
         return;
       }
 
-      const posts = await response.json();
-      console.log(posts);
+      const comments = await response.json();
+      console.log(comments);
     }
 
     getComments();
 
     return;
   }, []);
+
+  const handleCommentInput = (evt) => {
+    setNewComment(evt.target.value);
+  };
+
+  const postComment = async () => {
+    console.log("posting comment...");
+    if (newComment === "") {
+      console.log("You can't post nothing dummy");
+    } else {
+      console.log("Roasty Toasty Princess says: ", newComment);
+    }
+    // await fetch("http://localhost:5000/record/add", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(newPerson),
+    // }).catch((error) => {
+    //   window.alert(error);
+    //   return;
+    // });
+
+    // setForm({ name: "", position: "", level: "" });
+    return;
+  };
 
   const comments = [
     { comment: "Who can roast a corgi?", commenter: "Dog lover" },
@@ -142,12 +169,15 @@ const Postcard = () => {
       <Paper
         sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 1 }}
       >
-        <InputBase
+        <TextField
           sx={{ ml: 1, flex: 1 }}
+          id="commentTextField"
           placeholder="Add a comment..."
-          inputProps={{ "aria-label": "search google maps" }}
+          variant="standard"
+          InputProps={{ disableUnderline: true }}
+          onChange={handleCommentInput}
         />
-        <Button>Post</Button>
+        <Button onClick={postComment}>Post</Button>
       </Paper>
     </Card>
   );
