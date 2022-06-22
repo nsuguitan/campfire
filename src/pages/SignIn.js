@@ -1,7 +1,9 @@
+import SignInComp from "../components/SignIn/SignIn";
+import SignUp from "../components/SignUp/SignUp";
 const SignIn = () => {
   return (
-    <div className='pageContainer'>
-      <h1>This is the sign-in page</h1>
+    <div className="pageContainer">
+      <SignInComp />
     </div>
   );
 };
