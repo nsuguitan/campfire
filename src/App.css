@@ -21,20 +21,21 @@
 }
 .roastRatingProfileContainer{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: baseline;
   text-align: center;
 }
 .roastRatingProfileContainer span{
   color: gold;
   font-size: 1.5em;
+  font-weight: bold;
+  padding-left: 10px;;
 }
 .topProfileContainer{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 40px;
-  padding-right: 40px;
+  margin: 0px 80px 0px 40px;
 }
 .profileDataContainer{
   display: flex;
@@ -44,17 +45,20 @@
   padding: 20px;
 }
 .imageGridContainer{
-  padding: 20px;
   display: flex;
   flex-wrap: wrap;
+  margin: 17.5px;
+  margin-top: 40px;
 }
 .singleGridPhoto{
-  height: 220px;
-  width: 220px;
-  margin: 15px;
+  height: 250px;
+  width: 250px;
+  padding-left: 2.5px;
+  padding-right: 2.5px;
 }
 .bioContainer{
   padding-left: 40px;
+  max-width: 45%;
 }
 .fullName{
   display: flex;

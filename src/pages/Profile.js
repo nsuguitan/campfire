@@ -28,7 +28,7 @@ const displayProfileImages = () =>{
   return (
     profileImages.map(image => (
       <div className='profileImageButton'>
-        <Link to='/Postcard'><img src={image.image} className='singleGridPhoto'/></Link>
+        <Link to='/Postcard' key={image}><img src={image.image} className='singleGridPhoto'/></Link>
       </div>
     ))
   )
@@ -37,6 +37,7 @@ const displayProfileImages = () =>{
 const Profile = () => {
   return (
     <div className='pageContainer'>
+      <br/>
       <div className='bioContainer'><h1>chelmerr</h1></div>
       <div className='topProfileContainer'>
         <div className='profilePicContainer'>
@@ -48,6 +49,7 @@ const Profile = () => {
             <span>Golden</span>
           </div>
           <div className='profileDataContainer'>
+            {/* turn numbers into loops */}
             <div className='statEntry'>
               <h3>100</h3>
               <p>Posts</p>

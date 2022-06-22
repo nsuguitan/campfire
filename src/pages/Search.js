@@ -39,7 +39,7 @@ const searchImages = [
 const displaySearchImages = () =>{
   return (
     searchImages.map(image => (
-      <div className='searchImageButton'>
+      <div className='searchImageButton' key={image}>
         <Link to='/Postcard'><img src={image.image} className='searchImage'/></Link>
       </div>
     ))
