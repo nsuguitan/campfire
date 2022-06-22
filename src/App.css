@@ -91,10 +91,11 @@
 .searchPhotosGrid{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 .searchImage{
-  height: 200px;
-  width: 200px;
+  height: 195px;
+  width: 195px;
 }
 .story{
   text-align: center;
