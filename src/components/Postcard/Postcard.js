@@ -104,7 +104,7 @@ const Postcard = () => {
       <CardMedia
         component="img"
         height="540px"
-        image="http://placecorgi.com/250"
+        image="https://campfire-project-images.s3.amazonaws.com/7BD604C1-9897-415B-A4A9-92787468909F.jpeg"
         alt="Puppers"
       />
       <CardActions disableSpacing>
