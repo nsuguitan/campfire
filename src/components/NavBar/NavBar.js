@@ -8,9 +8,9 @@ const NavBar = () => {
         <Link to='/Newsfeed'>Home</Link>
         <Link to='/Search'>Search</Link>
         <div id='addButton'>
-            <h1>+</h1>
+            <p>+</p>
         </div>
-        <h1>DMs</h1>
+        <p>DM</p>
         <Link to='/Profile'>Profile</Link>
       </div>
     );

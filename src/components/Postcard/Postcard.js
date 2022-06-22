@@ -18,15 +18,82 @@ import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CardContent, Paper } from "@mui/material";
 import styled from "@emotion/styled";
-import { InputBase } from "@mui/material";
+import { TextField } from "@mui/material";
+import { useEffect, useState } from "react";
 
 const Postcard = () => {
   //set state rating visible false
+  const [newComment, setNewComment] = useState("");
+  const [postInfo, setPostInfo] = useState({});
   const CardContentNoBottomPadding = styled(CardContent)(
     `
         padding-bottom: 0;
     `
   );
+  useEffect(() => {
+    async function getComments() {
+      const response = await fetch(`http://localhost:5000/comments/`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      const comments = await response.json();
+      console.log(comments);
+    }
+
+    async function getPostById() {
+      const response = await fetch(
+        `http://localhost:5000/posts/62af8ef66a57cf6a0f8bcc06`
+      );
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      setPostInfo(await response.json());
+    }
+
+    //getComments();
+    getPostById();
+
+    return;
+  }, []);
+
+  const handleCommentInput = (evt) => {
+    setNewComment(evt.target.value);
+  };
+
+  const postComment = async () => {
+    console.log("posting comment...");
+    if (newComment === "") {
+      console.log("You can't post nothing dummy");
+    } else {
+      let loadComment = {
+        postId: "62af8ef66a57cf6a0f8bcc06",
+        commentText: newComment,
+        commentUsername: "Anonymous",
+      };
+      console.log("Roasty Toasty Princess says: ", newComment);
+      await fetch("http://localhost:5000/comments/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loadComment),
+      }).catch((error) => {
+        window.alert(error);
+        return;
+      });
+
+      setNewComment("");
+    }
+    return;
+  };
 
   const marshmellowScaleArray =[
     {icon: 'uncooked', rating: 1},
@@ -80,7 +147,7 @@ const Postcard = () => {
       <CardMedia
         component="img"
         height="540px"
-        image="http://placecorgi.com/250"
+        image={postInfo.photoURL}
         alt="Puppers"
       />
       <CardActions disableSpacing>
@@ -153,12 +220,16 @@ const Postcard = () => {
       <Paper
         sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 1 }}
       >
-        <InputBase
+        <TextField
           sx={{ ml: 1, flex: 1 }}
+          id="commentTextField"
           placeholder="Add a comment..."
-          inputProps={{ "aria-label": "search google maps" }}
+          variant="standard"
+          InputProps={{ disableUnderline: true }}
+          onChange={handleCommentInput}
+          value={newComment}
         />
-        <Button>Post</Button>
+        <Button onClick={postComment}>Post</Button>
       </Paper>
     </Card>
   );
