@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 
 const Postcard = () => {
   const [newComment, setNewComment] = useState("");
+  const [postInfo, setPostInfo] = useState({});
   const CardContentNoBottomPadding = styled(CardContent)(
     `
         padding-bottom: 0;
@@ -42,7 +43,22 @@ const Postcard = () => {
       console.log(comments);
     }
 
-    getComments();
+    async function getPostById() {
+      const response = await fetch(
+        `http://localhost:5000/posts/62af8ef66a57cf6a0f8bcc06`
+      );
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      setPostInfo(await response.json());
+    }
+
+    //getComments();
+    getPostById();
 
     return;
   }, []);
@@ -104,7 +120,7 @@ const Postcard = () => {
       <CardMedia
         component="img"
         height="540px"
-        image="https://campfire-project-images.s3.amazonaws.com/7BD604C1-9897-415B-A4A9-92787468909F.jpeg"
+        image={postInfo.photoURL}
         alt="Puppers"
       />
       <CardActions disableSpacing>
