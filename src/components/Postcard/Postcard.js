@@ -162,14 +162,19 @@ const Postcard = () => {
                   </div>
                 </div>
                 <div className="rating-container">
-                <PopupState variant="popover" popupId="demo-popup-menu">
+                <PopupState>
                   {(popupState) => (
                   <React.Fragment>
-                    <Button variant="contained" {...bindTrigger(popupState)}>
-                      Dashboard
-                    </Button>
+                    <IconButton
+                    {...bindTrigger(popupState)} 
+                    size="small"
+                    sx={{ padding: 0.5 }}
+                    aria-label="add rating"
+                  >
+                    <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
+                  </IconButton> 
                     <Menu {...bindMenu(popupState)}>
-                      <MenuItem onClick={popupState.close}>Fluffenutter</MenuItem>
+                      <MenuItem onClick={popupState.close}>Fluffernutter</MenuItem>
                       <MenuItem onClick={popupState.close}>Uncooked</MenuItem>
                       <MenuItem onClick={popupState.close}>Toasted</MenuItem>
                       <MenuItem onClick={popupState.close}>Roasted</MenuItem>
@@ -187,7 +192,7 @@ const Postcard = () => {
                   >
                     <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
                   </IconButton> */}
-                  <FontAwesomeIcon icon={faFireFlameCurved} size="lg" />
+                  <FontAwesomeIcon icon={faFireFlameCurved} size="md" />
                   <b id="rating">7</b>
                 </div>
               </div>
