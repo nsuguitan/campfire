@@ -1,0 +1,39 @@
+.sign-in-container{
+    width:50%;
+    height:min-content;
+    margin: auto;
+    text-align: center;
+}
+
+.sign-in-input-container{
+    width: 80%;
+    height: 50%;
+    margin: auto;
+}
+
+.forgot-password-button{
+    float: left;
+}
+
+.login-buttons-container{
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    margin-bottom: 20px;
+
+}
+
+.brand-login-container{
+    margin-bottom: 5px;
+}
+#gridContainer{
+    margin-top: 5px;
+    justify-content: center;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
+}
+
+/* .forgot-password-button{
+margin-left: 0;
+} */
