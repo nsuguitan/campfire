@@ -20,9 +20,12 @@ import { CardContent, Paper } from "@mui/material";
 import styled from "@emotion/styled";
 import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+
 
 const Postcard = () => {
-  //set state rating visible false
   const [newComment, setNewComment] = useState("");
   const [postInfo, setPostInfo] = useState({});
   const CardContentNoBottomPadding = styled(CardContent)(
@@ -95,31 +98,6 @@ const Postcard = () => {
     return;
   };
 
-  const marshmellowScaleArray =[
-    {icon: 'uncooked', rating: 1},
-    {icon: 'warmed', rating: 2},
-    {icon: 'toasted', rating: 3},
-    {icon: 'roasted', rating: 4},
-    {icon: 'burned', rating: 5}
-  ]
-
-  const marshmellowRating = () =>{
-    return(
-      marshmellowScaleArray.map(rating => (
-        <div className = 'marshmellow' key={rating}>
-          <p>{rating.icon}</p>
-        </div>
-      ))
-    )
-  }
-  const marshmellowPopup = () => {
-    console.log('test')
-    return(
-      <div className='ratingScale'>
-        {marshmellowRating()}
-      </div>
-    )
-  }
 
   const comments = [
     { comment: "Who can roast a corgi?", commenter: "Dog lover" },
@@ -183,17 +161,32 @@ const Postcard = () => {
                     <span>{item.comment}</span>
                   </div>
                 </div>
-                {/* {marshmellowPopup()} */}
                 <div className="rating-container">
-                  <IconButton
+                <PopupState variant="popover" popupId="demo-popup-menu">
+                  {(popupState) => (
+                  <React.Fragment>
+                    <Button variant="contained" {...bindTrigger(popupState)}>
+                      Dashboard
+                    </Button>
+                    <Menu {...bindMenu(popupState)}>
+                      <MenuItem onClick={popupState.close}>Fluffenutter</MenuItem>
+                      <MenuItem onClick={popupState.close}>Uncooked</MenuItem>
+                      <MenuItem onClick={popupState.close}>Toasted</MenuItem>
+                      <MenuItem onClick={popupState.close}>Roasted</MenuItem>
+                      <MenuItem onClick={popupState.close}>Burned</MenuItem>
+                    </Menu>
+                  </React.Fragment>
+                  )}
+                </PopupState>
+                  {/* <IconButton
                     size="small"
                     sx={{ padding: 0.5 }}
                     aria-label="add rating"
-                    onClick= {function(){marshmellowPopup()}}
+                    // onClick= {function(){marshmellowPopup()}}
                     //set state to true on click
                   >
                     <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
-                  </IconButton>
+                  </IconButton> */}
                   <FontAwesomeIcon icon={faFireFlameCurved} size="lg" />
                   <b id="rating">7</b>
                 </div>
