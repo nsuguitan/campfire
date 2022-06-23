@@ -130,3 +130,9 @@
 .followHeading p:first-child{
   text-decoration: underline;
 }
+.signInPage{
+  display: flex;
+  align-content: center;
+  min-height: 80vh;
+  margin-bottom: 20vh;
+}
