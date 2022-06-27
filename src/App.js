@@ -15,9 +15,9 @@ const App = () => {
         <Route exact path="/Newsfeed" element={<Newsfeed />} />
         <Route exact path="/Profile" element={<Profile />} />
         <Route exact path="/Search" element={<Search />} />
-        <Route exact path='/Postcard' element={<Postcard/>} />
+        <Route exact path='/Postcard' element={<Postcard />} />
       </Routes>
-      <NavBar/>
+      <NavBar />
     </BrowserRouter>
   );
 };
