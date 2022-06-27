@@ -108,7 +108,7 @@ const Postcard = () => {
     },
   ];
   return (
-    <Card sx={{ maxWidth: 540 }}>
+    <Card sx={{ maxWidth: 540 }} className='fullCard'>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="user">
