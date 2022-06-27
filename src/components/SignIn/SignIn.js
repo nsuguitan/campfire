@@ -6,8 +6,29 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { TextField, Box } from "@mui/material";
 import { Button, Grid, Item } from "@mui/material";
+import { useState } from 'react';
+import { AuthState } from "../../context/auth/AuthContext"
 import "./SignIn.css";
 const SignInComp = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = AuthState();
+
+  const handleUsernameInput = (evt) => {
+    setUsername(evt.target.value);
+  };
+
+  const handlePasswordInput = (evt) => {
+    setPassword(evt.target.value);
+  };
+
+  const triggerLogin = event => {
+    console.log("Triggered login")
+    event.preventDefault();
+    login({ username, password });
+  };
+
+
   return (
     <div className="sign-in-container">
       <Box
@@ -25,14 +46,18 @@ const SignInComp = () => {
             fullWidth
             sx={{ marginBottom: "10px" }}
             label="Username"
+            value={username}
             size="small"
             variant="outlined"
+            onChange={handleUsernameInput}
           />
           <TextField
             fullWidth
             label="Password"
+            value={password}
             size="small"
             variant="outlined"
+            onChange={handlePasswordInput}
           />
           <Button
             className="forgot-password-button"
@@ -55,6 +80,7 @@ const SignInComp = () => {
               sx={{
                 backgroundColor: "#ee7e00",
               }}
+              onClick={triggerLogin}
             >
               Login
             </Button>
