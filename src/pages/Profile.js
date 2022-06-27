@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import profilePicture from '../assets/profilePic.jpg';
 import blueFlame from '../assets/blueFlame.jpg';
+import Image from '../assets/gridPhoto.jpg';
 import Image1 from '../assets/gridPhoto1.jpg';
 import Image2 from '../assets/gridPhoto2.jpg';
 import Image3 from '../assets/gridPhoto3.jpg';
@@ -13,6 +14,7 @@ import Image9 from '../assets/gridPhoto9.jpg';
 import Image10 from '../assets/gridPhoto10.jpg';
 
 const profileImages = [
+  {image: Image},
   {image: Image1},
   {image: Image2},
   {image: Image3},
