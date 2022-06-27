@@ -27,6 +27,7 @@ import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 const Postcard = () => {
   const [newComment, setNewComment] = useState("");
+  // const [newRating, updateRating] = useState({});
   const [postInfo, setPostInfo] = useState({});
   const CardContentNoBottomPadding = styled(CardContent)(
     `
@@ -97,6 +98,10 @@ const Postcard = () => {
     }
     return;
   };
+
+  // const rateComment = (event) =>{
+  //   updateRating(event.target.value)
+  // }
 
 
   const comments = [
