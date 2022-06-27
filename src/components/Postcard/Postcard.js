@@ -27,7 +27,7 @@ import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 const Postcard = () => {
   const [newComment, setNewComment] = useState("");
-  // const [newRating, updateRating] = useState({});
+  const [newRating, updateRating] = useState({});
   const [postInfo, setPostInfo] = useState({});
   const CardContentNoBottomPadding = styled(CardContent)(
     `
@@ -81,6 +81,7 @@ const Postcard = () => {
         postId: "62af8ef66a57cf6a0f8bcc06",
         commentText: newComment,
         commentUsername: "Anonymous",
+        commentRating: 0, 
       };
       console.log("Roasty Toasty Princess says: ", newComment);
       await fetch("http://localhost:5000/comments/add", {
@@ -99,8 +100,18 @@ const Postcard = () => {
     return;
   };
 
-  // const rateComment = (event) =>{
-  //   updateRating(event.target.value)
+  // const rateComment =  async () =>{
+  //   if('selected' == 'Fluffernutter'){
+  //     commentRating -= 2
+  //   } else if('selected' == 'Uncooked'){
+  //     commentRating -= 1
+  //   } else if('selected' == 'Toasted'){
+  //     commentRating += 1
+  //   }else if('selected' == 'Roasted'){
+  //     commentRating += 2
+  //   }else if('selected' == 'Burned'){
+  //     commentRating += 3
+  //   }
   // }
 
 
@@ -198,7 +209,8 @@ const Postcard = () => {
                     <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
                   </IconButton> */}
                   <FontAwesomeIcon icon={faFireFlameCurved} size="md" />
-                  <b id="rating">7</b>
+                  <b id="rating">7</b> 
+                  {/* commentRating() */}
                 </div>
               </div>
             </li>

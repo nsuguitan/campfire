@@ -35,6 +35,7 @@ commentsRoutes.route("/comments/add").post(function (req, response) {
     postId: ObjectId(req.body.postId),
     commentText: req.body.commentText,
     commentUsername: req.body.commentUsername,
+    commentRating: req.body.commentRating,
   };
   db_connect.collection("comments").insertOne(myobj, function (err, res) {
     if (err) throw err;
