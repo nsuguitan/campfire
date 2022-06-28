@@ -14,7 +14,7 @@ const SignInComp = () => {
   let navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = AuthState();
+  const { login, isAuthenticated } = AuthState();
 
   const handleUsernameInput = (evt) => {
     setUsername(evt.target.value);
@@ -29,7 +29,8 @@ const SignInComp = () => {
     event.preventDefault();
     const successfulLogin = await login({ username, password });
     if (successfulLogin) {
-      navigate("/Newsfeed");
+      console.log("Auth State:", isAuthenticated)
+      setTimeout(() => { navigate("/Newsfeed"); }, 1000);
       console.log("Come on vamanos, everybody let's go!")
     }
   };

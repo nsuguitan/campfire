@@ -25,7 +25,7 @@ const AuthContext = ({ children }) => {
         console.log('auth state', state);
     }, [state]);
 
-    const login = userData => {
+    const login = async (userData) => {
         console.log(userData)
         console.log("process env", process.env.REACT_APP_KEY)
 
