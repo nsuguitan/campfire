@@ -8,8 +8,10 @@ import { TextField, Box } from "@mui/material";
 import { Button, Grid, Item } from "@mui/material";
 import { useState } from 'react';
 import { AuthState } from "../../context/auth/AuthContext"
+import { useNavigate } from "react-router-dom"
 import "./SignIn.css";
 const SignInComp = () => {
+  let navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { login } = AuthState();
@@ -22,10 +24,14 @@ const SignInComp = () => {
     setPassword(evt.target.value);
   };
 
-  const triggerLogin = event => {
+  const triggerLogin = async (event) => {
     console.log("Triggered login")
     event.preventDefault();
-    login({ username, password });
+    const successfulLogin = await login({ username, password });
+    if (successfulLogin) {
+      navigate("/Newsfeed");
+      console.log("Come on vamanos, everybody let's go!")
+    }
   };
 
 

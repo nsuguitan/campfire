@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Postcard from "./components/Postcard/Postcard";
 import AuthContext from "./context/auth/AuthContext";
 import CssBaseline from "@mui/material/CssBaseline";
+import PrivateRoute from './routing/PrivateRoute'
 const App = () => {
   console.log("launching app")
   console.log("process env", process.env.REACT_APP_KEY)
@@ -18,10 +19,26 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<SignIn />} />
           <Route exact path="/SignIn" element={<SignIn />} />
-          <Route exact path="/Newsfeed" element={<Newsfeed />} />
-          <Route exact path="/Profile" element={<Profile />} />
-          <Route exact path="/Search" element={<Search />} />
-          <Route exact path='/Postcard' element={<Postcard />} />
+          <Route exact path="/Newsfeed" element={
+            <PrivateRoute>
+              <Newsfeed />
+            </PrivateRoute>
+          } />
+          <Route exact path="/Profile" element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          } />
+          <Route exact path="/Search" element={
+            <PrivateRoute>
+              <Search />
+            </PrivateRoute>
+          } />
+          <Route exact path='/Postcard' element={
+            <PrivateRoute>
+              <Postcard />
+            </PrivateRoute>
+          } />
         </Routes>
         <NavBar />
       </BrowserRouter>

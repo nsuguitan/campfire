@@ -46,7 +46,7 @@ const AuthContext = ({ children }) => {
             onFailure: err => { dispatch({ type: "LOGIN_FAILURE", payload: err }) },
         }
         );
-
+        return true;
     };
     return (
         <Auth.Provider value={{
