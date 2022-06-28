@@ -10,6 +10,7 @@ import AuthContext from "./context/auth/AuthContext";
 import CssBaseline from "@mui/material/CssBaseline";
 const App = () => {
   console.log("launching app")
+  console.log("process env", process.env.REACT_APP_KEY)
   return (
     <AuthContext>
       <CssBaseline />

@@ -20,7 +20,7 @@ const AuthContext = ({ children }) => {
 
     const login = userData => {
         console.log(userData)
-        //console.log("process env", process.env)
+        console.log("process env", process.env.REACT_APP_KEY)
         // const user = new CognitoUser({
         //     Username: userData.username,
         //     Pool: process.env.CONGITO_USER_POOL_ID,
