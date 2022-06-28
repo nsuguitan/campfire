@@ -1,4 +1,4 @@
-const authReducer = (state, action) => {
+export const authReducer = (state, action) => {
     switch (action.type) {
         case "LOGIN_SUCCESS":
             return {
@@ -8,6 +8,7 @@ const authReducer = (state, action) => {
                 username: action.payload.accessToken.payload.username,
                 loading: false
             };
+        case "LOGIN_FAILURE":
         case "LOGOUT":
             localStorage.removeItem('token');
             return {
@@ -21,4 +22,4 @@ const authReducer = (state, action) => {
         default:
             return state;
     }
-}
+};
