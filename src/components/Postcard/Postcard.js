@@ -81,7 +81,7 @@ const Postcard = () => {
         postId: "62af8ef66a57cf6a0f8bcc06",
         commentText: newComment,
         commentUsername: "Anonymous",
-        commentRating: '0', 
+        commentRating: 0, 
       };
       console.log("Roasty Toasty Princess says: ", newComment);
       await fetch("http://localhost:5000/comments/add", {
