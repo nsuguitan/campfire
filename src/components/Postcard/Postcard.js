@@ -27,7 +27,7 @@ import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 const Postcard = () => {
   const [newComment, setNewComment] = useState("");
-  const [newRating, updateRating] = useState({});
+  // const [newVote, updateRating] = useState({});
   const [postInfo, setPostInfo] = useState({});
   const CardContentNoBottomPadding = styled(CardContent)(
     `
@@ -100,19 +100,17 @@ const Postcard = () => {
     return;
   };
 
-  // const rateComment =  async () =>{
-  //   if('selected' == 'Fluffernutter'){
-  //     commentRating -= 2
-  //   } else if('selected' == 'Uncooked'){
-  //     commentRating -= 1
-  //   } else if('selected' == 'Toasted'){
-  //     commentRating += 1
-  //   }else if('selected' == 'Roasted'){
-  //     commentRating += 2
-  //   }else if('selected' == 'Burned'){
-  //     commentRating += 3
-  //   }
-  // }
+  // const handleRatingInput = (evt) => {
+  //   newVote(evt.target.value);
+  // };
+
+  const rating = async()=>{
+
+  }
+
+  const subTwo = async () => {
+    return rating -=2
+  }
 
 
   const comments = [
@@ -190,7 +188,10 @@ const Postcard = () => {
                     <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
                   </IconButton> 
                     <Menu {...bindMenu(popupState)}>
-                      <MenuItem onClick={popupState.close}>Fluffernutter</MenuItem>
+                      <MenuItem onClick={() => {
+                        popupState.close(); 
+                        subTwo();
+                        }}>Fluffernutter</MenuItem>
                       <MenuItem onClick={popupState.close}>Uncooked</MenuItem>
                       <MenuItem onClick={popupState.close}>Toasted</MenuItem>
                       <MenuItem onClick={popupState.close}>Roasted</MenuItem>
@@ -199,18 +200,9 @@ const Postcard = () => {
                   </React.Fragment>
                   )}
                 </PopupState>
-                  {/* <IconButton
-                    size="small"
-                    sx={{ padding: 0.5 }}
-                    aria-label="add rating"
-                    // onClick= {function(){marshmellowPopup()}}
-                    //set state to true on click
-                  >
-                    <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
-                  </IconButton> */}
                   <FontAwesomeIcon icon={faFireFlameCurved} size="md" />
                   <b id="rating">7</b> 
-                  {/* commentRating() */}
+                  {/* not showing up */}
                 </div>
               </div>
             </li>
