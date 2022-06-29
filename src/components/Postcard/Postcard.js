@@ -23,11 +23,11 @@ import { useEffect, useState } from "react";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
+import Rating from '../Rating/Rating';
 
 
 const Postcard = () => {
   const [newComment, setNewComment] = useState("");
-  // const [newVote, updateRating] = useState({});
   const [postInfo, setPostInfo] = useState({});
   const CardContentNoBottomPadding = styled(CardContent)(
     `
@@ -100,19 +100,6 @@ const Postcard = () => {
     return;
   };
 
-  // const handleRatingInput = (evt) => {
-  //   newVote(evt.target.value);
-  // };
-
-  const rating = async()=>{
-
-  }
-
-  const subTwo = async () => {
-    return rating -=2
-  }
-
-
   const comments = [
     { comment: "Who can roast a corgi?", commenter: "Dog lover" },
     {
@@ -175,7 +162,8 @@ const Postcard = () => {
                     <span>{item.comment}</span>
                   </div>
                 </div>
-                <div className="rating-container">
+                <Rating/>
+                {/* <div className="rating-container">
                 <PopupState>
                   {(popupState) => (
                   <React.Fragment>
@@ -202,8 +190,7 @@ const Postcard = () => {
                 </PopupState>
                   <FontAwesomeIcon icon={faFireFlameCurved} size="md" />
                   <b id="rating">7</b> 
-                  {/* not showing up */}
-                </div>
+                </div> */}
               </div>
             </li>
           ))}
