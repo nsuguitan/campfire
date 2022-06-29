@@ -1,0 +1,12 @@
+.sign-up-container{
+    width:50%;
+    height:min-content;
+    margin: auto;
+    text-align: center;
+}
+
+.sign-up-input-container{
+    width: 80%;
+    height: 50%;
+    margin: auto;
+}

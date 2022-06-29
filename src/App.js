@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import Newsfeed from "./pages/Newsfeed";
 import Search from "./pages/Search";
@@ -19,6 +20,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<SignIn />} />
           <Route exact path="/SignIn" element={<SignIn />} />
+          <Route exact path="/SignUp" element={<SignUp />} />
           <Route exact path="/Newsfeed" element={
             <PrivateRoute>
               <Newsfeed />

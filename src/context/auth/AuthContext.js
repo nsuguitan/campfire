@@ -1,9 +1,11 @@
 import { createContext, useReducer, useContext, useEffect } from 'react'
 import 'cross-fetch/polyfill';
 import AmazonCognitoIdentity from 'amazon-cognito-identity-js';
-import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js"
+import { CognitoUser, AuthenticationDetails, CognitoUserAttribute } from "amazon-cognito-identity-js"
 import { authReducer } from "./AuthReducer"
 import UserPool from '../../config/UserPool';
+
+//https://github.com/aws-amplify/amplify-js/tree/main/packages/amazon-cognito-identity-js
 
 const Auth = createContext();
 
@@ -48,6 +50,54 @@ const AuthContext = ({ children }) => {
         );
         return true;
     };
+
+    const signup = (signUpData) => {
+        console.log("Context Sign up started!")
+        let attributeList = [];
+        let email = {
+            Name: 'email',
+            Value: signUpData.email
+        };
+        let name = {
+            Name: 'name',
+            Value: signUpData.name
+        };
+        let attributeEmail = new CognitoUserAttribute(email);
+        let attributeName = new CognitoUserAttribute(name);
+
+        attributeList.push(attributeEmail);
+        attributeList.push(attributeName);
+
+        UserPool.signUp(signUpData.username, signUpData.password, attributeList, null, function (
+            err,
+            result
+        ) {
+            if (err) {
+                alert(err.message || JSON.stringify(err));
+                return;
+            }
+            let cognitoUser = result.user;
+            console.log('The new user is: ' + cognitoUser.getUsername());
+        })
+        return true;
+    };
+
+    const verify = (params) => {
+        console.log("passed params:", params)
+        const user = new CognitoUser({
+            Username: params.Username,
+            Pool: UserPool,
+        });
+
+        user.confirmRegistration(params.ConfirmationCode, true, function (err, result) {
+            if (err) {
+                alert(err.message || JSON.stringify(err))
+                return;
+            };
+            console.log("Confirmed! ", result)
+        })
+    }
+
     return (
         <Auth.Provider value={{
             token: state.token,
@@ -55,8 +105,9 @@ const AuthContext = ({ children }) => {
             loading: state.loading,
             username: state.username,
             error: state.error,
-            //register,
-            login
+            signup,
+            login,
+            verify
             //logout,
             //onLoad
             //clearErrors

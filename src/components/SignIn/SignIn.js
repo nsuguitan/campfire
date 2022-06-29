@@ -98,6 +98,7 @@ const SignInComp = () => {
               sx={{
                 backgroundColor: "#f14726"
               }}
+              onClick={() => navigate("/SignUp")}
             >
               Create an Account
             </Button>
