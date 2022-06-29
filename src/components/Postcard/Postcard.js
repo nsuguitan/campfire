@@ -9,20 +9,12 @@ import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faComment,
-  faPaperPlane,
-  faSquareCaretUp,
-} from "@fortawesome/free-regular-svg-icons";
-import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
+import {faComment, faPaperPlane} from "@fortawesome/free-regular-svg-icons";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { CardContent, Paper } from "@mui/material";
 import styled from "@emotion/styled";
 import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import Rating from '../Rating/Rating';
 
 
@@ -163,34 +155,6 @@ const Postcard = () => {
                   </div>
                 </div>
                 <Rating/>
-                {/* <div className="rating-container">
-                <PopupState>
-                  {(popupState) => (
-                  <React.Fragment>
-                    <IconButton
-                    {...bindTrigger(popupState)} 
-                    size="small"
-                    sx={{ padding: 0.5 }}
-                    aria-label="add rating"
-                  >
-                    <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
-                  </IconButton> 
-                    <Menu {...bindMenu(popupState)}>
-                      <MenuItem onClick={() => {
-                        popupState.close(); 
-                        subTwo();
-                        }}>Fluffernutter</MenuItem>
-                      <MenuItem onClick={popupState.close}>Uncooked</MenuItem>
-                      <MenuItem onClick={popupState.close}>Toasted</MenuItem>
-                      <MenuItem onClick={popupState.close}>Roasted</MenuItem>
-                      <MenuItem onClick={popupState.close}>Burned</MenuItem>
-                    </Menu>
-                  </React.Fragment>
-                  )}
-                </PopupState>
-                  <FontAwesomeIcon icon={faFireFlameCurved} size="md" />
-                  <b id="rating">7</b> 
-                </div> */}
               </div>
             </li>
           ))}

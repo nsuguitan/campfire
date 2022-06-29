@@ -10,9 +10,9 @@ import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import IconButton from "@mui/material/IconButton";
 
 const Rating = () => {
-  const intialRating = 5;
+  const intialRating = 0;
   // get from database
-  // pass it through with the photo id
+  // pass it through with the commentid
   return (
     <div className="testingClass">
       <Rater initialRating={intialRating} />
@@ -38,11 +38,11 @@ const Rater = ({ initialRating }) => {
                 <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
               </IconButton>
               <Menu {...bindMenu(popupState)}>
-                <MenuItem onClick={() => setRating(rating - 2)}>Fluffernutter</MenuItem>
-                <MenuItem onClick={() => setRating(rating - 1)}>Uncooked</MenuItem>
-                <MenuItem onClick={() => setRating(rating + 1)}>Toasted</MenuItem>
-                <MenuItem onClick={() => setRating(rating + 2)}>Roasted</MenuItem>
-                <MenuItem onClick={() => setRating(rating + 3)}>Burned</MenuItem>
+                <MenuItem onClick={() => {setRating(rating - 2); popupState.close()}}>Fluffernutter</MenuItem>
+                <MenuItem onClick={() => {setRating(rating - 1); popupState.close()}}>Uncooked</MenuItem>
+                <MenuItem onClick={() => {setRating(rating + 1); popupState.close()}}>Toasted</MenuItem>
+                <MenuItem onClick={() => {setRating(rating + 2); popupState.close()}}>Roasted</MenuItem>
+                <MenuItem onClick={() => {setRating(rating + 3); popupState.close()}}>Burned</MenuItem>
               </Menu>
             </React.Fragment>
           )}
