@@ -6,8 +6,36 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { TextField, Box } from "@mui/material";
 import { Button, Grid, Item } from "@mui/material";
+import { useState } from 'react';
+import { AuthState } from "../../context/auth/AuthContext"
+import { useNavigate } from "react-router-dom"
 import "./SignIn.css";
 const SignInComp = () => {
+  let navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { login, isAuthenticated } = AuthState();
+
+  const handleUsernameInput = (evt) => {
+    setUsername(evt.target.value);
+  };
+
+  const handlePasswordInput = (evt) => {
+    setPassword(evt.target.value);
+  };
+
+  const triggerLogin = async (event) => {
+    console.log("Triggered login")
+    event.preventDefault();
+    const successfulLogin = await login({ username, password });
+    if (successfulLogin) {
+      console.log("Auth State:", isAuthenticated)
+      setTimeout(() => { navigate("/Newsfeed"); }, 1000);
+      console.log("Come on vamanos, everybody let's go!")
+    }
+  };
+
+
   return (
     <div className="sign-in-container">
       <Box
@@ -25,14 +53,18 @@ const SignInComp = () => {
             fullWidth
             sx={{ marginBottom: "10px" }}
             label="Username"
+            value={username}
             size="small"
             variant="outlined"
+            onChange={handleUsernameInput}
           />
           <TextField
             fullWidth
             label="Password"
+            value={password}
             size="small"
             variant="outlined"
+            onChange={handlePasswordInput}
           />
           <Button
             className="forgot-password-button"
@@ -55,6 +87,7 @@ const SignInComp = () => {
               sx={{
                 backgroundColor: "#ee7e00",
               }}
+              onClick={triggerLogin}
             >
               Login
             </Button>
@@ -65,6 +98,7 @@ const SignInComp = () => {
               sx={{
                 backgroundColor: "#f14726"
               }}
+              onClick={() => navigate("/SignUp")}
             >
               Create an Account
             </Button>
