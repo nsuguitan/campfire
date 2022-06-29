@@ -9,23 +9,18 @@ import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faComment, faPaperPlane} from "@fortawesome/free-regular-svg-icons";
+import { faComment, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { CardContent, Paper } from "@mui/material";
-import styled from "@emotion/styled";
+import { Paper } from "@mui/material";
 import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-import Rating from '../Rating/Rating';
-
+import PostComments from "../Comments/PostComments";
 
 const Postcard = () => {
   const [newComment, setNewComment] = useState("");
   const [postInfo, setPostInfo] = useState({});
-  const CardContentNoBottomPadding = styled(CardContent)(
-    `
-        padding-bottom: 0;
-    `
-  );
+  const [postComments, setPostComments] = useState({});
+
   useEffect(() => {
     async function getComments() {
       const response = await fetch(`http://localhost:5000/comments/`);
@@ -36,8 +31,8 @@ const Postcard = () => {
         return;
       }
 
-      const comments = await response.json();
-      console.log(comments);
+      setPostComments(await response.json());
+      console.log(postComments);
     }
 
     async function getPostById() {
@@ -54,7 +49,7 @@ const Postcard = () => {
       setPostInfo(await response.json());
     }
 
-    //getComments();
+    getComments();
     getPostById();
 
     return;
@@ -73,7 +68,7 @@ const Postcard = () => {
         postId: "62af8ef66a57cf6a0f8bcc06",
         commentText: newComment,
         commentUsername: "Anonymous",
-        commentRating: 0, 
+        commentRating: 0,
       };
       console.log("Roasty Toasty Princess says: ", newComment);
       await fetch("http://localhost:5000/comments/add", {
@@ -92,16 +87,16 @@ const Postcard = () => {
     return;
   };
 
-  const comments = [
-    { comment: "Who can roast a corgi?", commenter: "Dog lover" },
-    {
-      comment:
-        "It would be cute, if it was a cat. meow meow meow meow meow meow meow meow meow meow",
-      commenter: "Cat lover",
-    },
-  ];
+  // const comments = [
+  //   { comment: "Who can roast a corgi?", commenter: "Dog lover" },
+  //   {
+  //     comment:
+  //       "It would be cute, if it was a cat. meow meow meow meow meow meow meow meow meow meow",
+  //     commenter: "Cat lover",
+  //   },
+  // ];
   return (
-    <Card sx={{ maxWidth: 540 }} className='fullCard'>
+    <Card sx={{ maxWidth: 540 }} className="fullCard">
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="user">
@@ -136,30 +131,7 @@ const Postcard = () => {
         </IconButton>
         <p id="postTime">9 hours ago</p>
       </CardActions>
-
-      <CardContentNoBottomPadding>
-        <ul style={{ listStyleType: "none" }}>
-          {comments.map((item, i) => (
-            <li key={i}>
-              <div className="list-comments-container">
-                <div className="comment-commenter-container">
-                  <div className="commenter-container">
-                    <h4>
-                      <span>
-                        <a>{item.commenter}</a>
-                      </span>
-                    </h4>
-                  </div>
-                  <div className="comment-container">
-                    <span>{item.comment}</span>
-                  </div>
-                </div>
-                <Rating/>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </CardContentNoBottomPadding>
+      <PostComments postComments={postComments} />
       <CardActions>
         <Button
           className="load-comments-button"
