@@ -1,5 +1,5 @@
-import profilePicture from '../../assets/profilePic.jpg';
 import blueFlame from '../../assets/blueFlame.jpg';
+import Avatar from '../Avatar/Avatar';
 
 
 
@@ -9,7 +9,10 @@ const ProfileInfo = () => {
             <div className='bioContainer'><h1>chelmerr</h1></div>
             <div className='topProfileContainer'>
                 <div className='profilePicContainer'>
-                    <img src={profilePicture} alt='' className='profilePic' />
+                    <Avatar
+                    borderRadius='10%'
+                    height='200px'
+                    width='200px'/>
                 </div>
                 <div className='profileStatsContainer'>
                     <div className='roastRatingProfileContainer'>
