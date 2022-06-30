@@ -1,10 +1,10 @@
 import profilePicture from '../../assets/profilePic.jpg';
 
-const Avatar = () =>{
+const Avatar = (props) =>{
     return (
-        <div className='avatar'>
-            <img src={profilePicture} alt='' className='profilePic' />
-        </div>
+        <>
+            <img src={profilePicture} alt='' style={{height:props.height, width:props.width, borderRadius:props.borderRadius}}/>
+        </>
     );
 };
 

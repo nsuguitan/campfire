@@ -9,7 +9,10 @@ const ProfileInfo = () => {
             <div className='bioContainer'><h1>chelmerr</h1></div>
             <div className='topProfileContainer'>
                 <div className='profilePicContainer'>
-                    <Avatar />
+                    <Avatar
+                    borderRadius='10%'
+                    height='200px'
+                    width='200px'/>
                 </div>
                 <div className='profileStatsContainer'>
                     <div className='roastRatingProfileContainer'>
