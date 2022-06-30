@@ -1,14 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faGoogle,
-  faApple,
-} from "@fortawesome/free-brands-svg-icons";
 import { TextField, Box } from "@mui/material";
-import { Button, Grid, Item } from "@mui/material";
-import { useState } from 'react';
-import { AuthState } from "../../context/auth/AuthContext"
-import { useNavigate } from "react-router-dom"
+import { Button } from "@mui/material";
+import { useState } from "react";
+import { AuthState } from "../../context/auth/AuthContext";
+import { useNavigate } from "react-router-dom";
+import OAuth from "../OAuth/OAuth";
 import "./SignIn.css";
 const SignInComp = () => {
   let navigate = useNavigate();
@@ -25,23 +20,21 @@ const SignInComp = () => {
   };
 
   const triggerLogin = async (event) => {
-    console.log("Triggered login")
     event.preventDefault();
     const successfulLogin = await login({ username, password });
     if (successfulLogin) {
-      console.log("Auth State:", isAuthenticated)
-      setTimeout(() => { navigate("/Newsfeed"); }, 1000);
-      console.log("Come on vamanos, everybody let's go!")
+      setTimeout(() => {
+        navigate("/Newsfeed");
+      }, 1000);
     }
   };
-
 
   return (
     <div className="sign-in-container">
       <Box
         sx={{
           width: 1,
-          height: .95,
+          height: 0.95,
           border: 1,
           borderColor: "#212121",
           borderWidth: "3px",
@@ -82,7 +75,9 @@ const SignInComp = () => {
         </div>
         <div className="login-buttons-container">
           <div className="button-container">
-            <Button disableElevation fullWidth
+            <Button
+              disableElevation
+              fullWidth
               variant="contained"
               sx={{
                 backgroundColor: "#ee7e00",
@@ -93,10 +88,12 @@ const SignInComp = () => {
             </Button>
           </div>
           <div className="button-container">
-            <Button disableElevation fullWidth
+            <Button
+              disableElevation
+              fullWidth
               variant="contained"
               sx={{
-                backgroundColor: "#f14726"
+                backgroundColor: "#f14726",
               }}
               onClick={() => navigate("/SignUp")}
             >
@@ -104,34 +101,9 @@ const SignInComp = () => {
             </Button>
           </div>
         </div>
-        <div>
-          <h2>- OR -</h2>
-          <h5>Login with</h5>
-        </div>
-        <div className="brand-login-container">
-          <Grid container spacing={2} id="gridContainer">
-            <Grid item>
-              <FontAwesomeIcon
-                icon={faGoogle}
-                style={{ height: "40px" }}
-              ></FontAwesomeIcon>
-            </Grid>
-            <Grid item>
-              <FontAwesomeIcon
-                icon={faFacebook}
-                style={{ height: "40px" }}
-              ></FontAwesomeIcon>
-            </Grid>
-            <Grid item>
-              <FontAwesomeIcon
-                icon={faApple}
-                style={{ height: "40px" }}
-              ></FontAwesomeIcon>
-            </Grid>
-          </Grid>
-        </div>
+        <OAuth />
       </Box>
-    </div >
+    </div>
   );
 };
 
