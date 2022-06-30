@@ -1,15 +1,12 @@
 import { TextField, Box, Modal } from "@mui/material";
-import { Button, Grid, Item } from "@mui/material";
+import { Button } from "@mui/material";
 import { useState } from "react";
 import { AuthState } from "../../context/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
+import AuthInput from "../AuthInput/AuthInput";
 
 const SignUpComp = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [open, setOpen] = useState(false);
   const [verificationCode, setVerificationCode] = useState("");
   const { login, signup, verify, isAuthenticated } = AuthState();
@@ -30,33 +27,28 @@ const SignUpComp = () => {
 
   const navigate = useNavigate();
 
-  const handleUsernameInput = (evt) => {
-    setUsername(evt.target.value);
-  };
+  const [textFields, setTextFields] = useState({
+    username: "",
+    password: "",
+    fullname: "",
+    email: "",
+  });
 
-  const handlePasswordInput = (evt) => {
-    setPassword(evt.target.value);
-  };
-  const handleNameInput = (evt) => {
-    setName(evt.target.value);
-  };
-  const handleEmailInput = (evt) => {
-    setEmail(evt.target.value);
-  };
+  const handleTextChange = (e) =>
+    setTextFields({
+      ...textFields,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
 
   const handleVerificationCode = (evt) => {
     setVerificationCode(evt.target.value);
   };
 
   const triggerSignUp = async (event) => {
-    console.log("Triggered signup");
     event.preventDefault();
-    //const successfulSignUp = true;
-    const successfulSignUp = await signup({ username, password, name, email });
+    const successfulSignUp = await signup(textFields);
     if (successfulSignUp) {
-      console.log("After SignUp State:", isAuthenticated);
       setOpen(true);
-      // console.log("Come on vamanos, everybody let's go!")
     }
   };
 
@@ -67,14 +59,15 @@ const SignUpComp = () => {
     let params = {
       ClientId: "4gjkaose7v4olc8mvsd40nf11f",
       ConfirmationCode: verificationCode,
-      Username: username,
+      Username: textFields.username,
     };
     const successfulVerify = await verify(params);
     if (successfulVerify) {
-      console.log("Attempt login after verification");
-      const successfulLogin = await login({ username, password });
+      const successfulLogin = await login({
+        username: textFields.username,
+        password: textFields.password,
+      });
       if (successfulLogin) {
-        console.log("successful login after verify");
         setTimeout(() => {
           navigate("/Newsfeed");
         }, 1000);
@@ -95,41 +88,29 @@ const SignUpComp = () => {
       >
         <h1 style={{ marginBottom: "20px" }}>Campfire</h1>
         <div className="sign-up-input-container">
-          <TextField
-            fullWidth
-            sx={{ marginBottom: "10px" }}
+          <AuthInput
+            name="username"
             label="Username"
-            value={username}
-            size="small"
-            variant="outlined"
-            onChange={handleUsernameInput}
+            value={textFields.username}
+            onChange={handleTextChange}
           />
-          <TextField
-            fullWidth
-            sx={{ marginBottom: "10px" }}
+          <AuthInput
+            name="password"
             label="Password"
-            value={password}
-            size="small"
-            variant="outlined"
-            onChange={handlePasswordInput}
+            value={textFields.password}
+            onChange={handleTextChange}
           />
-          <TextField
-            fullWidth
-            sx={{ marginBottom: "10px" }}
+          <AuthInput
+            name="fullname"
             label="Full Name"
-            value={name}
-            size="small"
-            variant="outlined"
-            onChange={handleNameInput}
+            value={textFields.fullname}
+            onChange={handleTextChange}
           />
-          <TextField
-            fullWidth
-            sx={{ marginBottom: "10px" }}
+          <AuthInput
+            name="email"
             label="Email"
-            value={email}
-            size="small"
-            variant="outlined"
-            onChange={handleEmailInput}
+            value={textFields.email}
+            onChange={handleTextChange}
           />
           <Button
             disableElevation

@@ -1,27 +1,30 @@
-import { TextField, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { AuthState } from "../../context/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import OAuth from "../OAuth/OAuth";
 import "./SignIn.css";
+import AuthInput from "../AuthInput/AuthInput";
 const SignInComp = () => {
   let navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+
+  const [textFields, setTextFields] = useState({
+    username: "",
+    password: "",
+  });
   const { login, isAuthenticated } = AuthState();
 
-  const handleUsernameInput = (evt) => {
-    setUsername(evt.target.value);
-  };
-
-  const handlePasswordInput = (evt) => {
-    setPassword(evt.target.value);
-  };
+  const handleTextChange = (e) =>
+    setTextFields({
+      ...textFields,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
 
   const triggerLogin = async (event) => {
     event.preventDefault();
-    const successfulLogin = await login({ username, password });
+    console.log("TextFields --> ", textFields);
+    const successfulLogin = await login(textFields);
     if (successfulLogin) {
       setTimeout(() => {
         navigate("/Newsfeed");
@@ -42,23 +45,19 @@ const SignInComp = () => {
       >
         <h1 style={{ marginBottom: "20px" }}>Campfire</h1>
         <div className="sign-in-input-container">
-          <TextField
-            fullWidth
-            sx={{ marginBottom: "10px" }}
+          <AuthInput
+            name="username"
             label="Username"
-            value={username}
-            size="small"
-            variant="outlined"
-            onChange={handleUsernameInput}
+            value={textFields.username}
+            onChange={handleTextChange}
           />
-          <TextField
-            fullWidth
+          <AuthInput
+            name="password"
             label="Password"
-            value={password}
-            size="small"
-            variant="outlined"
-            onChange={handlePasswordInput}
+            value={textFields.password}
+            onChange={handleTextChange}
           />
+
           <Button
             className="forgot-password-button"
             size="medium"
