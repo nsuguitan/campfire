@@ -8,13 +8,12 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faComment, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Paper } from "@mui/material";
 import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import PostComments from "../Comments/PostComments";
+import PostInfo from "../PostInfo/PostInfo";
 
 const Postcard = () => {
   const [newComment, setNewComment] = useState("");
@@ -120,21 +119,7 @@ const Postcard = () => {
         image={postInfo.photoURL}
         alt="Puppers"
       />
-      <CardActions disableSpacing>
-        <IconButton
-          sx={{ minHeight: 0, minWidth: 0, padding: 0.5 }}
-          aria-label="add comment"
-        >
-          <FontAwesomeIcon icon={faComment} />
-        </IconButton>
-        <IconButton
-          sx={{ minHeight: 0, minWidth: 0, padding: 0.5 }}
-          aria-label="share"
-        >
-          <FontAwesomeIcon icon={faPaperPlane} />
-        </IconButton>
-        <p id="postTime">9 hours ago</p>
-      </CardActions>
+      <PostInfo />
       <PostComments postComments={postComments} />
       <CardActions>
         <Button
