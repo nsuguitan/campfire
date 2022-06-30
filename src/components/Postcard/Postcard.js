@@ -24,7 +24,9 @@ const Postcard = () => {
   useEffect(() => {
     //fetch comment that are related to the post in question
     async function getComments() {
-      const response = await fetch(`http://localhost:5000/comments/`);
+      const response = await fetch(
+        `http://localhost:5000/comments/post/62af8ef66a57cf6a0f8bcc06`
+      );
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;

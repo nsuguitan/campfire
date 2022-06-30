@@ -24,7 +24,7 @@ commentsRoutes.route("/comments/post/:postId").get(function (req, res) {
   let myquery = { postId: ObjectId(req.params.postId) };
   db_connect
     .collection("comments")
-    .find({ myquery })
+    .find(myquery)
     .toArray(function (err, result) {
       if (err) throw err;
       res.json(result);
