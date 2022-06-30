@@ -19,9 +19,10 @@ import PostComments from "../Comments/PostComments";
 const Postcard = () => {
   const [newComment, setNewComment] = useState("");
   const [postInfo, setPostInfo] = useState({});
-  const [postComments, setPostComments] = useState({});
+  const [postComments, setPostComments] = useState([]);
 
   useEffect(() => {
+    //fetch comment that are related to the post in question
     async function getComments() {
       const response = await fetch(`http://localhost:5000/comments/`);
 
@@ -32,9 +33,11 @@ const Postcard = () => {
       }
 
       setPostComments(await response.json());
-      console.log(postComments);
     }
+    getComments();
+  }, [postComments.length]);
 
+  useEffect(() => {
     async function getPostById() {
       const response = await fetch(
         `http://localhost:5000/posts/62af8ef66a57cf6a0f8bcc06`
@@ -49,7 +52,6 @@ const Postcard = () => {
       setPostInfo(await response.json());
     }
 
-    getComments();
     getPostById();
 
     return;
@@ -144,7 +146,7 @@ const Postcard = () => {
             color: "#BEBEBE",
           }}
         >
-          View all {comments.length} comments
+          View all {postComments.length} comments
         </Button>
       </CardActions>
       <Paper

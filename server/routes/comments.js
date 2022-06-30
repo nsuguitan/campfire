@@ -18,6 +18,19 @@ commentsRoutes.route("/comments").get(function (req, res) {
     });
 });
 
+//for getting a list of all comments with a given postId
+commentsRoutes.route("/comments/post/:postId").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = { postId: ObjectId(req.params.postId) };
+  db_connect
+    .collection("comments")
+    .find({ myquery })
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
 //for getting one comment by ID
 commentsRoutes.route("/comments/:id").get(function (req, res) {
   let db_connect = dbo.getDb();

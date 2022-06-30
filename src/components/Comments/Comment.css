@@ -1,0 +1,14 @@
+.list-comments-container{
+    display: flex;
+    overflow: hidden;
+}
+
+.comment-commenter-container{
+    float:left;
+    width: 90%;
+}
+
+.commenter-container{
+    float:left;
+    margin: 0 10px 0 0;
+}
