@@ -9,8 +9,8 @@ import { faSquareCaretUp } from "@fortawesome/free-regular-svg-icons";
 import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import IconButton from "@mui/material/IconButton";
 
-const Rating = () => {
-  const intialRating = 0;
+const Rating = (props) => {
+  const intialRating = props.commentRating;
   // get from database
   // pass it through with the commentid
   return (
