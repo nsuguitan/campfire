@@ -136,3 +136,10 @@
   min-height: 80vh;
   margin-bottom: 20vh;
 }
+/* .commentLine{
+  display: flex;
+  justify-content: space-between;
+}
+.commentLine:last-child{
+  justify-self: flex-end;
+} */

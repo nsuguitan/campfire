@@ -12,9 +12,6 @@ const Comment = (props) => {
         <div className="comment-container">
           <span>{props.commentText}</span>
         </div>
-        <div>
-          <span>{props.commentRating}</span>
-        </div>
       </div>
     </div>
   );

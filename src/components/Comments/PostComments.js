@@ -13,11 +13,11 @@ const PostComments = (props) => {
     <CardContentNoBottomPadding>
       <ul style={{ listStyleType: "none" }}>
         {props.postComments.map((item) => (
-          <li key={item._id}>
+          <li key={item._id} className='commentLine'>
             <Comment
               commentUsername={item.commentUsername}
               commentText={item.commentText}
-              // commentRating={item.commentRating}
+              initialRating={item.commentRating}
             />
             <Rating 
             initialRating={item.commentRating}
