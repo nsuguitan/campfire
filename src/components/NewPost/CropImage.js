@@ -11,6 +11,11 @@ const CropImage = ({ image }) => {
 
   return (
     <Cropper
+      image={image}
+      crop={crop}
+      zoom={zoom}
+      aspect={1}
+      showGrid={true}
       onCropChange={setCrop}
       onCropComplete={onCropComplete}
       onZoomChange={setZoom}

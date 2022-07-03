@@ -1,0 +1,16 @@
+input[type="file"] {
+    display: none;
+}
+.image-upload-label {
+    border: 1px dashed gray;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
