@@ -9,7 +9,7 @@ const NavBar = () => {
     <div className="navContainer">
       <Link to="/Newsfeed">Home</Link>
       <Link to="/Search">Search</Link>
-      <div id="addButton">
+      <div id="addButton" onClick={() => setOpen(true)}>
         <p>+</p>
       </div>
       <p>DM</p>
