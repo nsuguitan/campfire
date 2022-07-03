@@ -4,7 +4,7 @@ import { useState } from "react";
 import NewPost from "../NewPost/NewPost";
 
 const NavBar = () => {
-  let [open, setOpen] = useState(true);
+  let [open, setOpen] = useState(false);
   return (
     <div className="navContainer">
       <Link to="/Newsfeed">Home</Link>
