@@ -4,7 +4,10 @@ import CropImage from "./CropImage";
 import "./NewPost.css";
 import Cropper from "react-easy-crop";
 import { getCroppedImage } from "./CropImage";
-import S3 from "aws-sdk/clients/s3";
+//import { S3 } from "aws-sdk/clients/s3";
+import * as AWS from "aws-sdk";
+
+import { v4 as uuidv4 } from "uuid";
 
 //load image to cropper
 //https://codesandbox.io/s/react-easy-crop-custom-image-demo-y09komm059?file=/src/index.js:3951-4013
@@ -72,7 +75,8 @@ const NewPost = (props) => {
           (blobFile) =>
             new File([blobFile], "test-image", { type: "image/jpeg" })
         );
-      await uploadFilesToS3(".jpeg", file, "test-image-r2");
+      let filename = uuidv4(); // uniqueFilename();
+      await uploadFilesToS3(".jpeg", file, filename);
       console.log("Access key: ", process.env.REACT_APP_S3_ACCESS_KEY);
 
       //   let loadImage = {
@@ -96,7 +100,7 @@ const NewPost = (props) => {
 
   const uploadFilesToS3 = async (extension, file, fileName) => {
     return new Promise(async (resolve, reject) => {
-      const bucket = new S3({
+      const bucket = new AWS.S3({
         accessKeyId: process.env.REACT_APP_S3_ACCESS_KEY,
         secretAccessKey: process.env.REACT_APP_S3_ACCESS_SECRET,
         region: "us-east-1",
@@ -108,10 +112,14 @@ const NewPost = (props) => {
       };
       bucket.upload(params, async (err, data) => {
         if (data) {
-          console.log("Video uploaded");
+          let resourceURL =
+            process.env.REACT_APP_AWS_S3_BUCKET_URL +
+            "/" +
+            fileName +
+            extension;
+          console.log("Resource URL: ", resourceURL);
         }
         if (err) {
-          console.log("Video uploaded failed");
         }
       });
     });
