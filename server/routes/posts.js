@@ -3,7 +3,7 @@ const express = require("express");
 const postRoutes = express.Router();
 
 const dbo = require("../db/conn");
-const uploadImage = require("../services/ImageUpload");
+//const uploadImage = require("../services/ImageUpload");
 
 const ObjectId = require("mongodb").ObjectId;
 
@@ -31,21 +31,15 @@ postRoutes.route("/posts/:id").get(function (req, res) {
 
 //for creating a new post and writing to s3
 postRoutes.route("/posts/add/userId/:userId").post(function (req, response) {
-  console.log("New Post Route Triggered");
   let db_connect = dbo.getDb();
-
-  let result = "test-file.png";
-  console.log("Generated Filename: ", result);
-  console.log("BLOB: ", req.body.image);
-  let uploadedImage = uploadImage(result, req.body.image);
 
   let myobj = {
     author: {
-      username: "Test",
-      profilePicURL: "http://placecorgi.com/260/180",
+      username: req.body.author.username,
+      profilePicURL: req.body.author.profilePicURL,
     },
-    postDate: new Date(),
-    photoURL: uploadedImage.Location,
+    postDate: req.body.postDate,
+    photoURL: req.body.photoURL,
   };
   db_connect.collection("posts").insertOne(myobj, function (err, res) {
     if (err) throw err;

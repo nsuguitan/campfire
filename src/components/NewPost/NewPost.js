@@ -117,7 +117,7 @@ const NewPost = (props) => {
             "/" +
             fileName +
             extension;
-          console.log("Resource URL: ", resourceURL);
+          await uploadToMongo(resourceURL);
         }
         if (err) {
         }
@@ -125,6 +125,26 @@ const NewPost = (props) => {
     });
   };
 
+  const uploadToMongo = async (resourceURL) => {
+    let loadPost = {
+      author: {
+        username: "foobar",
+        profilePicURL: "http://placecorgi.com/260/180",
+      },
+      postDate: new Date(),
+      photoURL: resourceURL,
+    };
+    await fetch("http://localhost:5000/posts/add/userId/foobar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loadPost),
+    }).catch((error) => {
+      window.alert(error);
+      return;
+    });
+  };
   //   const downloadImage = (link) => {
   //     var element = document.createElement("a");
   //     element.setAttribute("href", link);
