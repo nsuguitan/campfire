@@ -76,8 +76,8 @@ const NewPost = (props) => {
             new File([blobFile], "test-image", { type: "image/jpeg" })
         );
       let filename = uuidv4(); // uniqueFilename();
-      await uploadFilesToS3(".jpeg", file, filename);
-      console.log("Access key: ", process.env.REACT_APP_S3_ACCESS_KEY);
+      //await uploadFilesToS3(".jpeg", file, filename);
+      handleClose();
 
       //   let loadImage = {
       //     image: croppedImage,
@@ -157,17 +157,28 @@ const NewPost = (props) => {
   //     document.body.removeChild(element);
   //   };
 
+  const handleClose = () => {
+    props.onClose();
+    setCrop({ x: 0, y: 0 });
+    setZoom(1);
+    setCroppedAreaPixels(null);
+    setImageSelected(false);
+    setImageSrc(null);
+    setPostImage(null);
+  };
   return (
-    <Modal open={props.open} onClose={props.onClose}>
+    <Modal open={props.open} onClose={handleClose}>
       <Box sx={{ ...style }}>
         {imageSelected ? (
           <Cropper
             id="crop-image"
             image={imageSrc}
             crop={crop}
+            cropSize={{ width: 600, height: 600 }}
             zoom={zoom}
             aspect={1}
             showGrid={true}
+            objectFit={"horizontal-cover"}
             onCropChange={setCrop}
             onZoomChange={setZoom}
             onCropComplete={onCropComplete}

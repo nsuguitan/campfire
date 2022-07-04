@@ -8,6 +8,10 @@ const NavBar = () => {
   const { isAuthenticated } = AuthState();
   console.log(isAuthenticated);
   let [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <div
       className="navContainer"
@@ -20,7 +24,7 @@ const NavBar = () => {
       </div>
       <p>DM</p>
       <Link to="/Profile">Profile</Link>
-      <NewPost open={open} onClose={() => setOpen(false)} />
+      <NewPost open={open} onClose={handleClose} />
     </div>
   );
 };
