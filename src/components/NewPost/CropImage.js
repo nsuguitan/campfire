@@ -4,7 +4,6 @@ export const createImage = (url) =>
   //an HTML Image Element needs to be constructed as an image source for canvas
   new Promise((resolve, reject) => {
     let image = new Image();
-    console.log("Image:", image);
     image.addEventListener("load", () => resolve(image));
     image.addEventListener("error", (err) => reject(err));
     image.setAttribute("crossOrigin", "anonymous");
@@ -22,7 +21,6 @@ export const getCroppedImage = async (imageSrc, cropPixels) => {
 
   canvas.width = 600;
   canvas.height = 600;
-  setTimeout(console.log("MYIMAGE: ", myImage), 6000);
   //https://www.w3schools.com/tags/canvas_drawimage.asp
   ctx.drawImage(
     myImage,
