@@ -57,18 +57,10 @@ const NewPost = (props) => {
   }, []);
 
   const createPost = async () => {
-    // console.log("--Cropping image--");
-    // console.log("imageSrc: ", imageSrc);
-    // console.log("croppsedAreaPixels: ", croppedAreaPixels);
-    // console.log("------------");
     try {
       const croppedImage = await getCroppedImage(imageSrc, croppedAreaPixels);
-      console.log("We finny", { croppedImage });
       setPostImage(croppedImage);
-      //   var postFile = new File(blob, "test-image.jpeg", {
-      //     type: "image/jpeg",
-      //     lastModified: Date.now(),
-      //   });
+
       let file = await fetch(croppedImage)
         .then((r) => r.blob())
         .then(
@@ -76,23 +68,8 @@ const NewPost = (props) => {
             new File([blobFile], "test-image", { type: "image/jpeg" })
         );
       let filename = uuidv4(); // uniqueFilename();
-      //await uploadFilesToS3(".jpeg", file, filename);
+      await uploadFilesToS3(".jpeg", file, filename);
       handleClose();
-
-      //   let loadImage = {
-      //     image: croppedImage,
-      //   };
-      //   await fetch(`http://localhost:5000/posts/add/userId/foobar`, {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(loadImage),
-      //   }).catch((error) => {
-      //     window.alert(error);
-      //     return;
-      //   });
-      //downloadImage(croppedImage);
     } catch (e) {
       console.error(e);
     }
@@ -145,17 +122,6 @@ const NewPost = (props) => {
       return;
     });
   };
-  //   const downloadImage = (link) => {
-  //     var element = document.createElement("a");
-  //     element.setAttribute("href", link);
-
-  //     element.style.display = "none";
-  //     document.body.appendChild(element);
-
-  //     element.click();
-
-  //     document.body.removeChild(element);
-  //   };
 
   const handleClose = () => {
     props.onClose();

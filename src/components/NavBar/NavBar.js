@@ -6,7 +6,6 @@ import { AuthState } from "../../context/auth/AuthContext";
 
 const NavBar = () => {
   const { isAuthenticated } = AuthState();
-  console.log(isAuthenticated);
   let [open, setOpen] = useState(false);
 
   const handleClose = () => {
