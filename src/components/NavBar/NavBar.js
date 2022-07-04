@@ -2,11 +2,17 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 import { useState } from "react";
 import NewPost from "../NewPost/NewPost";
+import { AuthState } from "../../context/auth/AuthContext";
 
 const NavBar = () => {
+  const { isAuthenticated } = AuthState();
+  console.log(isAuthenticated);
   let [open, setOpen] = useState(false);
   return (
-    <div className="navContainer">
+    <div
+      className="navContainer"
+      style={isAuthenticated ? { display: "flex" } : { display: "none" }}
+    >
       <Link to="/Newsfeed">Home</Link>
       <Link to="/Search">Search</Link>
       <div id="addButton" onClick={() => setOpen(true)}>
