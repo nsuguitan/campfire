@@ -13,8 +13,6 @@ import IconButton from "@mui/material/IconButton";
 const Rating = (props) => {
   const intialRating = props.initialRating;
   console.log('testing', props.initialRating)
-  // get from database
-  // pass it through with the commentid
   return (
     <div className="testingClass">
       <Rater initialRating={intialRating} />

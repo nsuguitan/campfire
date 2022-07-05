@@ -17,7 +17,6 @@ const PostComments = (props) => {
             <Comment
               commentUsername={item.commentUsername}
               commentText={item.commentText}
-              initialRating={item.commentRating}
             />
             <Rating 
             initialRating={item.commentRating}
