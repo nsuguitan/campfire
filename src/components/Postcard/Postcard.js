@@ -63,9 +63,7 @@ const Postcard = () => {
   };
 
   const postComment = async () => {
-    console.log("posting comment...");
     if (newComment === "") {
-      console.log("You can't post nothing dummy");
     } else {
       let loadComment = {
         postId: "62af8ef66a57cf6a0f8bcc06",
@@ -73,7 +71,6 @@ const Postcard = () => {
         commentUsername: "Anonymous",
         commentRating: 0,
       };
-      console.log("Roasty Toasty Princess says: ", newComment);
       await fetch("http://localhost:5000/comments/add", {
         method: "POST",
         headers: {
