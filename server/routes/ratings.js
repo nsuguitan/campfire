@@ -7,18 +7,22 @@ const dbo = require("../db/conn");
 const ObjectId = require("mongodb").ObjectId;
 
 //for updating the rating in mongo
-commentsRoutes.route("/rating/update").post(function (req, response) {
+ratingsRoutes.route("/ratings/update").post(function (req, response) {
+    console.log('serving rating route')
     let db_connect = dbo.getDb();
     let myobj = {
-      postId: ObjectId(req.body.postId),
-      commentText: req.body.commentText,
-      commentUsername: req.body.commentUsername,
       commentRating: req.body.commentRating,
+      _id: ObjectId('62bb4f948f03649b96f3966b')
     };
-    db_connect.collection("ratings").updateOne(myobj, function (err, res) {
-      if (err) throw err;
-      response.json(res);
-    });
+    let filter= myobj._id
+    let updatedRating = {
+        $set:{
+            commentRating: 23
+        },
+    };
+    db_connect.collection("comments").updateOne(filter, updatedRating);
   });
+
+
 
   module.exports = ratingsRoutes;
