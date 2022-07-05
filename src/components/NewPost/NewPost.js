@@ -90,10 +90,7 @@ const NewPost = (props) => {
       bucket.upload(params, async (err, data) => {
         if (data) {
           let resourceURL =
-            process.env.REACT_APP_AWS_S3_BUCKET_URL +
-            "/" +
-            fileName +
-            extension;
+            process.env.REACT_APP_AWS_S3_BUCKET_URL + fileName + extension;
           await uploadToMongo(resourceURL);
         }
         if (err) {
