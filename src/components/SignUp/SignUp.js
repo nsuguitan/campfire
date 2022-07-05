@@ -54,7 +54,6 @@ const SignUpComp = () => {
 
   const triggerVerification = async (event) => {
     event.preventDefault();
-    console.log("Verification triggered!");
     //https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html#confirmSignUp-property
     let params = {
       ClientId: "4gjkaose7v4olc8mvsd40nf11f",

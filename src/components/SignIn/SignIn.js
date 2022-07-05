@@ -23,7 +23,6 @@ const SignInComp = () => {
 
   const triggerLogin = async (event) => {
     event.preventDefault();
-    console.log("TextFields --> ", textFields);
     const successfulLogin = await login(textFields);
     if (successfulLogin) {
       setTimeout(() => {

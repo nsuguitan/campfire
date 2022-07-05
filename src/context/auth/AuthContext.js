@@ -24,14 +24,11 @@ const AuthContext = ({ children }) => {
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  useEffect(() => {
-    console.log("auth state", state);
-  }, [state]);
+  //   useEffect(() => {
+  //     console.log("auth state", state);
+  //   }, [state]);
 
   const login = async (userData) => {
-    console.log(userData);
-    console.log("process env", process.env.REACT_APP_KEY);
-
     const user = new CognitoUser({
       Username: userData.username,
       Pool: UserPool,
@@ -54,7 +51,6 @@ const AuthContext = ({ children }) => {
   };
 
   const signup = (signUpData) => {
-    console.log("Context Sign up started!");
     let attributeList = [];
     let email = {
       Name: "email",
@@ -81,14 +77,12 @@ const AuthContext = ({ children }) => {
           return;
         }
         let cognitoUser = result.user;
-        console.log("The new user is: " + cognitoUser.getUsername());
       }
     );
     return true;
   };
 
   const verify = (params) => {
-    console.log("passed params:", params);
     const user = new CognitoUser({
       Username: params.Username,
       Pool: UserPool,
@@ -102,7 +96,6 @@ const AuthContext = ({ children }) => {
           alert(err.message || JSON.stringify(err));
           return;
         }
-        console.log("Confirmed! ", result);
       }
     );
     return true;

@@ -11,10 +11,6 @@ export const createImage = (url) =>
   });
 
 export const getCroppedImage = async (imageSrc, cropPixels) => {
-  //   console.log("GetCroppedImage function started");
-  //   console.log("imageSrc: ", imageSrc);
-  //   console.log("croppsedAreaPixels: ", cropPixels);
-  //   console.log("--------------------");
   const myImage = await createImage(imageSrc);
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d"); // the thing that the drawing will actually be rendered on
