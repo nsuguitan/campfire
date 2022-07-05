@@ -2,6 +2,7 @@ import { CardContent } from "@mui/material";
 import styled from "@emotion/styled";
 import Comment from "./Comment";
 import Rating from "../Rating/rating";
+import './Comment.css'
 const PostComments = (props) => {
   const CardContentNoBottomPadding = styled(CardContent)(
     `
