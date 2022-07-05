@@ -1,4 +1,3 @@
-import Rating from "../Rating/rating";
 import "./Comment.css";
 const Comment = (props) => {
   return (

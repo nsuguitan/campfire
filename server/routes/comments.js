@@ -56,6 +56,6 @@ commentsRoutes.route("/comments/add").post(function (req, response) {
   });
 });
 
-//for updating the rating in mongo
+
 
 module.exports = commentsRoutes;
