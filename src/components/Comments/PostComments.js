@@ -7,7 +7,6 @@ const PostComments = (props) => {
             padding-bottom: 0;
         `
   );
-  console.log("Comments: ", props.postComments);
   return (
     <CardContentNoBottomPadding>
       <ul style={{ listStyleType: "none" }}>
