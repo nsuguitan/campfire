@@ -1,3 +1,4 @@
+
 const express = require("express");
 
 const ratingsRoutes = express.Router();
@@ -7,7 +8,7 @@ const dbo = require("../db/conn");
 const ObjectId = require("mongodb").ObjectId;
 
 //for updating the rating in mongo
-ratingsRoutes.route("/ratings/update").post(function (req, response) {
+ratingsRoutes.route("/ratings/update").post(function (req) {
     console.log('serving rating route')
     let db_connect = dbo.getDb();
     let myobj = {
@@ -17,7 +18,7 @@ ratingsRoutes.route("/ratings/update").post(function (req, response) {
     let filter= myobj._id
     let updatedRating = {
         $set:{
-            commentRating: 23
+            commentRating: 15
         },
     };
     db_connect.collection("comments").updateOne(filter, updatedRating);
