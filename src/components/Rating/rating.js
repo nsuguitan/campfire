@@ -9,10 +9,9 @@ import { faSquareCaretUp } from "@fortawesome/free-regular-svg-icons";
 import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import IconButton from "@mui/material/IconButton";
 
-
 const Rating = (props) => {
   const intialRating = props.initialRating;
-  console.log('testing', props.initialRating)
+  console.log("testing", props.initialRating);
   return (
     <div className="testingClass">
       <Rater initialRating={intialRating} />
@@ -22,6 +21,24 @@ const Rating = (props) => {
 
 const Rater = ({ initialRating }) => {
   const [rating, setRating] = useState(initialRating);
+
+  const updateRating = async () => {
+    console.log("Update Rating Frontend triggered");
+    let loadRating = {
+      commentRating: rating,
+    };
+    await fetch("http://localhost:5000/ratings/update", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loadRating),
+    }).catch((error) => {
+      window.alert(error);
+      return;
+    });
+  };
+
   return (
     <div className="rating-container">
       <PopupState variant="popover">
@@ -39,6 +56,7 @@ const Rater = ({ initialRating }) => {
               <MenuItem
                 onClick={() => {
                   setRating(rating - 2);
+                  updateRating();
                   popupState.close();
                 }}
               >
