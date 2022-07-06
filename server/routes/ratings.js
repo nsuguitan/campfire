@@ -16,6 +16,11 @@ ratingsRoutes.route("/ratings/update").post(function (req, response) {
   //   commentRating: req.body.commentRating,
   // };
   const filter = { _id: ObjectId("62bb4f948f03649b96f3966b") };
+
+  //Next Steps
+    //Make filter dynamic
+    //set to varable for rating instead on 15
+  //req.body.postID creates new item-> does not update
   const updatedRating = {
     $set: {
       commentRating: 15,

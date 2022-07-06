@@ -13,23 +13,23 @@ import Image10 from '../assets/gridPhoto10.jpg';
 import ProfileInfo from "../components/ProfileInfo/ProfileInfo";
 
 const profileImages = [
-  {image: Image},
-  {image: Image1},
-  {image: Image2},
-  {image: Image3},
-  {image: Image4},
-  {image: Image5},
-  {image: Image6},
-  {image: Image7},
-  {image: Image8},
-  {image: Image9},
-  {image: Image10}
+  {id: 1, image: Image},
+  {id: 2, image: Image1},
+  {id: 3, image: Image2},
+  {id: 4, image: Image3},
+  {id: 5, image: Image4},
+  {id: 6, image: Image5},
+  {id: 7, image: Image6},
+  {id: 8, image: Image7},
+  {id: 9, image: Image8},
+  {id: 10, image: Image9},
+  {id: 11, image: Image10}
 ]
 const displayProfileImages = () =>{
   return (
     profileImages.map(image => (
-      <div className='profileImageButton'>
-        <Link to='/Postcard' key={image}><img src={image.image} className='singleGridPhoto'/></Link>
+      <div className='profileImageButton' key={image.id}>
+        <Link to='/Postcard'><img src={image.image} className='singleGridPhoto'/></Link>
       </div>
     ))
   )

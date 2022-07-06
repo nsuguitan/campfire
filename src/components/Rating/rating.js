@@ -11,9 +11,8 @@ import IconButton from "@mui/material/IconButton";
 
 const Rating = (props) => {
   const intialRating = props.initialRating;
-  console.log("testing", props.initialRating);
   return (
-    <div className="testingClass">
+    <div>
       <Rater initialRating={intialRating} />
     </div>
   );
