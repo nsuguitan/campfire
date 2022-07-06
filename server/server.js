@@ -9,6 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use(require("./routes/posts"));
 app.use(require("./routes/comments"));
+app.use(require("./routes/ratings"));
 
 const dbo = require("./db/conn");
 

@@ -87,14 +87,6 @@ const Postcard = () => {
     return;
   };
 
-  // const comments = [
-  //   { comment: "Who can roast a corgi?", commenter: "Dog lover" },
-  //   {
-  //     comment:
-  //       "It would be cute, if it was a cat. meow meow meow meow meow meow meow meow meow meow",
-  //     commenter: "Cat lover",
-  //   },
-  // ];
   return (
     <Card sx={{ maxWidth: 540 }} className="fullCard">
       <CardHeader
