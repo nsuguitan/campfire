@@ -18,7 +18,7 @@ ratingsRoutes.route("/ratings/update").post(function (req, response) {
   const filter = { _id: ObjectId("62bb4f948f03649b96f3966b") };
   const updatedRating = {
     $set: {
-      commentRating: 23,
+      commentRating: 15,
     },
   };
   const options = { upsert: true };

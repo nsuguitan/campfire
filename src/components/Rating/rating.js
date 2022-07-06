@@ -65,6 +65,7 @@ const Rater = ({ initialRating }) => {
               <MenuItem
                 onClick={() => {
                   setRating(rating - 1);
+                  updateRating();
                   popupState.close();
                 }}
               >
@@ -73,6 +74,7 @@ const Rater = ({ initialRating }) => {
               <MenuItem
                 onClick={() => {
                   setRating(rating + 1);
+                  updateRating();
                   popupState.close();
                 }}
               >
@@ -81,6 +83,7 @@ const Rater = ({ initialRating }) => {
               <MenuItem
                 onClick={() => {
                   setRating(rating + 2);
+                  updateRating();
                   popupState.close();
                 }}
               >
@@ -89,6 +92,7 @@ const Rater = ({ initialRating }) => {
               <MenuItem
                 onClick={() => {
                   setRating(rating + 3);
+                  updateRating();
                   popupState.close();
                 }}
               >
