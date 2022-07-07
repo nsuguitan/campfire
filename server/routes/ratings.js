@@ -10,20 +10,18 @@ const ObjectId = require("mongodb").ObjectId;
 //for updating the rating in mongo
 
 ratingsRoutes.route("/ratings/update").post(function (req, response) {
-  console.log("serving rating route");
   let db_connect = dbo.getDb();
-  // let myobj = {
-  //   commentRating: req.body.commentRating,
-  // };
-  const filter = { _id: ObjectId("62bb4f948f03649b96f3966b") };
 
+  const filter = { _id: ObjectId(req.body.commentId) };
   //Next Steps
     //Make filter dynamic
-    //set to varable for rating instead on 15
+    //set to varable for rating instead on 31
   //req.body.postID creates new item-> does not update
+  //updating on frontend but not initial feild
+  //useEffect for updating the rating with a depedencie of set rating/rating
   const updatedRating = {
     $set: {
-      commentRating: 15,
+      commentRating: req.body.commentRating,
     },
   };
   const options = { upsert: true };

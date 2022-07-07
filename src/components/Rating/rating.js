@@ -11,21 +11,23 @@ import IconButton from "@mui/material/IconButton";
 
 const Rating = (props) => {
   const intialRating = props.initialRating;
+  const commentId= props.commentId;
   return (
     <div>
-      <Rater initialRating={intialRating} />
+      <Rater initialRating={intialRating} 
+      commentId={commentId}/>
     </div>
   );
 };
 
-const Rater = ({ initialRating }) => {
+const Rater = ({ initialRating, commentId }) => {
   const [rating, setRating] = useState(initialRating);
-
   const updateRating = async () => {
-    console.log("Update Rating Frontend triggered");
     let loadRating = {
       commentRating: rating,
+      commentId: commentId
     };
+    console.log(JSON.stringify(loadRating))
     await fetch("http://localhost:5000/ratings/update", {
       method: "POST",
       headers: {
