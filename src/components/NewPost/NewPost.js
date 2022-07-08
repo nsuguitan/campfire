@@ -69,7 +69,6 @@ const NewPost = (props) => {
         );
       let filename = uuidv4(); // uniqueFilename();
       await uploadFilesToS3(".jpeg", file, filename);
-      handleClose();
     } catch (e) {
       console.error(e);
     }
@@ -108,6 +107,7 @@ const NewPost = (props) => {
       postDate: new Date(),
       photoURL: resourceURL,
     };
+    handleClose();
     await fetch("http://localhost:5000/posts/add/userId/foobar", {
       method: "POST",
       headers: {
@@ -121,7 +121,8 @@ const NewPost = (props) => {
   };
 
   const handleClose = () => {
-    props.onClose();
+    console.log("Triggered Handle Close");
+    props.closeFunc();
     setCrop({ x: 0, y: 0 });
     setZoom(1);
     setCroppedAreaPixels(null);
