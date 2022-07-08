@@ -1,5 +1,3 @@
-import profilePicture from "../../assets/profilePic.jpg";
-
 const Avatar = (props) => {
   return (
     <>
