@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
-import Avatar from "@mui/material/Avatar";
+import Avatar from "../Avatar/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";
@@ -19,6 +19,13 @@ const Postcard = () => {
   const [newComment, setNewComment] = useState("");
   const [postInfo, setPostInfo] = useState({});
   const [postComments, setPostComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (JSON.stringify(postInfo) !== JSON.stringify({})) {
+      setIsLoading(false);
+    }
+  }, [postInfo]);
 
   useEffect(() => {
     //fetch comment that are related to the post in question
@@ -51,6 +58,7 @@ const Postcard = () => {
       }
 
       setPostInfo(await response.json());
+      console.log(postInfo);
     }
 
     getPostById();
@@ -89,58 +97,72 @@ const Postcard = () => {
   };
 
   return (
-    <Card sx={{ maxWidth: 540 }} className="fullCard">
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="user">
-            C
-          </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="CutenessOverload"
-      />
-      <CardMedia
-        component="img"
-        height="540px"
-        image={postInfo.photoURL}
-        alt="Puppers"
-      />
-      <PostInfo />
-      <PostComments postComments={postComments} />
-      <CardActions>
-        <Button
-          className="load-comments-button"
-          size="medium"
-          disableRipple={true}
-          variant="text"
-          style={{
-            backgroundColor: "transparent",
-            textTransform: "none",
-            color: "#BEBEBE",
-          }}
-        >
-          View all {postComments.length} comments
-        </Button>
-      </CardActions>
-      <Paper
-        sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: 1 }}
-      >
-        <TextField
-          sx={{ ml: 1, flex: 1 }}
-          id="commentTextField"
-          placeholder="Add a comment..."
-          variant="standard"
-          InputProps={{ disableUnderline: true }}
-          onChange={handleCommentInput}
-          value={newComment}
-        />
-        <Button onClick={postComment}>Post</Button>
-      </Paper>
-    </Card>
+    <div>
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <Card sx={{ maxWidth: 540 }} className="fullCard">
+          <CardHeader
+            avatar={
+              <Avatar
+                borderRadius="50%"
+                height="50px"
+                width="50px"
+                profilepic={postInfo.author.profilePicURL}
+              />
+            }
+            action={
+              <IconButton aria-label="settings">
+                <MoreVertIcon />
+              </IconButton>
+            }
+            title={postInfo.author.username}
+          />
+          <CardMedia
+            component="img"
+            height="540px"
+            image={postInfo.photoURL}
+            alt="Puppers"
+          />
+          <PostInfo />
+          <PostComments postComments={postComments} />
+          <CardActions>
+            <Button
+              className="load-comments-button"
+              size="medium"
+              disableRipple={true}
+              variant="text"
+              style={{
+                backgroundColor: "transparent",
+                textTransform: "none",
+                color: "#BEBEBE",
+              }}
+            >
+              View all {postComments.length} comments
+            </Button>
+          </CardActions>
+          <Paper
+            sx={{
+              p: "2px 4px",
+              display: "flex",
+              alignItems: "center",
+              width: 1,
+            }}
+          >
+            <TextField
+              sx={{ ml: 1, flex: 1 }}
+              id="commentTextField"
+              placeholder="Add a comment..."
+              variant="standard"
+              InputProps={{ disableUnderline: true }}
+              onChange={handleCommentInput}
+              value={newComment}
+            />
+            <Button onClick={postComment}>Post</Button>
+          </Paper>
+        </Card>
+      )}
+    </div>
   );
 };
 export default Postcard;
