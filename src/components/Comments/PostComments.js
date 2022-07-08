@@ -1,6 +1,8 @@
 import { CardContent } from "@mui/material";
 import styled from "@emotion/styled";
 import Comment from "./Comment";
+import Rating from "../Rating/rating";
+import './Comment.css'
 const PostComments = (props) => {
   const CardContentNoBottomPadding = styled(CardContent)(
     `
@@ -11,10 +13,13 @@ const PostComments = (props) => {
     <CardContentNoBottomPadding>
       <ul style={{ listStyleType: "none" }}>
         {props.postComments.map((item) => (
-          <li key={item._id}>
+          <li key={item._id} className='commentLine'>
             <Comment
               commentUsername={item.commentUsername}
               commentText={item.commentText}
+            />
+            <Rating 
+            initialRating={item.commentRating}
             />
           </li>
         ))}

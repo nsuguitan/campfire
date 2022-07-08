@@ -9,10 +9,9 @@ import { faSquareCaretUp } from "@fortawesome/free-regular-svg-icons";
 import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import IconButton from "@mui/material/IconButton";
 
-const Rating = () => {
-  const intialRating = 0;
-  // get from database
-  // pass it through with the commentid
+const Rating = (props) => {
+  const intialRating = props.initialRating;
+  console.log("testing", props.initialRating);
   return (
     <div className="testingClass">
       <Rater initialRating={intialRating} />
@@ -22,68 +21,85 @@ const Rating = () => {
 
 const Rater = ({ initialRating }) => {
   const [rating, setRating] = useState(initialRating);
+
+  const updateRating = async () => {
+    console.log("Update Rating Frontend triggered");
+    let loadRating = {
+      commentRating: rating,
+    };
+    await fetch("http://localhost:5000/ratings/update", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loadRating),
+    }).catch((error) => {
+      window.alert(error);
+      return;
+    });
+  };
+
   return (
-    <div className="ratingCpntainer">
-      <div className="rating-container">
-        <PopupState variant="popover">
-          {(popupState) => (
-            <React.Fragment>
-              <IconButton
-                {...bindTrigger(popupState)}
-                size="small"
-                sx={{ padding: 0.5 }}
-                aria-label="add rating"
+    <div className="rating-container">
+      <PopupState variant="popover">
+        {(popupState) => (
+          <React.Fragment>
+            <IconButton
+              {...bindTrigger(popupState)}
+              size="small"
+              sx={{ padding: 0.5 }}
+              aria-label="add rating"
+            >
+              <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
+            </IconButton>
+            <Menu {...bindMenu(popupState)}>
+              <MenuItem
+                onClick={() => {
+                  setRating(rating - 2);
+                  updateRating();
+                  popupState.close();
+                }}
               >
-                <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
-              </IconButton>
-              <Menu {...bindMenu(popupState)}>
-                <MenuItem
-                  onClick={() => {
-                    setRating(rating - 2);
-                    popupState.close();
-                  }}
-                >
-                  Fluffernutter
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    setRating(rating - 1);
-                    popupState.close();
-                  }}
-                >
-                  Uncooked
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    setRating(rating + 1);
-                    popupState.close();
-                  }}
-                >
-                  Toasted
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    setRating(rating + 2);
-                    popupState.close();
-                  }}
-                >
-                  Roasted
-                </MenuItem>
-                <MenuItem
-                  onClick={() => {
-                    setRating(rating + 3);
-                    popupState.close();
-                  }}
-                >
-                  Burned
-                </MenuItem>
-              </Menu>
-            </React.Fragment>
-          )}
-        </PopupState>
-        <FontAwesomeIcon icon={faFireFlameCurved} size="md" />
-        <b id="rating">{rating}</b>
-      </div>
+                Fluffernutter
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setRating(rating - 1);
+                  popupState.close();
+                }}
+              >
+                Uncooked
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setRating(rating + 1);
+                  popupState.close();
+                }}
+              >
+                Toasted
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setRating(rating + 2);
+                  popupState.close();
+                }}
+              >
+                Roasted
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setRating(rating + 3);
+                  popupState.close();
+                }}
+              >
+                Burned
+              </MenuItem>
+            </Menu>
+          </React.Fragment>
+        )}
+      </PopupState>
+      <FontAwesomeIcon icon={faFireFlameCurved} size="md" />
+      <b id="rating">{rating}</b>
     </div>
   );
 };

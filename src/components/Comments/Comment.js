@@ -1,4 +1,3 @@
-import Rating from "../Rating/rating";
 import "./Comment.css";
 const Comment = (props) => {
   return (
@@ -13,7 +12,6 @@ const Comment = (props) => {
           <span>{props.commentText}</span>
         </div>
       </div>
-      <Rating />
     </div>
   );
 };

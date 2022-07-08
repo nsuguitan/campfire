@@ -12,7 +12,8 @@ module.exports = {
         fallback: {
             "fs": false,
             "os": false,
-            "path": false
+            "path": false,
+            
         },
     },
     plugins: [
