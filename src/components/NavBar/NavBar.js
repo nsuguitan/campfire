@@ -23,7 +23,7 @@ const NavBar = () => {
       </div>
       <p>DM</p>
       <Link to="/Profile">Profile</Link>
-      <NewPost open={open} onClose={handleClose} />
+      <NewPost open={open} closeFunc={handleClose} />
     </div>
   );
 };
