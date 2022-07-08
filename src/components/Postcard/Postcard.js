@@ -36,7 +36,7 @@ const Postcard = () => {
       setPostComments(await response.json());
     }
     getComments();
-  }, [postComments.length]);
+  }, []);
 
   useEffect(() => {
     async function getPostById() {
@@ -83,6 +83,7 @@ const Postcard = () => {
       });
 
       setNewComment("");
+      setPostComments((current) => [...current, loadComment]);
     }
     return;
   };
