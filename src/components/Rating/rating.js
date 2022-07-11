@@ -11,21 +11,22 @@ import IconButton from "@mui/material/IconButton";
 
 const Rating = (props) => {
   const intialRating = props.initialRating;
-  console.log("testing", props.initialRating);
+  const commentId= props.commentId;
   return (
-    <div className="testingClass">
-      <Rater initialRating={intialRating} />
+    <div>
+      <Rater initialRating={intialRating} 
+      commentId={commentId}/>
     </div>
   );
 };
 
-const Rater = ({ initialRating }) => {
+const Rater = ({ initialRating, commentId }) => {
   const [rating, setRating] = useState(initialRating);
-
+  
   const updateRating = async () => {
-    console.log("Update Rating Frontend triggered");
     let loadRating = {
       commentRating: rating,
+      commentId: commentId
     };
     await fetch("http://localhost:5000/ratings/update", {
       method: "POST",
@@ -65,6 +66,7 @@ const Rater = ({ initialRating }) => {
               <MenuItem
                 onClick={() => {
                   setRating(rating - 1);
+                  updateRating();
                   popupState.close();
                 }}
               >
@@ -73,6 +75,7 @@ const Rater = ({ initialRating }) => {
               <MenuItem
                 onClick={() => {
                   setRating(rating + 1);
+                  updateRating();
                   popupState.close();
                 }}
               >
@@ -81,6 +84,7 @@ const Rater = ({ initialRating }) => {
               <MenuItem
                 onClick={() => {
                   setRating(rating + 2);
+                  updateRating();
                   popupState.close();
                 }}
               >
@@ -89,6 +93,7 @@ const Rater = ({ initialRating }) => {
               <MenuItem
                 onClick={() => {
                   setRating(rating + 3);
+                  updateRating();
                   popupState.close();
                 }}
               >

@@ -18,28 +18,28 @@ import searchImage16 from '../assets/search16.jpg';
 import searchIcon from '../assets/searchIcon.jpg';
 
 const searchImages = [
-  {image: searchImage1},
-  {image: searchImage2},
-  {image: searchImage3},
-  {image: searchImage4},
-  {image: searchImage5},
-  {image: searchImage6},
-  {image: searchImage7},
-  {image: searchImage8},
-  {image: searchImage9},
-  {image: searchImage10},
-  {image: searchImage11},
-  {image: searchImage12},
-  {image: searchImage13},
-  {image: searchImage14},
-  {image: searchImage15},
-  {image: searchImage16},
+  {id: 1, image: searchImage1},
+  {id: 2, image: searchImage2},
+  {id: 3, image: searchImage3},
+  {id: 4, image: searchImage4},
+  {id: 5, image: searchImage5},
+  {id: 6, image: searchImage6},
+  {id: 7, image: searchImage7},
+  {id: 8, image: searchImage8},
+  {id: 9, image: searchImage9},
+  {id: 10, image: searchImage10},
+  {id: 11, image: searchImage11},
+  {id: 12, image: searchImage12},
+  {id: 13, image: searchImage13},
+  {id: 14, image: searchImage14},
+  {id: 15, image: searchImage15},
+  {id: 16, image: searchImage16},
 ]
 
 const displaySearchImages = () =>{
   return (
     searchImages.map(image => (
-      <div className='searchImageButton' key={image}>
+      <div className='searchImageButton' key={image.id}>
         <Link to='/Postcard'><img src={image.image} className='searchImage'/></Link>
       </div>
     ))

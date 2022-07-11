@@ -20,6 +20,7 @@ const PostComments = (props) => {
             />
             <Rating 
             initialRating={item.commentRating}
+            commentId={item._id}
             />
           </li>
         ))}
