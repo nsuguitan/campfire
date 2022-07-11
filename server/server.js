@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(require("./routes/posts"));
 app.use(require("./routes/comments"));
 app.use(require("./routes/ratings"));
+app.use(require("./routes/users"));
 
 const dbo = require("./db/conn");
 

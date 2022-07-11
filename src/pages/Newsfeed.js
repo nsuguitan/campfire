@@ -1,10 +1,10 @@
 import Postcard from "../components/Postcard/Postcard";
-import searchImage1 from '../assets/search1.jpg';
-import searchImage2 from '../assets/search2.jpg';
-import searchImage3 from '../assets/search3.jpg';
-import searchImage4 from '../assets/search4.jpg';
-import searchImage5 from '../assets/search5.jpg';
-import searchImage6 from '../assets/search6.jpg';
+import searchImage1 from "../assets/search1.jpg";
+import searchImage2 from "../assets/search2.jpg";
+import searchImage3 from "../assets/search3.jpg";
+import searchImage4 from "../assets/search4.jpg";
+import searchImage5 from "../assets/search5.jpg";
+import searchImage6 from "../assets/search6.jpg";
 
 import { useEffect } from "react";
 const Newsfeed = () => {
@@ -30,57 +30,50 @@ const Newsfeed = () => {
   const storiesArray = [
     {
       image: searchImage1,
-      name: 'Your Story'
+      name: "Your Story",
     },
     {
       image: searchImage2,
-      name: 'atran'
+      name: "atran",
     },
     {
       image: searchImage3,
-      name: 'nsuguitan'
+      name: "nsuguitan",
     },
     {
       image: searchImage4,
-      name: 'bigBen'
+      name: "bigBen",
     },
     {
       image: searchImage5,
-      name: 'jRod'
+      name: "jRod",
     },
     {
       image: searchImage6,
-      name: 'chelmerr'
+      name: "chelmerr",
     },
-
-  ]
+  ];
 
   const displayStories = () => {
-    return (
-      storiesArray.map( story => (
-        <div className='story' key={story.name}>
-        <img className='storyImage' src={story.image}/>
+    return storiesArray.map((story) => (
+      <div className="story" key={story.name}>
+        <img className="storyImage" src={story.image} />
         <p>{story.name}</p>
-        </div>
-      ))
-    );
+      </div>
+    ));
   };
-
 
   return (
     <div className="pageContainer">
-      <div className='storiesContainer'>
-        {displayStories()} 
-      </div>
-      <div className='followHeading'>
+      <div className="storiesContainer">{displayStories()}</div>
+      <div className="followHeading">
         <p>Following</p>
         <p>|</p>
         <p>For You</p>
       </div>
-      <div className='feedDisplay'>
+      <div className="feedDisplay">
         <Postcard />
       </div>
-      
     </div>
   );
 };

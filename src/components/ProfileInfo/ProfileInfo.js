@@ -1,16 +1,35 @@
+import { useEffect, useState } from "react";
 import blueFlame from "../../assets/blueFlame.jpg";
 import Avatar from "../Avatar/Avatar";
+import { AuthState } from "../../context/auth/AuthContext";
 
 const ProfileInfo = () => {
+  const { username } = AuthState();
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    const getUserInfo = async () => {
+      const response = await fetch(`http://localhost:5000/users/${username}`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      setUserInfo(await response.json());
+    };
+    getUserInfo();
+  }, []);
+
   return (
     <div className="profileInfoContainer">
       <div className="bioContainer">
-        <h1>chelmerr</h1>
+        <h1>{username}</h1>
       </div>
       <div className="topProfileContainer">
         <div className="profilePicContainer">
           <Avatar
-            profilepic="https://campfire-project-images.s3.amazonaws.com/profile-pictures/DirtyDan.webp"
+            profilepic={userInfo.profilePicURL}
             borderRadius="10%"
             height="200px"
             width="200px"
@@ -39,13 +58,11 @@ const ProfileInfo = () => {
       </div>
       <div className="bioContainer">
         <div className="fullName">
-          <h2>Chelsea Merrill</h2>
+          <h2>{userInfo.name}</h2>
           <img src={blueFlame} className="flame" />
         </div>
         <div className="bio">
-          <p>
-            Former child, future Sith, and current survivor of natural selection
-          </p>
+          <p>{userInfo.bio}</p>
         </div>
       </div>
     </div>
