@@ -1,12 +1,12 @@
 import { Modal, Box, Button } from "@mui/material";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import CropImage from "./CropImage";
 import "./NewPost.css";
 import Cropper from "react-easy-crop";
 import { getCroppedImage } from "./CropImage";
 //import { S3 } from "aws-sdk/clients/s3";
 import * as AWS from "aws-sdk";
-
+import { AuthState } from "../../context/auth/AuthContext";
 import { v4 as uuidv4 } from "uuid";
 
 //load image to cropper
@@ -19,6 +19,8 @@ const NewPost = (props) => {
   const [imageSelected, setImageSelected] = useState(false);
   const [imageSrc, setImageSrc] = useState(null);
   const [postImage, setPostImage] = useState(null);
+
+  const { username } = AuthState();
 
   const style = {
     position: "absolute",
@@ -74,6 +76,18 @@ const NewPost = (props) => {
     }
   };
 
+  const getUserInfo = async () => {
+    const response = await fetch(`http://localhost:5000/users/${username}`);
+
+    if (!response.ok) {
+      const message = `An error occurred: ${response.statusText}`;
+      window.alert(message);
+      return;
+    }
+
+    return await response.json();
+  };
+
   const uploadFilesToS3 = async (extension, file, fileName) => {
     return new Promise(async (resolve, reject) => {
       const bucket = new AWS.S3({
@@ -90,7 +104,8 @@ const NewPost = (props) => {
         if (data) {
           let resourceURL =
             process.env.REACT_APP_AWS_S3_BUCKET_URL + fileName + extension;
-          await uploadToMongo(resourceURL);
+          const userInfo = await getUserInfo();
+          await uploadToMongo(resourceURL, userInfo.profilePicURL);
         }
         if (err) {
         }
@@ -98,11 +113,11 @@ const NewPost = (props) => {
     });
   };
 
-  const uploadToMongo = async (resourceURL) => {
+  const uploadToMongo = async (resourceURL, profilePicURL) => {
     let loadPost = {
       author: {
-        username: "foobar",
-        profilePicURL: "http://placecorgi.com/260/180",
+        username,
+        profilePicURL: profilePicURL,
       },
       postDate: new Date(),
       photoURL: resourceURL,

@@ -47,7 +47,7 @@ postRoutes.route("/posts/add/userId/:userId").post(function (req, response) {
   });
 });
 
-//for getting a list of all comments with a given postId
+//for getting all posts related to a user
 postRoutes.route("/posts/user/:username").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { "author.username": "thisistest" };
