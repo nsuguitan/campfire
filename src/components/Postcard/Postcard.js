@@ -14,12 +14,14 @@ import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import PostComments from "../Comments/PostComments";
 import PostInfo from "../PostInfo/PostInfo";
+import { AuthState } from "../../context/auth/AuthContext";
 
 const Postcard = (props) => {
   const [newComment, setNewComment] = useState("");
   const [postInfo, setPostInfo] = useState({});
   const [postComments, setPostComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { username } = AuthState();
 
   useEffect(() => {
     console.log("Props: ", props.postId);
@@ -77,7 +79,7 @@ const Postcard = (props) => {
       let loadComment = {
         postId: props.postId,
         commentText: newComment,
-        commentUsername: "Anonymous",
+        commentUsername: username,
         commentRating: 0,
       };
       await fetch("http://localhost:5000/comments/add", {
