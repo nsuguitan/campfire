@@ -57,7 +57,7 @@ const Newsfeed = () => {
   const displayStories = () => {
     return storiesArray.map((story) => (
       <div className="story" key={story.name}>
-        <img className="storyImage" src={story.image} />
+        <img className="storyImage" src={story.image} alt="" />
         <p>{story.name}</p>
       </div>
     ));
@@ -72,7 +72,7 @@ const Newsfeed = () => {
         <p>For You</p>
       </div>
       <div className="feedDisplay">
-        <Postcard />
+        <Postcard postId="62af8ef66a57cf6a0f8bcc06" />
       </div>
     </div>
   );

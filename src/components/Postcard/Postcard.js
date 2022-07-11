@@ -15,13 +15,14 @@ import { useEffect, useState } from "react";
 import PostComments from "../Comments/PostComments";
 import PostInfo from "../PostInfo/PostInfo";
 
-const Postcard = () => {
+const Postcard = (props) => {
   const [newComment, setNewComment] = useState("");
   const [postInfo, setPostInfo] = useState({});
   const [postComments, setPostComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    console.log("Props: ", props.postId);
     if (JSON.stringify(postInfo) !== JSON.stringify({})) {
       setIsLoading(false);
     }
@@ -31,7 +32,7 @@ const Postcard = () => {
     //fetch comment that are related to the post in question
     async function getComments() {
       const response = await fetch(
-        `http://localhost:5000/comments/post/62af8ef66a57cf6a0f8bcc06`
+        `http://localhost:5000/comments/post/${props.postId}`
       );
 
       if (!response.ok) {
@@ -48,7 +49,7 @@ const Postcard = () => {
   useEffect(() => {
     async function getPostById() {
       const response = await fetch(
-        `http://localhost:5000/posts/62af8ef66a57cf6a0f8bcc06`
+        `http://localhost:5000/posts/${props.postId}`
       );
 
       if (!response.ok) {
@@ -74,7 +75,7 @@ const Postcard = () => {
     if (newComment === "") {
     } else {
       let loadComment = {
-        postId: "62af8ef66a57cf6a0f8bcc06",
+        postId: props.postId,
         commentText: newComment,
         commentUsername: "Anonymous",
         commentRating: 0,
