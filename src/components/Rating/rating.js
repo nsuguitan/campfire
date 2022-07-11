@@ -24,10 +24,12 @@ const Rater = ({ initialRating, commentId }) => {
   const [rating, setRating] = useState(initialRating);
   
   const updateRating = async () => {
+   
     let loadRating = {
       commentRating: rating,
       commentId: commentId
     };
+    console.log(loadRating)
     await fetch("http://localhost:5000/ratings/update", {
       method: "POST",
       headers: {
