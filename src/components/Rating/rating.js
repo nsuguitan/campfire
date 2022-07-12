@@ -1,6 +1,6 @@
 import "../Postcard/Postcard.css";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
@@ -11,34 +11,49 @@ import IconButton from "@mui/material/IconButton";
 
 const Rating = (props) => {
   const intialRating = props.initialRating;
-  const commentId= props.commentId;
+  const commentId = props.commentId;
   return (
     <div>
-      <Rater initialRating={intialRating} 
-      commentId={commentId}/>
+      <Rater initialRating={intialRating} commentId={commentId} />
     </div>
   );
 };
 
 const Rater = ({ initialRating, commentId }) => {
   const [rating, setRating] = useState(initialRating);
-  
-  const updateRating = async () => {
-    let loadRating = {
-      commentRating: rating,
-      commentId: commentId
+  const triggered = useRef(false);
+  useEffect(() => {
+    const updateRating = async () => {
+      let loadRating = {
+        commentRating: rating,
+        commentId: commentId,
+      };
+      console.log("Fired the rating useEffect for: ", loadRating);
+      await fetch("http://localhost:5000/ratings/update", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loadRating),
+      }).catch((error) => {
+        window.alert(error);
+        return;
+      });
     };
-    console.log(loadRating)
-    await fetch("http://localhost:5000/ratings/update", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loadRating),
-    }).catch((error) => {
-      window.alert(error);
-      return;
-    });
+    if (triggered.current) {
+      updateRating();
+      triggered.current = false;
+    }
+    // else {
+    //   isMounted.current = true;
+    // }
+  }, [rating]);
+
+  const handleClick = (e, changeVal, popupState) => {
+    e.preventDefault();
+    triggered.current = true;
+    setRating(rating + changeVal);
+    popupState.close();
   };
 
   return (
@@ -56,46 +71,36 @@ const Rater = ({ initialRating, commentId }) => {
             </IconButton>
             <Menu {...bindMenu(popupState)}>
               <MenuItem
-                onClick={() => {
-                  setRating(rating - 2);
-                  updateRating();
-                  popupState.close();
+                onClick={(e) => {
+                  handleClick(e, -2, popupState);
                 }}
               >
                 Fluffernutter
               </MenuItem>
               <MenuItem
-                onClick={() => {
-                  setRating(rating - 1);
-                  updateRating();
-                  popupState.close();
+                onClick={(e) => {
+                  handleClick(e, -1, popupState);
                 }}
               >
                 Uncooked
               </MenuItem>
               <MenuItem
-                onClick={() => {
-                  setRating(rating + 1);
-                  updateRating();
-                  popupState.close();
+                onClick={(e) => {
+                  handleClick(e, 1, popupState);
                 }}
               >
                 Toasted
               </MenuItem>
               <MenuItem
-                onClick={() => {
-                  setRating(rating + 2);
-                  updateRating();
-                  popupState.close();
+                onClick={(e) => {
+                  handleClick(e, 2, popupState);
                 }}
               >
                 Roasted
               </MenuItem>
               <MenuItem
-                onClick={() => {
-                  setRating(rating + 3);
-                  updateRating();
-                  popupState.close();
+                onClick={(e) => {
+                  handleClick(e, 3, popupState);
                 }}
               >
                 Burned
