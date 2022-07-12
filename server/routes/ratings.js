@@ -10,9 +10,6 @@ const ObjectId = require("mongodb").ObjectId;
 ratingsRoutes.route("/ratings/update").post(function (req, res) {
   let db_connect = dbo.getDb();
   const filter = { _id: ObjectId(req.body.commentId) };
-  //Current Status
-  //writes and reads ratings to monogo
-  //Issue is that you can only do it once so I need to find a way to use the updated rating and not the initial rating. Jory suggestd maybe using a useEffect but wasn't sure
   const updatedRating = {
     $set: {
       commentRating: req.body.commentRating,

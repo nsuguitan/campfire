@@ -24,10 +24,6 @@ const AuthContext = ({ children }) => {
 
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  //   useEffect(() => {
-  //     console.log("auth state", state);
-  //   }, [state]);
-
   const login = async (userData) => {
     const user = new CognitoUser({
       Username: userData.username,

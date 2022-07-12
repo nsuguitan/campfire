@@ -20,7 +20,6 @@ const Newsfeed = () => {
         return;
       }
       setPosts(await response.json());
-      //console.log(await response.json());
     }
 
     getPosts();

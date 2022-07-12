@@ -28,7 +28,6 @@ const Rater = ({ initialRating, commentId }) => {
         commentRating: rating,
         commentId: commentId,
       };
-      console.log("Fired the rating useEffect for: ", loadRating);
       await fetch("http://localhost:5000/ratings/update", {
         method: "POST",
         headers: {

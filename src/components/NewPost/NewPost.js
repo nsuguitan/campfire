@@ -135,7 +135,6 @@ const NewPost = (props) => {
   };
 
   const handleClose = () => {
-    console.log("Triggered Handle Close");
     props.closeFunc();
     setCrop({ x: 0, y: 0 });
     setZoom(1);
