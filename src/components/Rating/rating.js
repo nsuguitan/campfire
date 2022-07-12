@@ -28,6 +28,7 @@ const Rater = ({ initialRating, commentId }) => {
       commentRating: rating,
       commentId: commentId
     };
+    console.log(loadRating)
     await fetch("http://localhost:5000/ratings/update", {
       method: "POST",
       headers: {

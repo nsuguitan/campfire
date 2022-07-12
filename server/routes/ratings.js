@@ -19,6 +19,7 @@ ratingsRoutes.route("/ratings/update").post(function (req, response) {
       commentRating: req.body.commentRating,
     },
   };
+ 
   const options = { upsert: true };
   db_connect.collection("comments").updateOne(filter, updatedRating, options);
 });
