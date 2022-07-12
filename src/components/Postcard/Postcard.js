@@ -24,7 +24,6 @@ const Postcard = (props) => {
   const { username } = AuthState();
 
   useEffect(() => {
-    console.log("Props: ", props.postId);
     if (JSON.stringify(postInfo) !== JSON.stringify({})) {
       setIsLoading(false);
     }
@@ -61,7 +60,6 @@ const Postcard = (props) => {
       }
 
       setPostInfo(await response.json());
-      console.log(postInfo);
     }
 
     getPostById();
