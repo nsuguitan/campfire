@@ -7,7 +7,6 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "../Avatar/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import { red } from "@mui/material/colors";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Paper } from "@mui/material";
 import { TextField } from "@mui/material";

@@ -4,6 +4,8 @@ import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
+import PostTime from './PostTime.js';
+
 
 const PostInfo = () => {
     return (
@@ -21,7 +23,7 @@ const PostInfo = () => {
                 >
                     <FontAwesomeIcon icon={faPaperPlane} />
                 </IconButton>
-                <p id="postTime">9 hours ago</p>
+                <PostTime/>
             </CardActions>
         </div>
     );
