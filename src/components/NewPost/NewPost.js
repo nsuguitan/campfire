@@ -119,7 +119,6 @@ const NewPost = (props) => {
         username,
         profilePicURL: profilePicURL,
       },
-      postDate: new Date(),
       photoURL: resourceURL,
     };
     handleClose();

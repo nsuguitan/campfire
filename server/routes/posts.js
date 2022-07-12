@@ -12,7 +12,9 @@ postRoutes.route("/posts").get(function (req, res) {
   let db_connect = dbo.getDb("posts");
   db_connect
     .collection("posts")
-    .find({})
+    .find({}, { author: 0, postDate: 0, photoURL: 0 })
+    .sort({ postDate: -1 })
+    .limit(5)
     .toArray(function (err, result) {
       if (err) throw err;
       res.json(result);
@@ -38,7 +40,7 @@ postRoutes.route("/posts/add/userId/:userId").post(function (req, response) {
       username: req.body.author.username,
       profilePicURL: req.body.author.profilePicURL,
     },
-    postDate: req.body.postDate,
+    postDate: new Date(),
     photoURL: req.body.photoURL,
   };
   db_connect.collection("posts").insertOne(myobj, function (err, res) {

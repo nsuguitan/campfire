@@ -5,9 +5,11 @@ import searchImage3 from "../assets/search3.jpg";
 import searchImage4 from "../assets/search4.jpg";
 import searchImage5 from "../assets/search5.jpg";
 import searchImage6 from "../assets/search6.jpg";
+import { useState } from "react";
 
 import { useEffect } from "react";
 const Newsfeed = () => {
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     async function getPosts() {
       const response = await fetch(`http://localhost:5000/posts/`);
@@ -17,13 +19,11 @@ const Newsfeed = () => {
         window.alert(message);
         return;
       }
-
-      const posts = await response.json();
-      console.log(posts);
+      setPosts(await response.json());
+      //console.log(await response.json());
     }
 
     getPosts();
-
     return;
   }, []);
 
@@ -72,7 +72,13 @@ const Newsfeed = () => {
         <p>For You</p>
       </div>
       <div className="feedDisplay">
-        <Postcard postId="62af8ef66a57cf6a0f8bcc06" />
+        <ul>
+          {posts.map((post) => (
+            <li className="feedListItem">
+              <Postcard postId={post._id} />
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

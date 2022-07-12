@@ -111,6 +111,9 @@
   flex-direction: row;
   justify-content: center;
 }
+.feedListItem{
+  margin-bottom:10px;
+}
 .followHeading{
   display: flex;
   justify-content: center;
