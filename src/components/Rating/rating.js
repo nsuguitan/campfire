@@ -24,7 +24,6 @@ const Rater = ({ initialRating, commentId }) => {
   const [rating, setRating] = useState(initialRating);
   
   const updateRating = async () => {
-   
     let loadRating = {
       commentRating: rating,
       commentId: commentId
