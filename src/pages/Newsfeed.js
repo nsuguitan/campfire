@@ -73,7 +73,7 @@ const Newsfeed = () => {
       <div className="feedDisplay">
         <ul>
           {posts.map((post) => (
-            <li className="feedListItem">
+            <li className="feedListItem" key={post._id}>
               <Postcard postId={post._id} />
             </li>
           ))}

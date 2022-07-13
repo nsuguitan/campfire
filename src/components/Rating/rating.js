@@ -108,7 +108,7 @@ const Rater = ({ initialRating, commentId }) => {
           </React.Fragment>
         )}
       </PopupState>
-      <FontAwesomeIcon icon={faFireFlameCurved} size="md" />
+      <FontAwesomeIcon icon={faFireFlameCurved} size="sm" />
       <b id="rating">{rating}</b>
     </div>
   );
