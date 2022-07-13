@@ -118,13 +118,14 @@ const Postcard = (props) => {
             }
             title={postInfo.author.username}
           />
+          {/* <div>{postInfo.postDate}</div> */}
           <CardMedia
             component="img"
             height="540px"
             image={postInfo.photoURL}
             alt="Puppers"
           />
-          <PostInfo />
+          <PostInfo postDate={postInfo.postDate}/>
           <PostComments postComments={postComments} />
           <CardActions>
             <Button

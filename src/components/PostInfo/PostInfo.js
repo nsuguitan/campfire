@@ -7,7 +7,7 @@ import { faComment, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import PostTime from './PostTime.js';
 
 
-const PostInfo = () => {
+const PostInfo = (props) => {
     return (
         <div className='postInfoContainer'>
             <CardActions disableSpacing>
@@ -23,7 +23,7 @@ const PostInfo = () => {
                 >
                     <FontAwesomeIcon icon={faPaperPlane} />
                 </IconButton>
-                <PostTime/>
+                <PostTime postDate={props.postDate}/>
             </CardActions>
         </div>
     );
