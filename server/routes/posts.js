@@ -14,7 +14,6 @@ postRoutes.route("/posts").get(function (req, res) {
     .collection("posts")
     .find({}, { author: 0, postDate: 0, photoURL: 0 })
     .sort({ postDate: -1 })
-    .limit(5)
     .toArray(function (err, result) {
       if (err) throw err;
       res.json(result);
