@@ -9,9 +9,9 @@ console.log(differenceInHours, 'time in hours');
 console.log(differenceInDays, 'time in days')
 
 const displayedTime = () => {
-    if (differenceInMinutes === 1){
+    if (differenceInMinutes <= 1){
         return differenceInMinutes + 'minute ago'
-    }else if (differenceInMinutes < 60 && differenceInMinutes !== 1){
+    }else if (differenceInMinutes < 60 && differenceInMinutes < 1){
         return differenceInMinutes + ' mintues ago'
     } else if (differenceInHours === 1  ){
         return differenceInHours + ' hour ago'
@@ -19,16 +19,18 @@ const displayedTime = () => {
         return differenceInHours + ' hours ago'
     } else if (differenceInDays === 1){
         return differenceInDays + ' day ago'
-    }else if (differenceInDays > 1){
+    }else if (differenceInDays > 1 && differenceInDays <= 14){
         return differenceInDays + ' days ago'
+    } else if(differenceInDays > 14){
+        return date1.toLocaleString().split(',')[0]
     }
-}
+};
 console.log(displayedTime())
 
 const PostTime = () => {
     return(
-        <div className='postTime'>
-            <p id="postTime"></p>
+        <div className='postTime'> 
+            <p id="postTime">{displayedTime()}</p>
         </div>
     );
 };
