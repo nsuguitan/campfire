@@ -131,7 +131,6 @@ const Postcard = (props) => {
               </Link>
             }
           />
-          {/* <div>{postInfo.postDate}</div> */}
           <CardMedia
             component="img"
             height="540px"
