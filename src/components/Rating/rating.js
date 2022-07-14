@@ -28,7 +28,6 @@ const Rater = ({ initialRating, commentId }) => {
         commentRating: rating,
         commentId: commentId,
       };
-      console.log("Fired the rating useEffect for: ", loadRating);
       await fetch("http://localhost:5000/ratings/update", {
         method: "POST",
         headers: {
@@ -109,7 +108,7 @@ const Rater = ({ initialRating, commentId }) => {
           </React.Fragment>
         )}
       </PopupState>
-      <FontAwesomeIcon icon={faFireFlameCurved} size="md" />
+      <FontAwesomeIcon icon={faFireFlameCurved} size="sm" />
       <b id="rating">{rating}</b>
     </div>
   );

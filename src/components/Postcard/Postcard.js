@@ -7,7 +7,6 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "../Avatar/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import { red } from "@mui/material/colors";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Paper } from "@mui/material";
 import { TextField } from "@mui/material";
@@ -119,13 +118,14 @@ const Postcard = (props) => {
             }
             title={postInfo.author.username}
           />
+          {/* <div>{postInfo.postDate}</div> */}
           <CardMedia
             component="img"
             height="540px"
             image={postInfo.photoURL}
             alt="Puppers"
           />
-          <PostInfo />
+          <PostInfo postDate={postInfo.postDate}/>
           <PostComments postComments={postComments} />
           <CardActions>
             <Button

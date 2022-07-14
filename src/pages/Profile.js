@@ -22,7 +22,6 @@ const Profile = () => {
       }
 
       setProfileImagesArray(await response.json());
-      //console.log(await response.json());
     }
     loadProfileImages();
   }, []);
@@ -59,7 +58,7 @@ const Profile = () => {
           />
         </Button>
       </div>
-    ));
+    )).reverse();
   };
   return (
     <div className="pageContainer">
