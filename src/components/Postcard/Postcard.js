@@ -118,7 +118,15 @@ const Postcard = (props) => {
               </IconButton>
             }
             title={
-              <Link to={`/Profile/${postInfo.author.username}`}>
+              <Link
+                to={`/Profile/${postInfo.author.username}`}
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  fontWeight: "bold",
+                  fontSize: "17.5px",
+                }}
+              >
                 {postInfo.author.username}
               </Link>
             }
