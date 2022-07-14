@@ -1,18 +1,20 @@
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ProfileInfo from "../components/ProfileInfo/ProfileInfo";
 import { useEffect, useState } from "react";
-import { AuthState } from "../context/auth/AuthContext";
+//import { AuthState } from "../context/auth/AuthContext";
 import { Button, Modal, Box } from "@mui/material";
 import Postcard from "../components/Postcard/Postcard";
 const Profile = () => {
   const [profileImagesArray, setProfileImagesArray] = useState([]);
   const [postSelected, setPostSelected] = useState("");
   const [open, setOpen] = useState(false);
-  const { username } = AuthState();
+  //const { username } = AuthState();
+  let { profileUsername } = useParams();
+
   useEffect(() => {
     async function loadProfileImages() {
       const response = await fetch(
-        `http://localhost:5000/posts/user/${username}`
+        `http://localhost:5000/posts/user/${profileUsername}`
       );
 
       if (!response.ok) {
@@ -24,7 +26,7 @@ const Profile = () => {
       setProfileImagesArray(await response.json());
     }
     loadProfileImages();
-  }, []);
+  }, [profileUsername]);
 
   const handleOpen = (event, postId) => {
     event.preventDefault();
@@ -48,22 +50,27 @@ const Profile = () => {
   };
 
   const displayProfileImages = () => {
-    return profileImagesArray.map((post) => (
-      <div className="profileImageButton">
-        <Button onClick={(event) => handleOpen(event, post._id)} key={post._id}>
-          <img
-            src={post.photoURL}
-            alt="http://placecorgi.com/250"
-            className="singleGridPhoto"
-          />
-        </Button>
-      </div>
-    )).reverse();
+    return profileImagesArray
+      .map((post) => (
+        <div className="profileImageButton">
+          <Button
+            onClick={(event) => handleOpen(event, post._id)}
+            key={post._id}
+          >
+            <img
+              src={post.photoURL}
+              alt="http://placecorgi.com/250"
+              className="singleGridPhoto"
+            />
+          </Button>
+        </div>
+      ))
+      .reverse();
   };
   return (
     <div className="pageContainer">
       <br />
-      <ProfileInfo />
+      <ProfileInfo profileUsername={profileUsername} />
       <div className="imageGridContainer">{displayProfileImages()}</div>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>

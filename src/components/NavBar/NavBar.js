@@ -5,7 +5,7 @@ import NewPost from "../NewPost/NewPost";
 import { AuthState } from "../../context/auth/AuthContext";
 
 const NavBar = () => {
-  const { isAuthenticated } = AuthState();
+  const { isAuthenticated, username } = AuthState();
   let [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -22,7 +22,7 @@ const NavBar = () => {
         <p>+</p>
       </div>
       <p>DM</p>
-      <Link to="/Profile">Profile</Link>
+      <Link to={`/Profile/${username}`}>Profile</Link>
       <NewPost open={open} closeFunc={handleClose} />
     </div>
   );

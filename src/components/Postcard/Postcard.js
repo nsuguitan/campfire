@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import PostComments from "../Comments/PostComments";
 import PostInfo from "../PostInfo/PostInfo";
 import { AuthState } from "../../context/auth/AuthContext";
+import { Link } from "react-router-dom";
 
 const Postcard = (props) => {
   const [newComment, setNewComment] = useState("");
@@ -116,7 +117,11 @@ const Postcard = (props) => {
                 <MoreVertIcon />
               </IconButton>
             }
-            title={postInfo.author.username}
+            title={
+              <Link to={`/Profile/${postInfo.author.username}`}>
+                {postInfo.author.username}
+              </Link>
+            }
           />
           {/* <div>{postInfo.postDate}</div> */}
           <CardMedia
@@ -125,7 +130,7 @@ const Postcard = (props) => {
             image={postInfo.photoURL}
             alt="Puppers"
           />
-          <PostInfo postDate={postInfo.postDate}/>
+          <PostInfo postDate={postInfo.postDate} />
           <PostComments postComments={postComments} />
           <CardActions>
             <Button

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import blueFlame from "../../assets/blueFlame.jpg";
 import Avatar from "../Avatar/Avatar";
-import { AuthState } from "../../context/auth/AuthContext";
 
-const ProfileInfo = () => {
-  const { username } = AuthState();
+const ProfileInfo = (props) => {
   const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
     const getUserInfo = async () => {
-      const response = await fetch(`http://localhost:5000/users/${username}`);
+      const response = await fetch(
+        `http://localhost:5000/users/${props.profileUsername}`
+      );
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -19,12 +19,12 @@ const ProfileInfo = () => {
       setUserInfo(await response.json());
     };
     getUserInfo();
-  }, []);
+  }, [props.profileUsername]);
 
   return (
     <div className="profileInfoContainer">
       <div className="bioContainer">
-        <h1>{username}</h1>
+        <h1>{props.profileUsername}</h1>
       </div>
       <div className="topProfileContainer">
         <div className="profilePicContainer">

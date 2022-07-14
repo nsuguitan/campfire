@@ -21,7 +21,11 @@ const App = () => {
           <Route exact path="/SignUp" element={<SignUp />} />
           <Route element={<PrivateRoute />}>
             <Route exact path="/Newsfeed" element={<Newsfeed />} />
-            <Route exact path="/Profile" element={<Profile />} />
+            <Route
+              exact
+              path="/Profile/:profileUsername"
+              element={<Profile />}
+            />
             <Route exact path="/Search" element={<Search />} />
             <Route exact path="/Postcard" element={<Postcard />} />
           </Route>
