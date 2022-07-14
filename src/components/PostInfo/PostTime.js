@@ -7,7 +7,7 @@ const PostTime = (props) => {
 
     const displayedTime = () => {
         if (differenceInMinutes <= 1) {
-            return differenceInMinutes + 'minute ago'
+            return  '1 minute ago'
         } else if (differenceInMinutes < 60 && differenceInMinutes < 1) {
             return differenceInMinutes + ' mintues ago'
         } else if (differenceInHours === 1) {
