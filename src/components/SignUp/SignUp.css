@@ -10,3 +10,9 @@
     height: 50%;
     margin: auto;
 }
+
+.profile-image-preview{
+    width: 200px;
+    height: 200px;
+    border: 2.5px solid black;
+}

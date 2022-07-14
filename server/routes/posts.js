@@ -31,7 +31,7 @@ postRoutes.route("/posts/:id").get(function (req, res) {
   });
 });
 
-//for creating a new post and writing to s3
+//for creating a new post
 postRoutes.route("/posts/add/userId/:userId").post(function (req, response) {
   let db_connect = dbo.getDb();
 

@@ -6,6 +6,24 @@ const dbo = require("../db/conn");
 
 const ObjectId = require("mongodb").ObjectId;
 
+//Create new user in mongo
+userRoutes.route("/users/add").post(function (req, response) {
+  let db_connect = dbo.getDb();
+
+  let myobj = {
+    username: req.body.username,
+    profilePicURL: req.body.profilePicURL,
+    name: req.body.name,
+    bio: req.body.photoURL,
+    followers: [],
+    following: [],
+  };
+  db_connect.collection("users").insertOne(myobj, function (err, res) {
+    if (err) throw err;
+    response.json(res);
+  });
+});
+
 //Get username and profile image (for new posts and profile page - already contained when fetching an individual post)
 
 userRoutes.route("/users/:username").get(function (req, res) {

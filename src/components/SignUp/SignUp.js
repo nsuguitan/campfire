@@ -3,11 +3,14 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import { AuthState } from "../../context/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
+import * as AWS from "aws-sdk";
 import "./SignUp.css";
 import AuthInput from "../AuthInput/AuthInput";
 
 const SignUpComp = () => {
   const [open, setOpen] = useState(false);
+  const [imageSrc, setImageSrc] = useState("http://placecorgi.com/250");
+  const [bio, setBio] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const { login, signup, verify, isAuthenticated } = AuthState();
 
@@ -40,6 +43,10 @@ const SignUpComp = () => {
       [e.currentTarget.name]: e.currentTarget.value,
     });
 
+  const handleBioChange = (e) => {
+    setBio(e.currentTarget.value);
+  };
+
   const handleVerificationCode = (evt) => {
     setVerificationCode(evt.target.value);
   };
@@ -50,6 +57,76 @@ const SignUpComp = () => {
     if (successfulSignUp) {
       setOpen(true);
     }
+  };
+
+  const onFileChange = async (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      //checks to see if files were loaded
+      const file = e.target.files[0]; //grabs first file
+      let imageDataUrl = await readFile(file); //waits for promise
+      setImageSrc(imageDataUrl);
+    }
+  };
+
+  const readFile = (file) => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.addEventListener("load", () => resolve(reader.result), false); //fired when image has been read successfully
+      reader.readAsDataURL(file); // reads contents of file or blob and represents the file's data as a base64 encoded string, triggers loadend, thus resolving the promise
+    });
+  };
+
+  const uploadFilesToS3 = async (extension, imageSrc, fileName) => {
+    let file = await fetch(imageSrc)
+      .then((r) => r.blob())
+      .then(
+        (blobFile) => new File([blobFile], "test-image", { type: "image/jpeg" })
+      );
+    return new Promise(async (resolve, reject) => {
+      const bucket = new AWS.S3({
+        accessKeyId: process.env.REACT_APP_S3_ACCESS_KEY,
+        secretAccessKey: process.env.REACT_APP_S3_ACCESS_SECRET,
+        region: "us-east-1",
+      });
+      const params = {
+        Bucket: process.env.REACT_APP_AWS_S3_BUCKET_NAME,
+        Key: "profile-pictures/" + fileName + extension,
+        Body: file,
+      };
+      bucket.upload(params, async (err, data) => {
+        if (data) {
+          let resourceURL =
+            process.env.REACT_APP_AWS_S3_BUCKET_URL +
+            "profile-pictures/" +
+            fileName +
+            extension;
+          await createMongoUser(resourceURL);
+        }
+        if (err) {
+        }
+      });
+    });
+  };
+
+  const createMongoUser = async (resourceURL) => {
+    let loadUser = {
+      username: textFields.username,
+      profilePicURL: resourceURL,
+      name: textFields.fullname,
+      bio: bio,
+      followers: [],
+      following: [],
+    };
+    await fetch("http://localhost:5000/users/add", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loadUser),
+    }).catch((error) => {
+      window.alert(error);
+      return;
+    });
   };
 
   const triggerVerification = async (event) => {
@@ -66,6 +143,7 @@ const SignUpComp = () => {
         username: textFields.username,
         password: textFields.password,
       });
+      uploadFilesToS3(".jpeg", imageSrc, textFields.username);
       if (successfulLogin) {
         setTimeout(() => {
           navigate("/Newsfeed");
@@ -111,6 +189,39 @@ const SignUpComp = () => {
             value={textFields.email}
             onChange={handleTextChange}
           />
+          <label
+            htmlFor="profile-image-upload"
+            className="profile-image-upload-label"
+          >
+            Load Profile Picture
+            <input
+              id="profile-image-upload"
+              type="file"
+              onChange={onFileChange}
+              accept="image/*"
+            />
+            <img
+              className="profile-image-preview"
+              src={imageSrc}
+              alt="None"
+            ></img>
+          </label>
+
+          <p>
+            <label for="profile-bio">Write your bio: </label>
+          </p>
+          <textarea
+            id="profile-bio"
+            name="profile-bio"
+            onChange={handleBioChange}
+            rows="4"
+            cols="40"
+            placeholder="C'mon write a bio. Don't be lame."
+          >
+            {bio}
+          </textarea>
+          <br></br>
+
           <Button
             disableElevation
             fullWidth
