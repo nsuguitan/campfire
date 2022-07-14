@@ -18,6 +18,27 @@ commentsRoutes.route("/comments").get(function (req, res) {
     });
 });
 
+//get metrics for user comments
+commentsRoutes.route("/comments/user/:username").get(function (req, res) {
+  let db_connect = dbo.getDb("");
+  db_connect
+    .collection("comments")
+    .aggregate([
+      { $match: { commentUsername: req.params.username } },
+      {
+        $group: {
+          _id: null,
+          totalRating: { $sum: "$commentRating" },
+          count: { $sum: 1 },
+        },
+      },
+    ])
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
 //for getting a list of all comments with a given postId
 commentsRoutes.route("/comments/post/:postId").get(function (req, res) {
   let db_connect = dbo.getDb();
@@ -55,7 +76,5 @@ commentsRoutes.route("/comments/add").post(function (req, response) {
     response.json(res);
   });
 });
-
-
 
 module.exports = commentsRoutes;

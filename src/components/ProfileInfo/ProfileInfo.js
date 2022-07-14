@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import blueFlame from "../../assets/blueFlame.jpg";
 import Avatar from "../Avatar/Avatar";
+import RoastRank from "./RoastRank";
 
 const ProfileInfo = (props) => {
   const [userInfo, setUserInfo] = useState({
@@ -53,7 +54,7 @@ const ProfileInfo = (props) => {
         <div className="profileStatsContainer">
           <div className="roastRatingProfileContainer">
             <h2>Roast Rank:</h2>
-            <span>Golden</span>
+            <RoastRank profileUsername={props.profileUsername} />
           </div>
           <div className="profileDataContainer">
             <div className="statEntry">
