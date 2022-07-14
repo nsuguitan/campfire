@@ -2,13 +2,13 @@ const PostTime = (props) => {
     const initialTimePosted = new Date(props.postDate);
     const currentDate = new Date();
     const differenceInHours = Math.round((currentDate - initialTimePosted) / 3600000);
-    const differenceInMinutes = Math.round((currentDate - initialTimePosted) / 600000);
+    const differenceInMinutes = Math.round((currentDate - initialTimePosted) / 60000);
     const differenceInDays = Math.round((currentDate - initialTimePosted) / 86400000);
 
     const displayedTime = () => {
         if (differenceInMinutes <= 1) {
             return  '1 minute ago'
-        } else if (differenceInMinutes < 60 && differenceInMinutes < 1) {
+        } else if (differenceInMinutes > 1 && differenceInMinutes <= 59) {
             return differenceInMinutes + ' mintues ago'
         } else if (differenceInHours === 1) {
             return differenceInHours + ' hour ago'
