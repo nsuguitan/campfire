@@ -11,6 +11,7 @@ const ProfileInfo = (props) => {
     followers: [],
     following: [],
   });
+  const [verified, setVerified] = useState(false);
   useEffect(() => {
     const getUserInfo = async () => {
       const response = await fetch(
@@ -27,6 +28,13 @@ const ProfileInfo = (props) => {
     };
     getUserInfo();
   }, [props.profileUsername]);
+
+  useEffect(() => {
+    setVerified(false);
+    if (userInfo.followers.length >= 3) {
+      setVerified(true);
+    }
+  }, [userInfo.followers.length]);
 
   return (
     <div className="profileInfoContainer">
@@ -66,7 +74,11 @@ const ProfileInfo = (props) => {
       <div className="bioContainer">
         <div className="fullName">
           <h2>{userInfo.name}</h2>
-          <img src={blueFlame} alt="" className="flame" />
+          {verified ? (
+            <img src={blueFlame} alt="" className="flame" />
+          ) : (
+            <div />
+          )}
         </div>
         <div className="bio">
           <p>{userInfo.bio}</p>
