@@ -59,7 +59,7 @@ const ProfileInfo = () => {
       <div className="bioContainer">
         <div className="fullName">
           <h2>{userInfo.name}</h2>
-          <img src={blueFlame} className="flame" />
+          <img src={blueFlame} alt="" className="flame" />
         </div>
         <div className="bio">
           <p>{userInfo.bio}</p>

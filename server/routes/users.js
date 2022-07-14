@@ -14,7 +14,7 @@ userRoutes.route("/users/add").post(function (req, response) {
     username: req.body.username,
     profilePicURL: req.body.profilePicURL,
     name: req.body.name,
-    bio: req.body.photoURL,
+    bio: req.body.bio,
     followers: [],
     following: [],
   };

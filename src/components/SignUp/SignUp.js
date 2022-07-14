@@ -208,7 +208,7 @@ const SignUpComp = () => {
           </label>
 
           <p>
-            <label for="profile-bio">Write your bio: </label>
+            <label htmlFor="profile-bio">Write your bio: </label>
           </p>
           <textarea
             id="profile-bio"
@@ -217,9 +217,8 @@ const SignUpComp = () => {
             rows="4"
             cols="40"
             placeholder="C'mon write a bio. Don't be lame."
-          >
-            {bio}
-          </textarea>
+            value={bio}
+          ></textarea>
           <br></br>
 
           <Button

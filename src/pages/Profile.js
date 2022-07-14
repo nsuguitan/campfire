@@ -49,7 +49,6 @@ const Profile = () => {
   };
 
   const displayProfileImages = () => {
-    console.log("Props from profile: ", profileImagesArray);
     return profileImagesArray.map((post) => (
       <div className="profileImageButton">
         <Button onClick={(event) => handleOpen(event, post._id)} key={post._id}>
