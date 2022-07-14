@@ -70,7 +70,10 @@ const Profile = () => {
   return (
     <div className="pageContainer">
       <br />
-      <ProfileInfo profileUsername={profileUsername} />
+      <ProfileInfo
+        profileUsername={profileUsername}
+        postCount={profileImagesArray.length}
+      />
       <div className="imageGridContainer">{displayProfileImages()}</div>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>

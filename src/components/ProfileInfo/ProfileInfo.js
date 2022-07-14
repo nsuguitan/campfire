@@ -42,15 +42,15 @@ const ProfileInfo = (props) => {
           </div>
           <div className="profileDataContainer">
             <div className="statEntry">
-              <h3>100</h3>
+              <h3>{props.postCount}</h3>
               <p>Posts</p>
             </div>
             <div className="statEntry">
-              <h3>200</h3>
+              <h3>{userInfo.following.length}</h3>
               <p>Following</p>
             </div>
             <div className="statEntry">
-              <h3>300</h3>
+              <h3>{userInfo.followers.length}</h3>
               <p>Followers</p>
             </div>
           </div>
