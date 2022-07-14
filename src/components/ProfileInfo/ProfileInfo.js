@@ -3,7 +3,14 @@ import blueFlame from "../../assets/blueFlame.jpg";
 import Avatar from "../Avatar/Avatar";
 
 const ProfileInfo = (props) => {
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({
+    username: "",
+    profilePicURL: "",
+    name: "",
+    bio: "",
+    followers: [],
+    following: [],
+  });
   useEffect(() => {
     const getUserInfo = async () => {
       const response = await fetch(
