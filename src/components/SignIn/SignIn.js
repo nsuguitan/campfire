@@ -23,12 +23,9 @@ const SignInComp = () => {
 
   const triggerLogin = async (event) => {
     event.preventDefault();
-    const successfulLogin = await login(textFields);
-    if (successfulLogin) {
-      setTimeout(() => {
-        navigate("/Newsfeed");
-      }, 1000);
-    }
+    await login(textFields).then(() => {
+      navigate("/Newsfeed");
+    });
   };
 
   return (

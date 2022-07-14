@@ -34,16 +34,18 @@ const AuthContext = ({ children }) => {
       Username: userData.username,
       Password: userData.password,
     });
-
-    user.authenticateUser(authDetails, {
-      onSuccess: (data) => {
-        dispatch({ type: "LOGIN_SUCCESS", payload: data });
-      },
-      onFailure: (err) => {
-        dispatch({ type: "LOGIN_FAILURE", payload: err });
-      },
+    return new Promise(function (resolve, reject) {
+      user.authenticateUser(authDetails, {
+        onSuccess: (data) => {
+          resolve(true);
+          dispatch({ type: "LOGIN_SUCCESS", payload: data });
+        },
+        onFailure: (err) => {
+          reject(false);
+          dispatch({ type: "LOGIN_FAILURE", payload: err });
+        },
+      });
     });
-    return true;
   };
 
   const signup = (signUpData) => {
