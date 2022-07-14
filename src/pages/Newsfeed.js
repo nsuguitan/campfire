@@ -25,7 +25,7 @@ const Newsfeed = () => {
 
   return (
     <div className="pageContainer">
-      <Stories/>
+      <Stories />
       <div className="followHeading">
         <p>Following</p>
         <p>|</p>
