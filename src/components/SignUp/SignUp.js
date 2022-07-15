@@ -177,6 +177,7 @@ const SignUpComp = () => {
             value={textFields.password}
             onChange={handleTextChange}
           />
+          <p id='passwordReq'>**your password must contain at least 6 characters, an uppercase, a lowercase, a number, and a special character**</p>
           <AuthInput
             name="fullname"
             label="Full Name"

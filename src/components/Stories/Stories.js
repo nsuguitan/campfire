@@ -7,7 +7,6 @@ import Avatar from "../Avatar/Avatar";
 
 const Stories = () => {
     const [users, setUsers] = useState([]);
-    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
     useEffect(() => {
         async function getUsers() {
