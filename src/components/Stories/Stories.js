@@ -1,9 +1,8 @@
-import Avatar from "../Avatar/Avatar";
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
-
+import Avatar from "../Avatar/Avatar";
 
 const Stories = () => {
     const [users, setUsers] = useState([]);
@@ -25,9 +24,9 @@ const Stories = () => {
     }, []);
 
     return (
-        <div>
+        <div className="storiesContainer">
             {users.map((user) => (
-                <div className="storiesContainer">
+                <div key={user._id}>
                     <Link to={`/Profile/${user.username}`}>
                         <Avatar
                             borderRadius="50%"

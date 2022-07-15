@@ -25,7 +25,6 @@ userRoutes.route("/users/add").post(function (req, response) {
 });
 
 //Get username and profile image (for new posts and profile page - already contained when fetching an individual post)
-
 userRoutes.route("/users/:username").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { username: req.params.username };
@@ -34,5 +33,18 @@ userRoutes.route("/users/:username").get(function (req, res) {
     res.json(result);
   });
 });
+
+//Pulls a list of all users
+userRoutes.route("users").get(function (req, res){
+  let db_connect = dbo.getDb("users");
+  db_connect
+    .collection("users")
+    .find({})
+    .toArray(function (err, result){
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
 
 module.exports = userRoutes;
