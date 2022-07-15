@@ -28,11 +28,11 @@ const Stories = () => {
             {/* <Carousel show={3.5} slide={3} swiping={true}> */}
             {users.map((user) => (
                 <div key={user._id} className="story">
-                    <Link to={`/Profile/${user.username}`}>
+                    <Link to={`/Profile/${user.username}`} >
                         <Avatar
                             borderRadius="50%"
-                            height="50px"
-                            width="50px"
+                            height="75px"
+                            width="75px"
                             profilepic={user.profilePicURL}
                         />
                     </Link>
