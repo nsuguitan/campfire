@@ -95,11 +95,7 @@
 .story{
   text-align: center;
 }
-.storyImage{
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-}
+
 .storiesContainer{
   display: flex;
   justify-content: space-evenly;

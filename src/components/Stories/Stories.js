@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import Avatar from "../Avatar/Avatar";
+// import { Carousel } from '@trendyol-js/react-carousel';
 
 const Stories = () => {
     const [users, setUsers] = useState([]);
+    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
     useEffect(() => {
         async function getUsers() {
             const response = await fetch(`http://localhost:5000/users/`);
-            console.log(response)
             if (!response.ok) {
                 const message = `An error occurred: ${response.statusText}`;
                 window.alert(message);
@@ -25,8 +26,9 @@ const Stories = () => {
 
     return (
         <div className="storiesContainer">
+            {/* <Carousel show={3.5} slide={3} swiping={true}> */}
             {users.map((user) => (
-                <div key={user._id}>
+                <div key={user._id} className="story">
                     <Link to={`/Profile/${user.username}`}>
                         <Avatar
                             borderRadius="50%"
@@ -38,8 +40,8 @@ const Stories = () => {
                     <p>{user.username}</p>
                 </div>
             ))}
-        </div>
-
+            {/* </Carousel> */}
+        </div> 
     );
 };
 
