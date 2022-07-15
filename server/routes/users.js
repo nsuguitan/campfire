@@ -35,7 +35,7 @@ userRoutes.route("/users/:username").get(function (req, res) {
 });
 
 //Pulls a list of all users
-userRoutes.route("users").get(function (req, res){
+userRoutes.route("/users").get(function (req, res){
   let db_connect = dbo.getDb("users");
   db_connect
     .collection("users")
