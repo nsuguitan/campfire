@@ -32,6 +32,20 @@
   justify-content: space-between;
   margin: 0px 80px 0px 40px;
 }
+@media (max-width: 660px){
+  .topProfileContainer{
+    flex-wrap: wrap;
+    font-size: .7em;
+  }
+  .bioContainer{
+    display: flex;
+    width: fit-content;
+  }
+  *{
+    border: 1px solid black;;
+  }
+
+}
 .profileDataContainer{
   display: flex;
   flex-direction: row;
