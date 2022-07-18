@@ -34,17 +34,38 @@
 }
 @media (max-width: 660px){
   .topProfileContainer{
-    flex-wrap: wrap;
-    font-size: .7em;
+    flex-wrap: wrap; 
+    margin: 0px 0px 0px 0px;
+    justify-content: center;
   }
   .bioContainer{
-    display: flex;
-    width: fit-content;
+    min-width: fit-content;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin: auto;
+    
   }
-  *{
-    border: 1px solid black;;
+  .profileInfoContainer{
+    font-size: .7em;
   }
-
+  .profileStatsContainer{
+    margin: 0px 0px 0px 0px;
+  }
+  .profileInfoContainer{
+    margin: auto;
+  }
+  .profileDataContainer{
+    justify-content: space-between;
+  }
+  .statEntry{
+    padding: 5px;
+  }
+  .fullName{
+    text-align: center;
+  }
+  .bio{
+    text-align: center;
+  }
 }
 .profileDataContainer{
   display: flex;

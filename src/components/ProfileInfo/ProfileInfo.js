@@ -23,10 +23,9 @@ const ProfileInfo = (props) => {
 
   return (
     <div className="profileInfoContainer">
-      <div className="bioContainer">
-        <h1>{props.profileUsername}</h1>
-      </div>
       <div className="topProfileContainer">
+        <div>
+        <h1>{props.profileUsername}</h1>
         <div className="profilePicContainer">
           <Avatar
             profilepic={userInfo.profilePicURL}
@@ -34,6 +33,7 @@ const ProfileInfo = (props) => {
             height="200px"
             width="200px"
           />
+        </div>
         </div>
         <div className="profileStatsContainer">
           <div className="roastRatingProfileContainer">
