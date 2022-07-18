@@ -3,20 +3,40 @@ const RoastRank = (props) => {
   const [roastRank, setRoastRank] = useState("Pleb");
 
   useEffect(() => {
-    const getRoastRank = async () => {
+    const getRoastInfo = async () => {
       console.log("Profile Username: ", props.profileUsername);
       const response = await fetch(
         `http://localhost:5000/comments/user/${props.profileUsername}`
       );
-      const roastInfo = await response.json();
-      console.log("roast info returned: ", roastInfo);
+      return await response.json();
     };
-    getRoastRank();
-  }, []);
+
+    const calcRoastRank = async () => {
+      let roastInfo = (await getRoastInfo())[0];
+      roastInfo["avgRating"] = roastInfo.totalRating / roastInfo.count;
+      console.log("Roast Info: ", roastInfo);
+      switch (true) {
+        case roastInfo["count"] >= 10 && roastInfo["avgRating"] >= 10:
+          setRoastRank("Queen of Campfire");
+          break;
+        case roastInfo["count"] >= 5 && roastInfo["avgRating"] >= 5:
+          setRoastRank("Roastmaster");
+          break;
+        case roastInfo["count"] >= 2 && roastInfo["avgRating"] >= 3:
+          setRoastRank("Jester");
+          break;
+        default:
+          setRoastRank("Pleb");
+      }
+    };
+
+    calcRoastRank();
+    //roastInfo.then(calcRoastRank(roastInfo));
+  }, [props.profileUsername]);
 
   return (
     <div className="roast-rank-container">
-      <span>Golden</span>
+      <span>{roastRank}</span>
     </div>
   );
 };
