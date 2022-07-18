@@ -4,7 +4,6 @@ const RoastRank = (props) => {
 
   useEffect(() => {
     const getRoastInfo = async () => {
-      console.log("Profile Username: ", props.profileUsername);
       const response = await fetch(
         `http://localhost:5000/comments/user/${props.profileUsername}`
       );
@@ -14,7 +13,6 @@ const RoastRank = (props) => {
     const calcRoastRank = async () => {
       let roastInfo = (await getRoastInfo())[0];
       roastInfo["avgRating"] = roastInfo.totalRating / roastInfo.count;
-      console.log("Roast Info: ", roastInfo);
       switch (true) {
         case roastInfo["count"] >= 10 && roastInfo["avgRating"] >= 10:
           setRoastRank("Queen of Campfire");
