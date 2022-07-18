@@ -3,13 +3,15 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import { AuthState } from "../../context/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Cropper from "react-easy-crop";
 import * as AWS from "aws-sdk";
 import "./SignUp.css";
 import AuthInput from "../AuthInput/AuthInput";
+import Image1 from '../../assets/addImage.jpg';
 
 const SignUpComp = () => {
   const [open, setOpen] = useState(false);
-  const [imageSrc, setImageSrc] = useState("http://placecorgi.com/250");
+  const [imageSrc, setImageSrc] = useState(Image1);
   const [bio, setBio] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const { login, signup, verify, isAuthenticated } = AuthState();
