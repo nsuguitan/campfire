@@ -3,7 +3,6 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import { AuthState } from "../../context/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
-import Cropper from "react-easy-crop";
 import * as AWS from "aws-sdk";
 import "./SignUp.css";
 import AuthInput from "../AuthInput/AuthInput";
