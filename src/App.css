@@ -41,9 +41,12 @@
 }
 .imageGridContainer{
   display: flex;
+  flex-direction: space-between;
   flex-wrap: wrap;
-  margin: 17.5px;
-  margin-top: 40px;
+  margin: auto;
+}
+.profileImageButton{
+  margin: auto;
 }
 .singleGridPhoto{
   height: 225px;
