@@ -136,6 +136,7 @@ const Postcard = (props) => {
             height="540px"
             image={postInfo.photoURL}
             alt="Puppers"
+            className='singleCardMedia'
           />
           <PostInfo postDate={postInfo.postDate} />
           <PostComments postComments={postComments} />

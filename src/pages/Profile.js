@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 //import { AuthState } from "../context/auth/AuthContext";
 import { Button, Modal, Box } from "@mui/material";
 import Postcard from "../components/Postcard/Postcard";
+
 const Profile = () => {
   const [profileImagesArray, setProfileImagesArray] = useState([]);
   const [postSelected, setPostSelected] = useState("");

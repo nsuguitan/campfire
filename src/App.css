@@ -52,7 +52,15 @@
   .profileInfoContainer{
     margin: auto;
   }
+  .fullCard{
+    width: 350px;
+  }
+  .singleCardMedia{
+    width:350px;
+    height: 350px;
+  }
 }
+
 @media(max-width: 500px){
   .profileDataContainer{
     flex-direction: column;
