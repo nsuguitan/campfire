@@ -1,9 +1,18 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import blueFlame from "../../assets/blueFlame.jpg";
 import Avatar from "../Avatar/Avatar";
+import RoastRank from "./RoastRank";
 
 const ProfileInfo = (props) => {
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState({
+    username: "",
+    profilePicURL: "",
+    name: "",
+    bio: "",
+    followers: [],
+    following: [],
+  });
+  const [verified, setVerified] = useState(false);
   useEffect(() => {
     const getUserInfo = async () => {
       const response = await fetch(
@@ -20,6 +29,13 @@ const ProfileInfo = (props) => {
     };
     getUserInfo();
   }, [props.profileUsername]);
+
+  useEffect(() => {
+    setVerified(false);
+    if (userInfo.followers.length >= 3) {
+      setVerified(true);
+    }
+  }, [userInfo.followers.length]);
 
   return (
     <div className="profileInfoContainer">
@@ -38,19 +54,19 @@ const ProfileInfo = (props) => {
         <div className="profileStatsContainer">
           <div className="roastRatingProfileContainer">
             <h2>Roast Rank:</h2>
-            <span>Golden</span>
+            <RoastRank profileUsername={props.profileUsername} />
           </div>
           <div className="profileDataContainer">
             <div className="statEntry">
-              <h3>100</h3>
+              <h3>{props.postCount}</h3>
               <p>Posts</p>
             </div>
             <div className="statEntry">
-              <h3>200</h3>
+              <h3>{userInfo.following.length}</h3>
               <p>Following</p>
             </div>
             <div className="statEntry">
-              <h3>300</h3>
+              <h3>{userInfo.followers.length}</h3>
               <p>Followers</p>
             </div>
           </div>
@@ -59,7 +75,11 @@ const ProfileInfo = (props) => {
       <div className="bioContainer">
         <div className="fullName">
           <h2>{userInfo.name}</h2>
-          <img src={blueFlame} alt="" className="flame" />
+          {verified ? (
+            <img src={blueFlame} alt="" className="flame" />
+          ) : (
+            <React.Fragment />
+          )}
         </div>
         <div className="bio">
           <p>{userInfo.bio}</p>
