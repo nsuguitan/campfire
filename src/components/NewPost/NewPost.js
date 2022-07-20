@@ -1,4 +1,4 @@
-import { Modal, Box, Button } from "@mui/material";
+import { Modal, Box, Button, IconButton, CloseIcon } from "@mui/material";
 import { useState, useCallback, useEffect } from "react";
 import CropImage from "./CropImage";
 import "./NewPost.css";
@@ -179,6 +179,7 @@ const NewPost = (props) => {
         >
           Let the roasting begin
         </Button>
+        <Button variant='text' onClick={handleClose}>X</Button>
       </Box>
     </Modal>
   );
