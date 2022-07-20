@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import blueFlame from "../../assets/blueFlame.jpg";
 import Avatar from "../Avatar/Avatar";
 import RoastRank from "./RoastRank";
@@ -78,7 +78,7 @@ const ProfileInfo = (props) => {
           {verified ? (
             <img src={blueFlame} alt="" className="flame" />
           ) : (
-            <div />
+            <React.Fragment />
           )}
         </div>
         <div className="bio">
