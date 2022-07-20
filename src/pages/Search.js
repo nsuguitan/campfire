@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button, Modal, Box } from "@mui/material";
 import Postcard from "../components/Postcard/Postcard";
@@ -13,7 +13,7 @@ const Search = () => {
   useEffect(() => {
     async function loadSearchImages() {
       const response = await fetch(
-        `http://localhost:5000/posts/user/${profileUsername}`
+        `http://localhost:5000/posts/`
       );
 
       if (!response.ok) {
@@ -74,9 +74,12 @@ const Search = () => {
           <img src={searchIcon} className='searchIcon'/>
           <input className='sarchBar'></input>
         </div>
-        <div className='searchPhotosGrid'>
-          {displaySearchImages()}
-        </div>
+        <div className='searchPhotosGrid'>{displaySearchImages()}</div>
+        <Modal open={open} onClose={handleClose}>
+        <Box sx={style}>
+          <Postcard postId={postSelected} />
+        </Box>
+      </Modal>
       </div>
     );
   };
