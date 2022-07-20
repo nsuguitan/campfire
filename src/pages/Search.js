@@ -51,18 +51,17 @@ const Search = () => {
   const displaySearchImages = () => {
     return searchImagesArray
       .map((post) => (
-        <div className="searchImageButton">
           <Button
             onClick={(event) => handleOpen(event, post._id)}
             key={post._id}
+            style={{padding: '2px'}}
           >
             <img
               src={post.photoURL}
               alt="http://placecorgi.com/250"
-              className="singleGridPhoto"
+              className="searchImage"
             />
           </Button>
-        </div>
       ))
       .reverse();
   };
