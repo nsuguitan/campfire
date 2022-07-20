@@ -31,8 +31,8 @@ const Stories = () => {
                     <Link to={`/Profile/${user.username}`} >
                         <Avatar
                             borderRadius="50%"
-                            height="75px"
                             width="75px"
+                            height="75px"
                             profilepic={user.profilePicURL}
                         />
                     </Link>

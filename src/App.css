@@ -32,6 +32,46 @@
   justify-content: space-between;
   margin: 0px 80px 0px 40px;
 }
+@media (max-width: 600px){
+  .topProfileContainer{
+    margin: 0px 40px 0px 40px;
+    justify-content: center;
+  }
+  .bioContainer{
+    min-width: fit-content;
+    margin-right: 40px;
+    margin-left: 0px;
+    
+  }
+  .profileInfoContainer{
+    font-size: .7em;
+  }
+  .profileStatsContainer{
+    margin: 0px 0px 0px 0px;
+  }
+  .profileInfoContainer{
+    margin: auto;
+  }
+  .fullCard{
+    width: 350px;
+  }
+  .singleCardMedia{
+    width:350px;
+    height: 350px;
+  }
+}
+
+@media(max-width: 500px){
+  .profileDataContainer{
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100px;
+    margin: auto;
+  }
+  
+}
+
 .profileDataContainer{
   display: flex;
   flex-direction: row;
@@ -91,6 +131,18 @@
   height: 40px;
   width: 600px;
   border: 3px solid black;
+}
+@media (max-width: 700px){
+  .searchBar{
+    width: min-content;
+  }
+  .searchHeading{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .searchIcon{
+    margin-right: 10px;
+  }
 }
 .searchPhotosGrid{
   display: flex;

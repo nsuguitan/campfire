@@ -1,8 +1,8 @@
 import Postcard from "../components/Postcard/Postcard";
 import Stories from '../components/Stories/Stories';
 import { useState } from "react";
-
 import { useEffect } from "react";
+
 const Newsfeed = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
