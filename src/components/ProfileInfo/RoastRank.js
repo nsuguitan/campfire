@@ -29,7 +29,6 @@ const RoastRank = (props) => {
     };
 
     calcRoastRank();
-    //roastInfo.then(calcRoastRank(roastInfo));
   }, [props.profileUsername]);
 
   return (

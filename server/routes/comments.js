@@ -6,23 +6,31 @@ const dbo = require("../db/conn");
 
 const ObjectId = require("mongodb").ObjectId;
 
-//for getting a list of all comments
-commentsRoutes.route("/comments").get(function (req, res) {
+const COMMENTS_COLLECTION = "comments";
+
+/**
+ * 1. Get a list if all comments
+ * 2. Get metrics for user comments
+ * 3. Get a list of all comments with a given postId
+ * 4. Get one comment by Id
+ * 5. Create a comment object in mongo
+ */
+
+commentsRoutes.route("/comments").get((req, res) => {
   let db_connect = dbo.getDb("comments");
   db_connect
-    .collection("comments")
+    .collection(COMMENTS_COLLECTION)
     .find({})
-    .toArray(function (err, result) {
+    .toArray((err, result) => {
       if (err) throw err;
       res.json(result);
     });
 });
 
-//get metrics for user comments
-commentsRoutes.route("/comments/user/:username").get(function (req, res) {
+commentsRoutes.route("/comments/user/:username").get((req, res) => {
   let db_connect = dbo.getDb("");
   db_connect
-    .collection("comments")
+    .collection(COMMENTS_COLLECTION)
     .aggregate([
       { $match: { commentUsername: req.params.username } },
       {
@@ -33,36 +41,33 @@ commentsRoutes.route("/comments/user/:username").get(function (req, res) {
         },
       },
     ])
-    .toArray(function (err, result) {
+    .toArray((err, result) => {
       if (err) throw err;
       res.json(result);
     });
 });
 
-//for getting a list of all comments with a given postId
-commentsRoutes.route("/comments/post/:postId").get(function (req, res) {
+commentsRoutes.route("/comments/post/:postId").get((req, res) => {
   let db_connect = dbo.getDb();
   let myquery = { postId: ObjectId(req.params.postId) };
   db_connect
-    .collection("comments")
+    .collection(COMMENTS_COLLECTION)
     .find(myquery)
-    .toArray(function (err, result) {
+    .toArray((err, result) => {
       if (err) throw err;
       res.json(result);
     });
 });
 
-//for getting one comment by ID
-commentsRoutes.route("/comments/:id").get(function (req, res) {
+commentsRoutes.route("/comments/:id").get((req, res) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId(req.params.id) };
-  db_connect.collection("comments").findOne(myquery, function (err, result) {
+  db_connect.collection(COMMENTS_COLLECTION).findOne(myquery, (err, result) => {
     if (err) throw err;
     res.json(result);
   });
 });
 
-//for creating a comment document in mongo
 commentsRoutes.route("/comments/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
@@ -71,7 +76,7 @@ commentsRoutes.route("/comments/add").post(function (req, response) {
     commentUsername: req.body.commentUsername,
     commentRating: req.body.commentRating,
   };
-  db_connect.collection("comments").insertOne(myobj, function (err, res) {
+  db_connect.collection(COMMENTS_COLLECTION).insertOne(myobj, (err, res) => {
     if (err) throw err;
     response.json(res);
   });
