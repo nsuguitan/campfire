@@ -17,7 +17,7 @@ postRoutes.route("/posts").get(function (req, res) {
     .toArray(function (err, result) {
       if (err) throw err;
       res.json(result);
-    });
+    })
 });
 
 //for getting one post by ID
