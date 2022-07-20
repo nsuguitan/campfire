@@ -41,9 +41,18 @@
 }
 .imageGridContainer{
   display: flex;
+  flex-direction: space-around;
   flex-wrap: wrap;
-  margin: 17.5px;
-  margin-top: 40px;
+  margin: auto;
+  max-width: 750px;
+}
+@media (max-width: 740px){
+  .imageGridContainer{
+    max-width: 500px;
+  }
+}
+.profileImageButton{
+  margin: auto;
 }
 .singleGridPhoto{
   height: 225px;
