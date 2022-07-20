@@ -1,14 +1,13 @@
 import { useParams } from "react-router-dom";
 import ProfileInfo from "../components/ProfileInfo/ProfileInfo";
 import { useEffect, useState } from "react";
-//import { AuthState } from "../context/auth/AuthContext";
 import { Button, Modal, Box } from "@mui/material";
 import Postcard from "../components/Postcard/Postcard";
+
 const Profile = () => {
   const [profileImagesArray, setProfileImagesArray] = useState([]);
   const [postSelected, setPostSelected] = useState("");
   const [open, setOpen] = useState(false);
-  //const { username } = AuthState();
   let { profileUsername } = useParams();
 
   useEffect(() => {
@@ -67,6 +66,8 @@ const Profile = () => {
       ))
       .reverse();
   };
+
+  
   return (
     <div className="pageContainer">
       <br />
