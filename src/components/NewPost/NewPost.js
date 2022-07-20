@@ -146,7 +146,7 @@ const NewPost = (props) => {
   return (
     <Modal open={props.open} onClose={handleClose}>
       <Box sx={{ ...style }}>
-      <Button variant='text' onClick={handleClose} style={{color: 'black', height: '30px', width: '30px', zIndex: '3', fontSize:'1.7em', marginLeft: '600px'}}>X</Button>
+      <Button variant='text' onClick={handleClose} style={{color: 'black', height: '30px', width: '30px', zIndex: '3', fontSize:'1.7em', marginLeft: '550px'}}>X</Button>
         {imageSelected ? (
           <Cropper
             id="crop-image"

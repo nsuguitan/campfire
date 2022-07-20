@@ -78,6 +78,7 @@ const Profile = () => {
       <div className="imageGridContainer">{displayProfileImages()}</div>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
+          <Button variant='text' onClick={handleClose} style={{color: 'black', height: '30px', width: '30px', zIndex: '3', fontSize:'1.7em', marginLeft: '500px'}}>X</Button>
           <Postcard postId={postSelected} />
         </Box>
       </Modal>
