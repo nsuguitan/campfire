@@ -49,7 +49,7 @@ const Search = () => {
   };
 
   const displaySearchImages = () => {
-    return searchImagesArray
+    return searchImagesArray.sort((a,b) => .5 -Math.random())
       .map((post) => (
           <Button
             onClick={(event) => handleOpen(event, post._id)}
@@ -63,9 +63,7 @@ const Search = () => {
             />
           </Button>
       ))
-      .reverse();
   };
-
 
     return (
       <div className='pageContainer'>
