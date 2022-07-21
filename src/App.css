@@ -157,12 +157,30 @@
 .searchPhotosGrid{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
  
 }
 .searchImage{
   height: 195px;
   width: 195px;
+}
+@media(max-width: 810px){
+  .searchPhotosGrid{
+    max-width: 630px;
+    margin:auto;
+  }
+}
+@media(max-width: 615px){
+  .searchPhotosGrid{
+    max-width: 410px;
+    margin:auto;
+  }
+}
+@media(max-width: 418px){
+  .searchPhotosGrid{
+    max-width: 220px;
+    justify-content: center;
+  }
 }
 .story{
   text-align: center;
