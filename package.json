@@ -36,6 +36,7 @@
     "react-easy-crop": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-scroll-to-top": "^1.0.9",
     "util": "^0.12.4",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
