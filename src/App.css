@@ -91,19 +91,18 @@
 }
 .imageGridContainer{
   display: flex;
-  flex-direction: space-around;
   flex-wrap: wrap;
-  margin: auto;
   max-width: 750px;
+  margin: auto;
 }
 @media (max-width: 740px){
   .imageGridContainer{
     max-width: 500px;
   }
 }
-.profileImageButton{
+/* .profileImageButton{
   margin: auto;
-}
+} */
 .singleGridPhoto{
   height: 225px;
   width: 225px;
@@ -127,7 +126,6 @@
 .searchHeading{
   display: flex;
   justify-content: space-around;
-  position: sticky;
   top: 0px;
   background-color: white;
   height: 100px;
