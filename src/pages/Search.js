@@ -7,6 +7,7 @@ import Postcard from "../components/Postcard/Postcard";
 import searchIcon from '../assets/searchIcon.jpg';
 
 const Search = () => {
+  const [users, setUsers] = useState([]);
   const [searchImagesArray, setSearchImagesArray] = useState([]);
   const [postSelected, setPostSelected] = useState("");
   const [open, setOpen] = useState(false);
@@ -28,6 +29,22 @@ const Search = () => {
     }
     loadSearchImages();
   }, [profileUsername]);
+
+  useEffect(() => {
+    async function getUsers() {
+        const response = await fetch(`http://localhost:5000/users/`);
+        if (!response.ok) {
+            const message = `An error occurred: ${response.statusText}`;
+            window.alert(message);
+            return;
+        }
+        setUsers(await response.json());
+    }
+
+    getUsers();
+    return;
+}, []);
+console.log(users)
 
   const handleOpen = (event, postId) => {
     event.preventDefault();
@@ -74,7 +91,7 @@ const Search = () => {
              <Autocomplete
               disablePortal
               id="combo-box-demo"
-              // options={top100Films}
+              options={users.map((user) => (user.username))}
               sx={{ width: 300 }}
               renderInput={(params) => <TextField {...params} label="Search" />}
               />
