@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "../Avatar/Avatar";
 import IconButton from "@mui/material/IconButton";
-import Button from "@mui/material/Button";
+import { Button, Modal, Box } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Paper } from "@mui/material";
 import { TextField } from "@mui/material";
@@ -21,6 +21,8 @@ const Postcard = (props) => {
   const [postInfo, setPostInfo] = useState({});
   const [postComments, setPostComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [postSelected, setPostSelected] = useState("");
+  const [open, setOpen] = useState(false);
   const { username } = AuthState();
 
   useEffect(() => {
@@ -97,6 +99,28 @@ const Postcard = (props) => {
     return;
   };
 
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 600,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const handleOpen = (event, postId) => {
+    event.preventDefault();
+    setPostSelected(postId);
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
   return (
     <div>
       {isLoading ? (
@@ -154,6 +178,12 @@ const Postcard = (props) => {
             >
               View all {postComments.length} comments
             </Button>
+            <Modal open={open} onClose={handleClose}>
+              <Box sx={style}>
+                <Button variant='text' onClick={handleClose} style={{color: 'black', height: '30px', width: '30px', zIndex: '3', fontSize:'1.7em', marginLeft: '500px'}}>X</Button>
+                <Postcard postId={postSelected} />
+              </Box>
+            </Modal>
           </CardActions>
           <Paper
             sx={{
