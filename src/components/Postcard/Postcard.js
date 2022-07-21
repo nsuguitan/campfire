@@ -15,6 +15,7 @@ import PostComments from "../Comments/PostComments";
 import PostInfo from "../PostInfo/PostInfo";
 import { AuthState } from "../../context/auth/AuthContext";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Postcard = (props) => {
   const [newComment, setNewComment] = useState("");
@@ -22,8 +23,10 @@ const Postcard = (props) => {
   const [postComments, setPostComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [postSelected, setPostSelected] = useState("");
+  const [ imagesArray, setImagesArray] = useState([]);
   const [open, setOpen] = useState(false);
   const { username } = AuthState();
+  let { profileUsername } = useParams();
 
   useEffect(() => {
     if (JSON.stringify(postInfo) !== JSON.stringify({})) {
@@ -120,6 +123,45 @@ const Postcard = (props) => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    async function loadSearchImages() {
+      const response = await fetch(
+        `http://localhost:5000/posts/`
+      );
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      setImagesArray(await response.json());
+    }
+    loadSearchImages();
+  }, [profileUsername]);
+
+  const loadAllCommentsButton = () =>{
+    return imagesArray
+    .map((post) => (
+      <Button
+              className="load-comments-button"
+              onClick={(event) => handleOpen(event, post._id)}
+              key={post._id}
+              size="medium"
+              disableRipple={true}
+              variant="text"
+              style={{
+                backgroundColor: "transparent",
+                textTransform: "none",
+                color: "#BEBEBE",
+              }}
+            >
+              View all comments
+            </Button>
+
+    ))
+  }
+
 
   return (
     <div>
@@ -165,7 +207,7 @@ const Postcard = (props) => {
           <PostInfo postDate={postInfo.postDate} />
           <PostComments postComments={postComments} />
           <CardActions>
-            <Button
+            {/* <Button
               className="load-comments-button"
               size="medium"
               disableRipple={true}
@@ -177,7 +219,8 @@ const Postcard = (props) => {
               }}
             >
               View all {postComments.length} comments
-            </Button>
+            </Button> */}
+            <div>{loadAllCommentsButton()}</div>
             <Modal open={open} onClose={handleClose}>
               <Box sx={style}>
                 <Button variant='text' onClick={handleClose} style={{color: 'black', height: '30px', width: '30px', zIndex: '3', fontSize:'1.7em', marginLeft: '500px'}}>X</Button>
