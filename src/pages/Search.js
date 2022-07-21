@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button, Modal, Box } from "@mui/material";
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 import Postcard from "../components/Postcard/Postcard";
 import searchIcon from '../assets/searchIcon.jpg';
 
@@ -69,7 +71,13 @@ const Search = () => {
       <div className='pageContainer'>
         <div className='searchHeading'>
           <img src={searchIcon} className='searchIcon'/>
-          <input className='sarchBar'></input>
+             <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              // options={top100Films}
+              sx={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} label="Search" />}
+              />
         </div>
         <div className='searchPhotosGrid'>{displaySearchImages()}</div>
         <Modal open={open} onClose={handleClose}>

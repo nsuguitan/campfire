@@ -100,9 +100,6 @@
     max-width: 500px;
   }
 }
-/* .profileImageButton{
-  margin: auto;
-} */
 .singleGridPhoto{
   height: 225px;
   width: 225px;
@@ -125,7 +122,6 @@
 }
 .searchHeading{
   display: flex;
-  justify-content: space-around;
   top: 0px;
   background-color: white;
   height: 100px;
@@ -134,6 +130,7 @@
 .searchIcon{
   height: 40px;
   width: auto;
+  padding-right: 5px;
 }
 .sarchBar{
   height: 40px;
@@ -146,9 +143,6 @@
   }
   .searchHeading{
     margin-left: 10px;
-    margin-right: 10px;
-  }
-  .searchIcon{
     margin-right: 10px;
   }
 }
