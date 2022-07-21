@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
   useEffect(() => {
     const getUserInfo = async () => {
       const response = await fetch(
-        `http://localhost:5000/users/${props.profileUsername}`
+        process.env.REACT_APP_EXPRESS_URL + `/users/${props.profileUsername}`
       );
 
       if (!response.ok) {

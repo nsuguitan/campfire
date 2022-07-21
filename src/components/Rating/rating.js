@@ -28,7 +28,7 @@ const Rater = ({ initialRating, commentId }) => {
         commentRating: rating,
         commentId: commentId,
       };
-      await fetch("http://localhost:5000/ratings/update", {
+      await fetch(process.env.REACT_APP_EXPRESS_URL + `/ratings/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

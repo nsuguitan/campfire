@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import * as AWS from "aws-sdk";
 import "./SignUp.css";
 import AuthInput from "../AuthInput/AuthInput";
-import Image1 from '../../assets/addImage.jpg';
+import Image1 from "../../assets/addImage.jpg";
 
 const SignUpComp = () => {
   const [open, setOpen] = useState(false);
@@ -118,7 +118,7 @@ const SignUpComp = () => {
       followers: [],
       following: [],
     };
-    await fetch("http://localhost:5000/users/add", {
+    await fetch(`${process.env.REACT_APP_EXPRESS_URL}/users/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -178,7 +178,10 @@ const SignUpComp = () => {
             value={textFields.password}
             onChange={handleTextChange}
           />
-          <p id='passwordReq'>**your password must contain at least 6 characters, an uppercase, a lowercase, a number, and a special character**</p>
+          <p id="passwordReq">
+            **your password must contain at least 6 characters, an uppercase, a
+            lowercase, a number, and a special character**
+          </p>
           <AuthInput
             name="fullname"
             label="Full Name"

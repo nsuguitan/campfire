@@ -1,5 +1,5 @@
 import Postcard from "../components/Postcard/Postcard";
-import Stories from '../components/Stories/Stories';
+import Stories from "../components/Stories/Stories";
 import { useState } from "react";
 
 import { useEffect } from "react";
@@ -7,7 +7,9 @@ const Newsfeed = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     async function getPosts() {
-      const response = await fetch(`http://localhost:5000/posts/`);
+      const response = await fetch(
+        process.env.REACT_APP_EXPRESS_URL + `/posts/`
+      );
 
       if (!response.ok) {
         const message = `An error occurred: ${response.statusText}`;
@@ -20,8 +22,6 @@ const Newsfeed = () => {
     getPosts();
     return;
   }, []);
-
-
 
   return (
     <div className="pageContainer">

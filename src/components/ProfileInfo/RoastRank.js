@@ -5,7 +5,8 @@ const RoastRank = (props) => {
   useEffect(() => {
     const getRoastInfo = async () => {
       const response = await fetch(
-        `http://localhost:5000/comments/user/${props.profileUsername}`
+        process.env.REACT_APP_EXPRESS_URL +
+          `/comments/user/${props.profileUsername}`
       );
       return await response.json();
     };

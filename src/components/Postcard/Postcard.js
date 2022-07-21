@@ -33,7 +33,7 @@ const Postcard = (props) => {
     //fetch comment that are related to the post in question
     async function getComments() {
       const response = await fetch(
-        `http://localhost:5000/comments/post/${props.postId}`
+        process.env.REACT_APP_EXPRESS_URL + `/comments/post/${props.postId}`
       );
 
       if (!response.ok) {
@@ -50,7 +50,7 @@ const Postcard = (props) => {
   useEffect(() => {
     async function getPostById() {
       const response = await fetch(
-        `http://localhost:5000/posts/${props.postId}`
+        process.env.REACT_APP_EXPRESS_URL + `/posts/${props.postId}`
       );
 
       if (!response.ok) {
@@ -80,7 +80,7 @@ const Postcard = (props) => {
         commentUsername: username,
         commentRating: 0,
       };
-      await fetch("http://localhost:5000/comments/add", {
+      await fetch(process.env.REACT_APP_EXPRESS_URL + `/comments/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
