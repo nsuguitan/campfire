@@ -51,7 +51,6 @@ const Profile = () => {
   const displayProfileImages = () => {
     return profileImagesArray
       .map((post) => (
-        <div className="profileImageButton">
           <Button
             onClick={(event) => handleOpen(event, post._id)}
             key={post._id}
@@ -62,7 +61,6 @@ const Profile = () => {
               className="singleGridPhoto"
             />
           </Button>
-        </div>
       ))
       .reverse();
   };
