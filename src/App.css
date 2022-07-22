@@ -91,6 +91,7 @@
 }
 .imageGridContainer{
   display: flex;
+  justify-content: left;
   flex-wrap: wrap;
   max-width: 750px;
   margin: auto;
@@ -149,7 +150,7 @@
 .searchPhotosGrid{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: left;
  
 }
 .searchImage{
