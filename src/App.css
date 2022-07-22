@@ -183,12 +183,14 @@
 }
 .story{
   text-align: center;
+  margin: 15px;
 }
 .storiesContainer{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: left;
   margin-top: 40px;
   margin-bottom: 40px;
+  overflow: scroll;
 }
 .feedDisplay{
   display: flex;
