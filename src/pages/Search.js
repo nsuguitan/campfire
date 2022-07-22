@@ -1,62 +1,114 @@
-import { Link } from "react-router-dom";
-import searchImage1 from '../assets/search1.jpg';
-import searchImage2 from '../assets/search2.jpg';
-import searchImage3 from '../assets/search3.jpg';
-import searchImage4 from '../assets/search4.jpg';
-import searchImage5 from '../assets/search5.jpg';
-import searchImage6 from '../assets/search6.jpg';
-import searchImage7 from '../assets/search7.jpg';
-import searchImage8 from '../assets/search8.jpg';
-import searchImage9 from '../assets/search9.jpg';
-import searchImage10 from '../assets/search10.jpg';
-import searchImage11 from '../assets/search11.jpg';
-import searchImage12 from '../assets/search12.jpg';
-import searchImage13 from '../assets/search13.jpg';
-import searchImage14 from '../assets/search14.jpg';
-import searchImage15 from '../assets/search15.jpg';
-import searchImage16 from '../assets/search16.jpg';
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Button, Modal, Box } from "@mui/material";
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import Postcard from "../components/Postcard/Postcard";
 import searchIcon from '../assets/searchIcon.jpg';
 
-const searchImages = [
-  {id: 1, image: searchImage1},
-  {id: 2, image: searchImage2},
-  {id: 3, image: searchImage3},
-  {id: 4, image: searchImage4},
-  {id: 5, image: searchImage5},
-  {id: 6, image: searchImage6},
-  {id: 7, image: searchImage7},
-  {id: 8, image: searchImage8},
-  {id: 9, image: searchImage9},
-  {id: 10, image: searchImage10},
-  {id: 11, image: searchImage11},
-  {id: 12, image: searchImage12},
-  {id: 13, image: searchImage13},
-  {id: 14, image: searchImage14},
-  {id: 15, image: searchImage15},
-  {id: 16, image: searchImage16},
-]
-
-const displaySearchImages = () =>{
-  return (
-    searchImages.map(image => (
-      <div className='searchImageButton' key={image.id}>
-        <Link to='/Postcard'><img src={image.image} className='searchImage'/></Link>
-      </div>
-    ))
-  )
-}
-
 const Search = () => {
+  const [users, setUsers] = useState([]);
+  const [searchImagesArray, setSearchImagesArray] = useState([]);
+  const [postSelected, setPostSelected] = useState("");
+  const [open, setOpen] = useState(false);
+  let { profileUsername } = useParams();
+
+  useEffect(() => {
+    async function loadSearchImages() {
+      const response = await fetch(
+        `http://localhost:5000/posts/`
+      );
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+
+      setSearchImagesArray(await response.json());
+    }
+    loadSearchImages();
+  }, [profileUsername]);
+
+  useEffect(() => {
+    async function getUsers() {
+        const response = await fetch(`http://localhost:5000/users/`);
+        if (!response.ok) {
+            const message = `An error occurred: ${response.statusText}`;
+            window.alert(message);
+            return;
+        }
+        setUsers(await response.json());
+    }
+
+    getUsers();
+    return;
+}, []);
+console.log(users)
+
+  const handleOpen = (event, postId) => {
+    event.preventDefault();
+    setPostSelected(postId);
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 600,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const displaySearchImages = () => {
+    return searchImagesArray.sort((a,b) => .5 -Math.random())
+      .map((post) => (
+          <Button
+            onClick={(event) => handleOpen(event, post._id)}
+            key={post._id}
+            style={{padding: '2px'}}
+          >
+            <img
+              src={post.photoURL}
+              alt="http://placecorgi.com/250"
+              className="searchImage"
+            />
+          </Button>
+      ))
+  };
+
     return (
       <div className='pageContainer'>
         <div className='searchHeading'>
           <img src={searchIcon} className='searchIcon'/>
-          <input className='sarchBar'></input>
+             <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={users.map((user) => (user.username))}
+              sx={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} label="Search" />}
+              />
         </div>
-        <div className='searchPhotosGrid'>
-          {displaySearchImages()}
-        </div>
+        <div className='searchPhotosGrid'>{displaySearchImages()}</div>
+        <Modal open={open} onClose={handleClose}>
+        <Box sx={style}>
+          <Button variant='text' onClick={handleClose} style={{color: 'black', height: '30px', width: '30px', zIndex: '3', fontSize:'1.7em', marginLeft: '500px'}}>X</Button>
+          <Postcard postId={postSelected} />
+        </Box>
+      </Modal>
       </div>
     );
   };
   export default Search;
+
+
+
+
+  

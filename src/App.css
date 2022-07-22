@@ -32,6 +32,56 @@
   justify-content: space-between;
   margin: 0px 80px 0px 40px;
 }
+@media (max-width: 600px){
+  .topProfileContainer{
+    margin: 0px 40px 0px 40px;
+    justify-content: center;
+  }
+  .bioContainer{
+    min-width: fit-content;
+    margin-right: 40px;
+    margin-left: 0px;
+    
+  }
+  .profileInfoContainer{
+    font-size: .7em;
+  }
+  .profileStatsContainer{
+    margin: 0px 0px 0px 0px;
+  }
+  .profileInfoContainer{
+    margin: auto;
+  }
+  .fullCard{
+    width: 350px;
+  }
+  .singleCardMedia{
+    width:350px;
+    height: 350px;
+  }
+}
+
+@media(max-width: 376px){
+  .fullCard{
+    width: 300px;
+  }
+  .singleCardMedia{
+    width:300px;
+    height: 300px;
+  }
+}
+
+@media(max-width: 500px){
+  .profileDataContainer{
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 100px;
+    margin: auto;
+  }
+  
+}
+
 .profileDataContainer{
   display: flex;
   flex-direction: row;
@@ -41,18 +91,14 @@
 }
 .imageGridContainer{
   display: flex;
-  flex-direction: space-around;
   flex-wrap: wrap;
-  margin: auto;
   max-width: 750px;
+  margin: auto;
 }
 @media (max-width: 740px){
   .imageGridContainer{
     max-width: 500px;
   }
-}
-.profileImageButton{
-  margin: auto;
 }
 .singleGridPhoto{
   height: 225px;
@@ -76,8 +122,6 @@
 }
 .searchHeading{
   display: flex;
-  justify-content: space-around;
-  position: sticky;
   top: 0px;
   background-color: white;
   height: 100px;
@@ -86,25 +130,53 @@
 .searchIcon{
   height: 40px;
   width: auto;
+  padding-right: 10px;
 }
 .sarchBar{
   height: 40px;
   width: 600px;
   border: 3px solid black;
 }
+@media (max-width: 700px){
+  .searchBar{
+    width: min-content;
+  }
+  .searchHeading{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
 .searchPhotosGrid{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
+ 
 }
 .searchImage{
   height: 195px;
   width: 195px;
 }
+@media(max-width: 810px){
+  .searchPhotosGrid{
+    max-width: 630px;
+    margin:auto;
+  }
+}
+@media(max-width: 615px){
+  .searchPhotosGrid{
+    max-width: 410px;
+    margin:auto;
+  }
+}
+@media(max-width: 418px){
+  .searchPhotosGrid{
+    max-width: 220px;
+    justify-content: center;
+  }
+}
 .story{
   text-align: center;
 }
-
 .storiesContainer{
   display: flex;
   justify-content: space-evenly;
