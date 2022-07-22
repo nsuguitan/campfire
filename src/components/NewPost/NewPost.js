@@ -76,7 +76,9 @@ const NewPost = (props) => {
   };
 
   const getUserInfo = async () => {
-    const response = await fetch(`http://localhost:5000/users/${username}`);
+    const response = await fetch(
+      process.env.REACT_APP_EXPRESS_URL + `/users/${username}`
+    );
 
     if (!response.ok) {
       const message = `An error occurred: ${response.statusText}`;
@@ -121,13 +123,16 @@ const NewPost = (props) => {
       photoURL: resourceURL,
     };
     handleClose();
-    await fetch("http://localhost:5000/posts/add/userId/foobar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loadPost),
-    }).catch((error) => {
+    await fetch(
+      process.env.REACT_APP_EXPRESS_URL + `/posts/add/userId/foobar`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loadPost),
+      }
+    ).catch((error) => {
       window.alert(error);
       return;
     });

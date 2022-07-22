@@ -13,7 +13,7 @@ const Profile = () => {
   useEffect(() => {
     async function loadProfileImages() {
       const response = await fetch(
-        `http://localhost:5000/posts/user/${profileUsername}`
+        process.env.REACT_APP_EXPRESS_URL + `/posts/user/${profileUsername}`
       );
 
       if (!response.ok) {

@@ -6,43 +6,44 @@ import Avatar from "../Avatar/Avatar";
 // import { Carousel } from '@trendyol-js/react-carousel';
 
 const Stories = () => {
-    const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-        async function getUsers() {
-            const response = await fetch(`http://localhost:5000/users/`);
-            if (!response.ok) {
-                const message = `An error occurred: ${response.statusText}`;
-                window.alert(message);
-                return;
-            }
-            setUsers(await response.json());
-        }
-
-        getUsers();
+  useEffect(() => {
+    async function getUsers() {
+      const response = await fetch(
+        process.env.REACT_APP_EXPRESS_URL + `/users/`
+      );
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
         return;
-    }, []);
+      }
+      setUsers(await response.json());
+    }
 
-    return (
-        <div className="storiesContainer">
-            {/* <Carousel show={3.5} slide={3} swiping={true}> */}
-            {users.map((user) => (
-                <div key={user._id} className="story">
-                    <Link to={`/Profile/${user.username}`} >
-                        <Avatar
-                            borderRadius="50%"
-                            width="75px"
-                            height="75px"
-                            profilepic={user.profilePicURL}
-                        />
-                    </Link>
-                    <p>{user.username}</p>
-                </div>
-            ))}
-            {/* </Carousel> */}
-        </div> 
-    );
+    getUsers();
+    return;
+  }, []);
+
+  return (
+    <div className="storiesContainer">
+      {/* <Carousel show={3.5} slide={3} swiping={true}> */}
+      {users.map((user) => (
+        <div key={user._id} className="story">
+          <Link to={`/Profile/${user.username}`}>
+            <Avatar
+              borderRadius="50%"
+              height="75px"
+              width="75px"
+              profilepic={user.profilePicURL}
+            />
+          </Link>
+          <p>{user.username}</p>
+        </div>
+      ))}
+      {/* </Carousel> */}
+    </div>
+  );
 };
 
-export default Stories
-
+export default Stories;
