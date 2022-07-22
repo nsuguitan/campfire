@@ -1,6 +1,5 @@
-import { createContext, useReducer, useContext, useEffect } from "react";
+import { createContext, useReducer, useContext } from "react";
 import "cross-fetch/polyfill";
-import AmazonCognitoIdentity from "amazon-cognito-identity-js";
 import {
   CognitoUser,
   AuthenticationDetails,

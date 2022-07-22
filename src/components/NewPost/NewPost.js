@@ -1,6 +1,5 @@
-import { Modal, Box, Button, IconButton, CloseIcon } from "@mui/material";
-import { useState, useCallback, useEffect } from "react";
-import CropImage from "./CropImage";
+import { Modal, Box, Button } from "@mui/material";
+import { useState, useCallback } from "react";
 import "./NewPost.css";
 import Cropper from "react-easy-crop";
 import { getCroppedImage } from "./CropImage";
