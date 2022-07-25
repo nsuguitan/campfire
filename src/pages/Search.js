@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button, Modal, Box } from "@mui/material";
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 import Postcard from "../components/Postcard/Postcard";
-import searchIcon from '../assets/searchIcon.jpg';
+import searchIcon from "../assets/searchIcon.jpg";
 
 const Search = () => {
   const [users, setUsers] = useState([]);
@@ -16,7 +16,7 @@ const Search = () => {
   useEffect(() => {
     async function loadSearchImages() {
       const response = await fetch(
-        `http://localhost:5000/posts/`
+        process.env.REACT_APP_EXPRESS_URL + `/posts/`
       );
 
       if (!response.ok) {
@@ -32,19 +32,21 @@ const Search = () => {
 
   useEffect(() => {
     async function getUsers() {
-        const response = await fetch(`http://localhost:5000/users/`);
-        if (!response.ok) {
-            const message = `An error occurred: ${response.statusText}`;
-            window.alert(message);
-            return;
-        }
-        setUsers(await response.json());
+      const response = await fetch(
+        process.env.REACT_APP_EXPRESS_URL + `/users/`
+      );
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+      setUsers(await response.json());
     }
 
     getUsers();
     return;
-}, []);
-console.log(users)
+  }, []);
+  console.log(users);
 
   const handleOpen = (event, postId) => {
     event.preventDefault();
@@ -68,47 +70,56 @@ console.log(users)
   };
 
   const displaySearchImages = () => {
-    return searchImagesArray.sort((a,b) => .5 -Math.random())
+    return searchImagesArray
+      .sort((a, b) => 0.5 - Math.random())
       .map((post) => (
-          <Button
-            onClick={(event) => handleOpen(event, post._id)}
-            key={post._id}
-            style={{padding: '2px'}}
-          >
-            <img
-              src={post.photoURL}
-              alt="http://placecorgi.com/250"
-              className="searchImage"
-            />
-          </Button>
-      ))
+        <Button
+          onClick={(event) => handleOpen(event, post._id)}
+          key={post._id}
+          style={{ padding: "2px" }}
+        >
+          <img
+            src={post.photoURL}
+            alt="http://placecorgi.com/250"
+            className="searchImage"
+          />
+        </Button>
+      ));
   };
 
-    return (
-      <div className='pageContainer'>
-        <div className='searchHeading'>
-          <img src={searchIcon} className='searchIcon'/>
-             <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={users.map((user) => (user.username))}
-              sx={{ width: 300 }}
-              renderInput={(params) => <TextField {...params} label="Search" />}
-              />
-        </div>
-        <div className='searchPhotosGrid'>{displaySearchImages()}</div>
-        <Modal open={open} onClose={handleClose}>
+  return (
+    <div className="pageContainer">
+      <div className="searchHeading">
+        <img src={searchIcon} className="searchIcon" />
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={users.map((user) => user.username)}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="Search" />}
+        />
+      </div>
+      <div className="searchPhotosGrid">{displaySearchImages()}</div>
+      <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <Button variant='text' onClick={handleClose} style={{color: 'black', height: '30px', width: '30px', zIndex: '3', fontSize:'1.7em', marginLeft: '500px'}}>X</Button>
+          <Button
+            variant="text"
+            onClick={handleClose}
+            style={{
+              color: "black",
+              height: "30px",
+              width: "30px",
+              zIndex: "3",
+              fontSize: "1.7em",
+              marginLeft: "500px",
+            }}
+          >
+            X
+          </Button>
           <Postcard postId={postSelected} />
         </Box>
       </Modal>
-      </div>
-    );
-  };
-  export default Search;
-
-
-
-
-  
+    </div>
+  );
+};
+export default Search;
