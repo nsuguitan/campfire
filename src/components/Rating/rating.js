@@ -43,9 +43,6 @@ const Rater = ({ initialRating, commentId }) => {
       updateRating();
       triggered.current = false;
     }
-    // else {
-    //   isMounted.current = true;
-    // }
   }, [rating]);
 
   const handleClick = (e, changeVal, popupState) => {
@@ -70,6 +67,7 @@ const Rater = ({ initialRating, commentId }) => {
             </IconButton>
             <Menu {...bindMenu(popupState)}>
               <MenuItem
+                style={{backgroundColor: 'var(--campfire-dark-gray'}}
                 onClick={(e) => {
                   handleClick(e, -2, popupState);
                 }}
@@ -77,6 +75,7 @@ const Rater = ({ initialRating, commentId }) => {
                 Fluffernutter
               </MenuItem>
               <MenuItem
+                style={{backgroundColor: 'var(--campfire-dark-gray'}}
                 onClick={(e) => {
                   handleClick(e, -1, popupState);
                 }}
@@ -84,6 +83,7 @@ const Rater = ({ initialRating, commentId }) => {
                 Uncooked
               </MenuItem>
               <MenuItem
+                style={{backgroundColor: 'var(--campfire-dark-gray'}}
                 onClick={(e) => {
                   handleClick(e, 1, popupState);
                 }}
@@ -91,6 +91,7 @@ const Rater = ({ initialRating, commentId }) => {
                 Toasted
               </MenuItem>
               <MenuItem
+                style={{backgroundColor: 'var(--campfire-dark-gray'}}
                 onClick={(e) => {
                   handleClick(e, 2, popupState);
                 }}
@@ -98,6 +99,7 @@ const Rater = ({ initialRating, commentId }) => {
                 Roasted
               </MenuItem>
               <MenuItem
+                style={{backgroundColor: 'var(--campfire-dark-gray'}}
                 onClick={(e) => {
                   handleClick(e, 3, popupState);
                 }}

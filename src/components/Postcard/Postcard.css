@@ -10,7 +10,7 @@
 }
 
 #postTime{
-    color: va;
+    color: var(--campfire-gray);
     margin-left: 10px ;
 }
 #rating{
