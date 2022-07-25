@@ -62,7 +62,7 @@ const SignInComp = () => {
             sx={{
               backgroundColor: "transparent",
               textTransform: "none",
-              color: "#BEBEBE",
+              color: 'var(--campfire-orange)}'
             }}
           >
             Forgot Password?
