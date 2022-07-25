@@ -235,7 +235,19 @@ animation:move-twink-back 200s linear infinite;
   justify-content: left;
   margin-top: 40px;
   margin-bottom: 40px;
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
+ 
+}
+::-webkit-scrollbar {
+  height: 10px;                
+  border: 1px solid var(--campfire-gray);
+  background-color: var(--campfire-black);
+  scrollbar-x-position: top;
+}
+::-webkit-scrollbar-thumb:horizontal{
+  background: var(--campfire-gray);
+  border-radius: 10px;
 }
 .feedDisplay{
   display: flex;
@@ -267,5 +279,6 @@ li{
   list-style-type: none;
 }
 .postcardGlow{
-box-shadow: var(--box-shadow);
+  /* box-shadow: var(--box-shadow); */
+  margin-bottom: 40px;
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import Avatar from "../Avatar/Avatar";
-// import { Carousel } from '@trendyol-js/react-carousel';
+import { Carousel } from 'react-bootstrap';
 
 const Stories = () => {
   const [users, setUsers] = useState([]);
@@ -30,6 +30,7 @@ const Stories = () => {
       {/* <Carousel show={3.5} slide={3} swiping={true}> */}
       {users.map((user) => (
         <div key={user._id} className="story">
+   
           <Link to={`/Profile/${user.username}`}>
             <Avatar
               borderRadius="50%"

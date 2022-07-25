@@ -65,7 +65,7 @@ const Rater = ({ initialRating, commentId }) => {
             >
               <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
             </IconButton>
-            <Menu {...bindMenu(popupState)} >
+            <Menu {...bindMenu(popupState)}  >
               <MenuItem
                 style={{backgroundColor: 'var(--campfire-dark-gray'}}
                 onClick={(e) => {
