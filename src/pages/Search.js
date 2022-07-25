@@ -64,8 +64,6 @@ const Search = () => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 600,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
     boxShadow: 24,
     p: 4,
   };
@@ -107,7 +105,7 @@ const Search = () => {
             variant="text"
             onClick={handleClose}
             style={{
-              color: "black",
+              color: "var(--campfire-white)",
               height: "30px",
               width: "30px",
               zIndex: "3",
