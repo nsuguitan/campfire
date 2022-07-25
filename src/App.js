@@ -42,9 +42,6 @@ const App = () => {
               <Route
                 exact
                 path="/Profile/:profileUsername"
-                render={(props) => (
-                  <Profile key={props.location.key} {...props} />
-                )}
                 element={<Profile />}
               />
               <Route exact path="/Search" element={<Search />} />
