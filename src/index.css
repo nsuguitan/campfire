@@ -4,5 +4,5 @@
     --campfire-black: #201f21;
     --campfire-white: #dedede;
     --campfire-orange: #d1663e;
-    --box-shadow: 0 4px 6px 4px rgba(248, 105, 9, 0.2);
+    --box-shadow: 4px 0 30px 2px var(--campfire-orange);
   }

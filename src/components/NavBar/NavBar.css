@@ -1,6 +1,6 @@
 .navContainer{
-    background-color: white;
-    border-top: 1px solid rgb(187, 186, 186);
+    background-color: var(--campfire-black);
+    border-top: 1px solid var(--campfire-dark-gray);
     display: flex;
     justify-content: space-evenly;
     align-items: center;
