@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import blueFlame from "../../assets/blueFlame.jpg";
+import blueFlame from "../../assets/verified.jpg";
 import Avatar from "../Avatar/Avatar";
 import RoastRank from "./RoastRank";
 
@@ -76,7 +76,7 @@ const ProfileInfo = (props) => {
         <div className="fullName">
           <h2>{userInfo.name}</h2>
           {verified ? (
-            <img src={blueFlame} alt="" className="flame" />
+            <img src={blueFlame} alt="" className="flame"/>
           ) : (
             <React.Fragment />
           )}

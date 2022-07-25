@@ -104,11 +104,10 @@ animation:move-twink-back 200s linear infinite;
 }
 .fullName{
   display: flex;
-  align-items: baseline;
-  margin-bottom: 5px;;
+  margin-bottom: 5px;
 }
 .flame{
-  width: 17px;
+  width: 40px;
   height: auto;
   padding-left: 7px;
 }
@@ -243,7 +242,6 @@ animation:move-twink-back 200s linear infinite;
   height: 10px;                
   border: 1px solid var(--campfire-gray);
   background-color: var(--campfire-black);
-  scrollbar-x-position: top;
 }
 ::-webkit-scrollbar-thumb:horizontal{
   background: var(--campfire-gray);
