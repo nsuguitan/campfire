@@ -115,7 +115,8 @@ animation:move-twink-back 200s linear infinite;
 .searchHeading{
   display: flex;
   top: 0px;
-  background-color: white;
+  background-color: var(--campfire-dark-gray);
+  color: var(--campfire-white);
   height: 100px;
   align-items: center;
 }

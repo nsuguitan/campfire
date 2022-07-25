@@ -105,7 +105,6 @@ const Postcard = (props) => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 600,
-    bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
@@ -165,7 +164,7 @@ const Postcard = (props) => {
                 to={`/Profile/${postInfo.author.username}`}
                 style={{
                   textDecoration: "none",
-                  color: "black",
+                  color: "var(--campfire-orange)",
                   fontWeight: "bold",
                   fontSize: "17.5px",
                 }}
@@ -173,6 +172,7 @@ const Postcard = (props) => {
                 {postInfo.author.username}
               </Link>
             }
+            style={{backgroundColor: 'var(--campfire-dark-gray)'}}
           />
           <CardMedia
             component="img"
@@ -187,7 +187,7 @@ const Postcard = (props) => {
             <div>{loadAllCommentsButton()}</div>
             <Modal open={open} onClose={handleClose}>
               <Box sx={style}>
-                <Button variant='text' onClick={handleClose} style={{ color: 'black', height: '30px', width: '30px', zIndex: '3', fontSize: '1.7em', marginLeft: '500px' }}>X</Button>
+                <Button variant='text' onClick={handleClose} style={{ color: 'var(--campfire-white)', height: '30px', width: '30px', zIndex: '3', fontSize: '1.7em', marginLeft: '500px' }}>X</Button>
                 <Postcard postId={postSelected} />
               </Box>
             </Modal>
@@ -209,7 +209,7 @@ const Postcard = (props) => {
               onChange={handleCommentInput}
               value={newComment}
             />
-            <Button onClick={postComment}>Post</Button>
+            <Button onClick={postComment} style={{color: 'var(--campfire-orange)'}}>Post</Button>
           </Paper>
         </Card>
       )}

@@ -10,7 +10,7 @@
 }
 
 #postTime{
-    color: #868686;
+    color: va;
     margin-left: 10px ;
 }
 #rating{
@@ -18,4 +18,5 @@
 }
 .fullCard{
     margin: auto;
+    background-color: var(--campfire-dark-gray);
 }
