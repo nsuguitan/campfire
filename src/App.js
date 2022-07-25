@@ -1,6 +1,12 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { useLayoutEffect } from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import { useLayoutEffect } from "react";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
@@ -12,36 +18,40 @@ import AuthContext from "./context/auth/AuthContext";
 import CssBaseline from "@mui/material/CssBaseline";
 import PrivateRoute from "./routing/PrivateRoute";
 
-const Wrapper = ({children}) => {
+const Wrapper = ({ children }) => {
   const location = useLocation();
   useLayoutEffect(() => {
     document.documentElement.scrollTo(0, 0);
   }, [location.pathname]);
-  return children
-} 
+  return children;
+};
 
 const App = () => {
   return (
     <AuthContext>
       <CssBaseline />
       <BrowserRouter>
-      <Wrapper>
-        <Routes>
-          <Route exact path="/" element={<SignIn />} />
-          <Route exact path="/SignIn" element={<SignIn />} />
-          <Route exact path="/SignUp" element={<SignUp />} />
-          <Route element={<PrivateRoute />}>
-            <Route exact path="/Newsfeed" element={<Newsfeed />} />
-            <Route
-              exact
-              path="/Profile/:profileUsername"
-              element={<Profile />}
-            />
-            <Route exact path="/Search" element={<Search />} />
-            <Route exact path="/Postcard" element={<Postcard />} />
-          </Route>
-        </Routes>
-        <NavBar />
+        <Wrapper>
+          <Routes>
+            <Route exact path="/" element={<SignIn />} />
+            <Route exact path="/SignIn" element={<SignIn />} />
+            <Route exact path="/SignUp" element={<SignUp />} />
+            <Route element={<PrivateRoute />}>
+              <Route exact path="/Loading" element={<div></div>} />
+              <Route exact path="/Newsfeed" element={<Newsfeed />} />
+              <Route
+                exact
+                path="/Profile/:profileUsername"
+                render={(props) => (
+                  <Profile key={props.location.key} {...props} />
+                )}
+                element={<Profile />}
+              />
+              <Route exact path="/Search" element={<Search />} />
+              <Route exact path="/Postcard" element={<Postcard />} />
+            </Route>
+          </Routes>
+          <NavBar />
         </Wrapper>
       </BrowserRouter>
     </AuthContext>

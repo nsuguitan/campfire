@@ -7,6 +7,7 @@ import { getCroppedImage } from "./CropImage";
 import * as AWS from "aws-sdk";
 import { AuthState } from "../../context/auth/AuthContext";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate, useLocation } from "react-router-dom";
 
 //load image to cropper
 //https://codesandbox.io/s/react-easy-crop-custom-image-demo-y09komm059?file=/src/index.js:3951-4013
@@ -18,6 +19,8 @@ const NewPost = (props) => {
   const [imageSelected, setImageSelected] = useState(false);
   const [imageSrc, setImageSrc] = useState(null);
   const [postImage, setPostImage] = useState(null);
+  let navigate = useNavigate();
+  const location = useLocation();
 
   const { username } = AuthState();
 
@@ -69,7 +72,15 @@ const NewPost = (props) => {
             new File([blobFile], "test-image", { type: "image/jpeg" })
         );
       let filename = uuidv4(); // uniqueFilename();
-      await uploadFilesToS3(".jpeg", file, filename);
+
+      await uploadFilesToS3(".jpeg", file, filename).then(() => {
+        console.log("Trigged");
+        let redirect = location.pathname;
+        navigate("/Loading");
+        setTimeout(() => {
+          navigate(redirect);
+        }, 100);
+      });
     } catch (e) {
       console.error(e);
     }
@@ -106,35 +117,51 @@ const NewPost = (props) => {
           let resourceURL =
             process.env.REACT_APP_AWS_S3_BUCKET_URL + fileName + extension;
           const userInfo = await getUserInfo();
-          await uploadToMongo(resourceURL, userInfo.profilePicURL);
+          await uploadToMongo(resourceURL, userInfo.profilePicURL)
+            .then(() => {
+              resolve("success");
+            })
+            .catch((error) => {
+              window.alert(error);
+              reject("error");
+              return;
+            });
         }
         if (err) {
+          reject(err);
         }
       });
     });
   };
 
   const uploadToMongo = async (resourceURL, profilePicURL) => {
-    let loadPost = {
-      author: {
-        username,
-        profilePicURL: profilePicURL,
-      },
-      photoURL: resourceURL,
-    };
-    handleClose();
-    await fetch(
-      process.env.REACT_APP_EXPRESS_URL + `/posts/add/userId/foobar`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    return new Promise(async (resolve, reject) => {
+      let loadPost = {
+        author: {
+          username,
+          profilePicURL: profilePicURL,
         },
-        body: JSON.stringify(loadPost),
-      }
-    ).catch((error) => {
-      window.alert(error);
-      return;
+        photoURL: resourceURL,
+      };
+      handleClose();
+      await fetch(
+        process.env.REACT_APP_EXPRESS_URL + `/posts/add/userId/foobar`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loadPost),
+        }
+      )
+        .then((response) => {
+          resolve("success");
+        })
+        .catch((error) => {
+          window.alert(error);
+          reject("error");
+          return;
+        });
     });
   };
 
@@ -150,7 +177,20 @@ const NewPost = (props) => {
   return (
     <Modal open={props.open} onClose={handleClose}>
       <Box sx={{ ...style }}>
-      <Button variant='text' onClick={handleClose} style={{color: 'black', height: '30px', width: '30px', zIndex: '3', fontSize:'1.7em', marginLeft: '550px'}}>X</Button>
+        <Button
+          variant="text"
+          onClick={handleClose}
+          style={{
+            color: "black",
+            height: "30px",
+            width: "30px",
+            zIndex: "3",
+            fontSize: "1.7em",
+            marginLeft: "550px",
+          }}
+        >
+          X
+        </Button>
         {imageSelected ? (
           <Cropper
             id="crop-image"

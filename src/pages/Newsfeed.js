@@ -6,7 +6,6 @@ import { useEffect } from "react";
 const Newsfeed = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    console.log("For testing deploy to s3");
     async function getPosts() {
       const response = await fetch(
         process.env.REACT_APP_EXPRESS_URL + `/posts/`

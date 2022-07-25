@@ -51,21 +51,17 @@ const Profile = () => {
   const displayProfileImages = () => {
     return profileImagesArray
       .map((post) => (
-          <Button
-            onClick={(event) => handleOpen(event, post._id)}
-            key={post._id}
-          >
-            <img
-              src={post.photoURL}
-              alt="http://placecorgi.com/250"
-              className="singleGridPhoto"
-            />
-          </Button>
+        <Button onClick={(event) => handleOpen(event, post._id)} key={post._id}>
+          <img
+            src={post.photoURL}
+            alt="http://placecorgi.com/250"
+            className="singleGridPhoto"
+          />
+        </Button>
       ))
       .reverse();
   };
 
-  
   return (
     <div className="pageContainer">
       <br />
@@ -76,7 +72,20 @@ const Profile = () => {
       <div className="imageGridContainer">{displayProfileImages()}</div>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <Button variant='text' onClick={handleClose} style={{color: 'black', height: '30px', width: '30px', zIndex: '3', fontSize:'1.7em', marginLeft: '500px'}}>X</Button>
+          <Button
+            variant="text"
+            onClick={handleClose}
+            style={{
+              color: "black",
+              height: "30px",
+              width: "30px",
+              zIndex: "3",
+              fontSize: "1.7em",
+              marginLeft: "500px",
+            }}
+          >
+            X
+          </Button>
           <Postcard postId={postSelected} />
         </Box>
       </Modal>
