@@ -53,8 +53,8 @@ const Rater = ({ initialRating, commentId }) => {
   };
 
   return (
-    <div className="rating-container">
-      <PopupState variant="popover">
+    <div className="rating-container" >
+      <PopupState >
         {(popupState) => (
           <React.Fragment>
             <IconButton
@@ -65,7 +65,7 @@ const Rater = ({ initialRating, commentId }) => {
             >
               <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
             </IconButton>
-            <Menu {...bindMenu(popupState)} style={{marginTop: '0px'}}>
+            <Menu {...bindMenu(popupState)} >
               <MenuItem
                 style={{backgroundColor: 'var(--campfire-dark-gray'}}
                 onClick={(e) => {

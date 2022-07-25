@@ -143,7 +143,7 @@ const Postcard = (props) => {
       {isLoading ? (
         <h1>Loading...</h1>
       ) : (
-        <Card sx={{ maxWidth: 540 }} className="fullCard">
+        <Card sx={{ maxWidth: 540, backgroundColor: '#28292b'}} className="fullCard">
           <CardHeader
             avatar={
               <Avatar
@@ -197,6 +197,8 @@ const Postcard = (props) => {
               display: "flex",
               alignItems: "center",
               width: 1,
+              backgroundColor: '#28292b',
+              color: 'white'
             }}
           >
             <TextField
@@ -207,6 +209,7 @@ const Postcard = (props) => {
               InputProps={{ disableUnderline: true }}
               onChange={handleCommentInput}
               value={newComment}
+              
             />
             <Button onClick={postComment} style={{color: 'var(--campfire-orange)'}}>Post</Button>
           </Paper>

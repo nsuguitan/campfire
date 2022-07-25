@@ -92,10 +92,9 @@ const Search = () => {
         <img src={searchIcon} className="searchIcon" />
         <Autocomplete
           disablePortal
-          id="combo-box-demo"
           options={users.map((user) => user.username)}
-          sx={{ width: 300 }}
-          renderInput={(params) => <TextField {...params} label="Search" />}
+          sx={{ width: 300}}
+          renderInput={(params) => <TextField {...params } label="Search"/>}
         />
       </div>
       <div className="searchPhotosGrid">{displaySearchImages()}</div>

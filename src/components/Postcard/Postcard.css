@@ -20,3 +20,6 @@
     margin: auto;
     background-color: var(--campfire-dark-gray);
 }
+#commentTextField{
+    color: var(--campfire-white);
+}
