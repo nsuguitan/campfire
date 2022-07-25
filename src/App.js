@@ -26,6 +26,8 @@ const App = () => {
       <CssBaseline />
       <BrowserRouter>
       <Wrapper>
+        <div className="stars"></div>   
+        <div className="twinkling"></div>
         <Routes>
           <Route exact path="/" element={<SignIn />} />
           <Route exact path="/SignIn" element={<SignIn />} />
