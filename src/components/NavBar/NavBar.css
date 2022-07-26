@@ -11,17 +11,7 @@
     height: 100px;
 }
 
-#addButton{
-    background-color: black;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    height: 70px;
-    width: 70px;
-    border-radius: 10%;
-    font-size: 6em;
-    cursor: pointer;
+.navContainer img{
+    width: 40px;
+    height: auto;
 }
-
