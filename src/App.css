@@ -265,14 +265,35 @@ animation:move-twink-back 200s linear infinite;
   text-decoration: underline;
 }
 .signInPage{
+  background-color: var(--campfire-black);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.col img{
+  width: 75%;
+  margin-top: 100px;
+}
+.col{
+  width: 486px;
+  height: 728px;
+}
+.signInContainer{
   display: flex;
   align-content: center;
-  min-height: 80vh;
-  margin-bottom: 20vh;
 }
 li{
   list-style-type: none;
 }
 .postcardGlow{
   margin-bottom: 40px;
+}
+.col1{
+  background-image: url('./assets/campfireBackground.jpg');
+  background-size: cover;
+  text-align: center;
+}
+.col2{
+  border: 1px solid var(--campfire-gray);
 }
