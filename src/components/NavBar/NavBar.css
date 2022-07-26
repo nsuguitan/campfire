@@ -2,16 +2,27 @@
     background-color: var(--campfire-black);
     border-top: 1px solid var(--campfire-dark-gray);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     max-width: 800px;
     margin: auto;
     position: sticky;
     bottom: 0px;
     height: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
 }
-
-.navContainer img{
+.navCol1 img{
+    height: 100px;
+    width: auto;
+}
+.navCol2{
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+}
+.navCol2 img{
     width: 40px;
-    height: auto;
+    height: 40px;
 }

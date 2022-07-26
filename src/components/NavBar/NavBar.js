@@ -8,6 +8,7 @@ import Search from '../../assets/search.jpg';
 import addImage from '../../assets/addPost.jpg';
 import DM from '../../assets/email.jpg';
 import Profile from '../../assets/profile.jpg';
+import Logo from '../../assets/logo.jpg'
 
 const NavBar = () => {
   const { isAuthenticated, username } = AuthState();
@@ -21,14 +22,19 @@ const NavBar = () => {
       className="navContainer"
       style={isAuthenticated ? { display: "flex" } : { display: "none" }}
     >
-      <Link to="/Newsfeed"><img src={Home}/></Link>
-      <Link to="/Search"><img src={Search}/></Link>
-      <div onClick={() => setOpen(true)}>
-        <img src={addImage}/>
+      <div className='navCol1'>
+        <img src={Logo}/>
       </div>
-      <img src={DM}/>
-      <Link to={`/Profile/${username}`}><img src={Profile}/></Link>
-      <NewPost open={open} closeFunc={handleClose} />
+      <div className="navCol2">
+        <Link to="/Newsfeed"><img src={Home} /></Link>
+        <Link to="/Search"><img src={Search} /></Link>
+        <div onClick={() => setOpen(true)}>
+          <img src={addImage} />
+        </div>
+        <img src={DM} />
+        <Link to={`/Profile/${username}`}><img src={Profile} /></Link>
+        <NewPost open={open} closeFunc={handleClose} />
+      </div>
     </div>
   );
 };

@@ -288,6 +288,7 @@ li{
 }
 .postcardGlow{
   margin-bottom: 40px;
+  box-shadow: var(--box-shadow);
 }
 .col1{
   background-image: url('./assets/campfireBackground.jpg');

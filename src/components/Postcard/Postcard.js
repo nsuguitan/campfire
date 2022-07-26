@@ -203,7 +203,7 @@ const Postcard = (props) => {
             }}
           >
             <TextField
-              sx={{ ml: 1, flex: 1 }}
+              sx={{ ml: 1, flex: 1}}
               id="commentTextField"
               placeholder="Add a comment..."
               variant="standard"
@@ -212,7 +212,8 @@ const Postcard = (props) => {
               value={newComment}
               
             />
-            <Button onClick={postComment} style={{color: 'var(--campfire-white)', backgroundColor: 'var(--campfire-orange'}}>Post</Button>
+            
+            <Button onClick={postComment} style={{color: 'var(--campfire-white)', backgroundColor: 'var(--campfire-orange', margin: "10px"}}>Post</Button>
           </Paper>
         </Card>
       )}
