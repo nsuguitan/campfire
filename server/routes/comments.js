@@ -14,6 +14,7 @@ const COMMENTS_COLLECTION = "comments";
  * 3. Get a list of all comments with a given postId
  * 4. Get one comment by Id
  * 5. Create a comment object in mongo
+ * 6. Delete comments related to post
  */
 
 commentsRoutes.route("/comments").get((req, res) => {
@@ -68,7 +69,7 @@ commentsRoutes.route("/comments/:id").get((req, res) => {
   });
 });
 
-commentsRoutes.route("/comments/add").post(function (req, response) {
+commentsRoutes.route("/comments/add").post(function (req, res) {
   let db_connect = dbo.getDb();
   let myobj = {
     postId: ObjectId(req.body.postId),
@@ -76,10 +77,21 @@ commentsRoutes.route("/comments/add").post(function (req, response) {
     commentUsername: req.body.commentUsername,
     commentRating: req.body.commentRating,
   };
-  db_connect.collection(COMMENTS_COLLECTION).insertOne(myobj, (err, res) => {
+  db_connect.collection(COMMENTS_COLLECTION).insertOne(myobj, (err, result) => {
     if (err) throw err;
-    response.json(res);
+    res.json(result);
   });
+});
+
+commentsRoutes.route("/comments/delete/post/:postId").delete((req, res) => {
+  let db_connect = dbo.getDb();
+  let my_query = { postId: ObjectId(req.params.postId) };
+  db_connect
+    .collection(COMMENTS_COLLECTION)
+    .deleteOne(my_query, (err, result) => {
+      if (err) throw err;
+      res.json(result);
+    });
 });
 
 module.exports = commentsRoutes;
