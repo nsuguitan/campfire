@@ -163,9 +163,10 @@ const Postcard = (props) => {
                 to={`/Profile/${postInfo.author.username}`}
                 style={{
                   textDecoration: "none",
-                  color: "var(--campfire-orange)",
+                  color: "var(--campfire-white)",
                   fontWeight: "bold",
                   fontSize: "17.5px",
+                  textShadow: '1px 1px black'
                 }}
               >
                 {postInfo.author.username}
@@ -211,7 +212,7 @@ const Postcard = (props) => {
               value={newComment}
               
             />
-            <Button onClick={postComment} style={{color: 'var(--campfire-orange)'}}>Post</Button>
+            <Button onClick={postComment} style={{color: 'var(--campfire-white)', backgroundColor: 'var(--campfire-orange'}}>Post</Button>
           </Paper>
         </Card>
       )}
