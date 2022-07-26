@@ -9,6 +9,7 @@ import {
   deletePost,
   deleteImage,
 } from "../../services/DeleteInfo";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const DeletePostMenu = (props) => {
   const { username } = AuthState();
@@ -16,6 +17,9 @@ export const DeletePostMenu = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const open = Boolean(anchorEl);
+
+  let navigate = useNavigate();
+  const location = useLocation();
 
   const style = {
     position: "absolute",
@@ -48,7 +52,11 @@ export const DeletePostMenu = (props) => {
     let filename = /[^/]*$/.exec(props.postPhotoURL)[0];
     let di = deleteImage(filename);
     Promise.all([dp, dc, di]).then((values) => {
-      console.log("Delete Complete");
+      let redirect = location.pathname;
+      navigate("/Loading");
+      setTimeout(() => {
+        navigate(redirect);
+      }, 100);
     });
   };
 
@@ -111,8 +119,8 @@ export const DeletePostMenu = (props) => {
           >
             X
           </Button>
-          <h1>You sure bout that?</h1>
-          <Button onClick={deletePostInfo}>Delete that shits</Button>
+          <h3>Are you sure you want to delete this post?</h3>
+          <Button onClick={deletePostInfo}>Delete now</Button>
         </Box>
       </Modal>
     </div>
