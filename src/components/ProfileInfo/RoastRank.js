@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react";
+import Noob from '../../assets/noob.jpg';
+import Bronze from '../../assets/bronze.jpg';
+import Silver from '../../assets/silver.jpg';
+import Gold from '../../assets/gold.jpg';
+
 const RoastRank = (props) => {
   const [roastRank, setRoastRank] = useState("Pleb");
 
@@ -16,16 +21,16 @@ const RoastRank = (props) => {
       roastInfo["avgRating"] = roastInfo.totalRating / roastInfo.count;
       switch (true) {
         case roastInfo["count"] >= 10 && roastInfo["avgRating"] >= 10:
-          setRoastRank("Queen of Campfire");
+          setRoastRank(Gold);
           break;
         case roastInfo["count"] >= 5 && roastInfo["avgRating"] >= 5:
-          setRoastRank("Roastmaster");
+          setRoastRank(Silver);
           break;
         case roastInfo["count"] >= 2 && roastInfo["avgRating"] >= 3:
-          setRoastRank("Jester");
+          setRoastRank(Bronze);
           break;
         default:
-          setRoastRank("Pleb");
+          setRoastRank(Noob);
       }
     };
 
@@ -34,7 +39,7 @@ const RoastRank = (props) => {
 
   return (
     <div className="roast-rank-container">
-      <span>{roastRank}</span>
+      <img src={roastRank}/>
     </div>
   );
 };

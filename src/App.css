@@ -52,7 +52,11 @@ animation:move-twink-back 200s linear infinite;
   margin: auto;
   min-height: 100vh;
 }
-
+.roast-rank-container img{
+  width: 50px;
+  height: auto;
+  padding-left: 10px;
+}
 .profileStatsContainer{
   text-align: center;
   align-items: center;
@@ -61,14 +65,7 @@ animation:move-twink-back 200s linear infinite;
 .roastRatingProfileContainer{
   display: flex;
   justify-content: center;
-  align-items: baseline;
-  text-align: center;
-}
-.roastRatingProfileContainer span{
-  color: gold;
-  font-size: 1.5em;
-  font-weight: bold;
-  padding-left: 10px;;
+  
 }
 .topProfileContainer{
   display: flex;
@@ -277,6 +274,5 @@ li{
   list-style-type: none;
 }
 .postcardGlow{
-  /* box-shadow: var(--box-shadow); */
   margin-bottom: 40px;
 }
