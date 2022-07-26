@@ -75,11 +75,11 @@ const ProfileInfo = (props) => {
       <div className="bioContainer">
         <div className="fullName">
           <h2>{userInfo.name}</h2>
-          {/* {verified ? ( */}
+          {verified ? (
             <img src={blueFlame} alt="" className="flame"/>
-          {/* // ) : (
-          //   <React.Fragment />
-          // )} */}
+          ) : (
+            <React.Fragment />
+          )} 
         </div>
         <div className="bio">
           <p>{userInfo.bio}</p>

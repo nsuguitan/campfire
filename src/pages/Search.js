@@ -5,7 +5,7 @@ import { Button, Modal, Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Postcard from "../components/Postcard/Postcard";
-import searchIcon from "../assets/searchIcon.jpg";
+import searchIcon from "../assets/search.jpg";
 
 const Search = () => {
   const [users, setUsers] = useState([]);
