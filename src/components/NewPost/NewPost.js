@@ -74,7 +74,6 @@ const NewPost = (props) => {
       let filename = uuidv4(); // uniqueFilename();
 
       await uploadFilesToS3(".jpeg", file, filename).then(() => {
-        console.log("Trigged");
         let redirect = location.pathname;
         navigate("/Loading");
         setTimeout(() => {
