@@ -154,7 +154,13 @@ const Postcard = (props) => {
                 profilepic={postInfo.author.profilePicURL}
               />
             }
-            action={<DeletePostMenu />}
+            action={
+              <DeletePostMenu
+                postUsername={postInfo.author.username}
+                postId={postInfo._id}
+                postPhotoURL={postInfo.photoURL}
+              />
+            }
             title={
               <Link
                 to={`/Profile/${postInfo.author.username}`}

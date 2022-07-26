@@ -1,37 +1,81 @@
 import * as React from "react";
-import IconButton from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
+import { IconButton, Menu, Modal, Box, Button } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { AuthState } from "../../context/auth/AuthContext";
+import { useState } from "react";
+import {
+  deleteComments,
+  deletePost,
+  deleteImage,
+} from "../../services/DeleteInfo";
 
-export const DeletePostMenu = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+export const DeletePostMenu = (props) => {
+  const { username } = AuthState();
+  const isUserPost = Boolean(props.postUsername === username);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
   const open = Boolean(anchorEl);
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 450,
+    height: 200,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    textAlign: "center",
+    display: "grid",
+  };
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
+  const handleMenuClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
+  const deletePostInfo = () => {
+    let dp = deletePost(props.postId);
+    let dc = deleteComments(props.postId);
+    let filename = /[^/]*$/.exec(props.postPhotoURL)[0];
+    let di = deleteImage(filename);
+    Promise.all([dp, dc, di]).then((values) => {
+      console.log("Delete Complete");
+    });
   };
 
   return (
     <div>
-      <IconButton
-        aria-label="settings"
-        id="demo-positioned-button"
-        aria-controls={open ? "demo-positioned-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
-      >
-        <MoreVertIcon />
-      </IconButton>
+      {isUserPost ? (
+        <IconButton
+          aria-label="settings"
+          id="demo-positioned-button"
+          aria-controls={open ? "demo-positioned-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+        >
+          <MoreVertIcon />
+        </IconButton>
+      ) : (
+        <IconButton disabled>
+          <MoreVertIcon />
+        </IconButton>
+      )}
       <Menu
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={handleMenuClose}
         anchorOrigin={{
           vertical: "top",
           horizontal: "left",
@@ -41,10 +85,36 @@ export const DeletePostMenu = () => {
           horizontal: "left",
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem
+          onClick={() => {
+            setModalOpen(true);
+            handleMenuClose();
+          }}
+        >
+          Delete Post
+        </MenuItem>
       </Menu>
+      <Modal open={modalOpen} onClose={handleModalClose}>
+        <Box sx={{ ...style }}>
+          <Button
+            variant="text"
+            onClick={handleModalClose}
+            style={{
+              color: "black",
+              height: "30px",
+              width: "30px",
+              zIndex: "3",
+              fontSize: "1.7em",
+              marginLeft: "380px",
+              marginTop: "20px",
+            }}
+          >
+            X
+          </Button>
+          <h1>You sure bout that?</h1>
+          <Button onClick={deletePostInfo}>Delete that shits</Button>
+        </Box>
+      </Modal>
     </div>
   );
 };

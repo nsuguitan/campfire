@@ -12,7 +12,13 @@ const s3Client = new S3Client({
 
 const deleteComments = async (postId) => {
   const response = await fetch(
-    process.env.REACT_APP_EXPRESS_URL + `/comments/delete/post/${postId}`
+    process.env.REACT_APP_EXPRESS_URL + `/comments/delete/post/${postId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
   );
   if (!response.ok) {
     const message = `An error has occured: ${response.status}`;
@@ -23,7 +29,13 @@ const deleteComments = async (postId) => {
 
 const deletePost = async (postId) => {
   const response = await fetch(
-    process.env.REACT_APP_EXPRESS_URL + `/posts/delete/${postId}`
+    process.env.REACT_APP_EXPRESS_URL + `/posts/delete/${postId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
   );
   if (!response.ok) {
     const message = `An error has occured: ${response.status}`;
