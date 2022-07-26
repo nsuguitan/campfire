@@ -1,6 +1,12 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { useLayoutEffect } from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import { useLayoutEffect } from "react";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
@@ -12,13 +18,13 @@ import AuthContext from "./context/auth/AuthContext";
 import CssBaseline from "@mui/material/CssBaseline";
 import PrivateRoute from "./routing/PrivateRoute";
 
-const Wrapper = ({children}) => {
+const Wrapper = ({ children }) => {
   const location = useLocation();
   useLayoutEffect(() => {
     document.documentElement.scrollTo(0, 0);
   }, [location.pathname]);
-  return children
-} 
+  return children;
+};
 
 const App = () => {
   return (

@@ -49,21 +49,17 @@ const Profile = () => {
   const displayProfileImages = () => {
     return profileImagesArray
       .map((post) => (
-          <Button
-            onClick={(event) => handleOpen(event, post._id)}
-            key={post._id}
-          >
-            <img
-              src={post.photoURL}
-              alt="http://placecorgi.com/250"
-              className="singleGridPhoto"
-            />
-          </Button>
+        <Button onClick={(event) => handleOpen(event, post._id)} key={post._id}>
+          <img
+            src={post.photoURL}
+            alt="http://placecorgi.com/250"
+            className="singleGridPhoto"
+          />
+        </Button>
       ))
       .reverse();
   };
 
-  
   return (
     <div className="pageContainer">
       <br />
