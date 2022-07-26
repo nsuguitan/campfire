@@ -5,9 +5,7 @@ import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "../Avatar/Avatar";
-import IconButton from "@mui/material/IconButton";
 import { Button, Modal, Box } from "@mui/material";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Paper } from "@mui/material";
 import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -15,6 +13,7 @@ import PostComments from "../Comments/PostComments";
 import PostInfo from "../PostInfo/PostInfo";
 import { AuthState } from "../../context/auth/AuthContext";
 import { Link } from "react-router-dom";
+import { DeletePostMenu } from "./DeletePostMenu";
 
 const Postcard = (props) => {
   const [newComment, setNewComment] = useState("");
@@ -122,23 +121,23 @@ const Postcard = (props) => {
 
   const loadAllCommentsButton = () => {
     return (
-        <Button
-          className="load-comments-button"
-          onClick={(event) => handleOpen(event, postInfo._id)}
-          key={postInfo._id}
-          size="medium"
-          disableRipple={true}
-          variant="text"
-          style={{
-            backgroundColor: "transparent",
-            textTransform: "none",
-            color: "#BEBEBE",
-          }}
-        >
-          View all {postComments.length} comments
-        </Button>
-    )
-  }
+      <Button
+        className="load-comments-button"
+        onClick={(event) => handleOpen(event, postInfo._id)}
+        key={postInfo._id}
+        size="medium"
+        disableRipple={true}
+        variant="text"
+        style={{
+          backgroundColor: "transparent",
+          textTransform: "none",
+          color: "#BEBEBE",
+        }}
+      >
+        View all {postComments.length} comments
+      </Button>
+    );
+  };
 
   return (
     <div>
@@ -155,11 +154,7 @@ const Postcard = (props) => {
                 profilepic={postInfo.author.profilePicURL}
               />
             }
-            action={
-              <IconButton aria-label="settings">
-                <MoreVertIcon />
-              </IconButton>
-            }
+            action={<DeletePostMenu />}
             title={
               <Link
                 to={`/Profile/${postInfo.author.username}`}
@@ -179,7 +174,7 @@ const Postcard = (props) => {
             height="540px"
             image={postInfo.photoURL}
             alt="Puppers"
-            className='singleCardMedia'
+            className="singleCardMedia"
           />
           <PostInfo postDate={postInfo.postDate} />
           <PostComments postComments={postComments} />
@@ -187,7 +182,20 @@ const Postcard = (props) => {
             <div>{loadAllCommentsButton()}</div>
             <Modal open={open} onClose={handleClose}>
               <Box sx={style}>
-                <Button variant='text' onClick={handleClose} style={{ color: 'black', height: '30px', width: '30px', zIndex: '3', fontSize: '1.7em', marginLeft: '500px' }}>X</Button>
+                <Button
+                  variant="text"
+                  onClick={handleClose}
+                  style={{
+                    color: "black",
+                    height: "30px",
+                    width: "30px",
+                    zIndex: "3",
+                    fontSize: "1.7em",
+                    marginLeft: "500px",
+                  }}
+                >
+                  X
+                </Button>
                 <Postcard postId={postSelected} />
               </Box>
             </Modal>
