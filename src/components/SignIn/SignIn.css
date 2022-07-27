@@ -7,7 +7,8 @@
 
 .sign-in-input-container{
     width: 80%;
-    height: 50%;
+    padding-top: 40px;
+    padding-bottom: 20px;
     margin: auto;
 }
 
@@ -15,23 +16,29 @@
     margin: auto;
     margin-bottom: 20px;
     text-align: center;
-
+}
+.oauth-container h2{
+    font-family: 'Quicksand'; 
+    font-weight: 100;
+}
+.oauth-container h5{
+    font-family: 'Quicksand'; 
 }
 
 .brand-login-container{
-    margin-bottom: 5px;
-}
-#gridContainer{
-    margin-top: 5px;
-    justify-content: center;
-    justify-items: center;
-    align-content: space-evenly;
+    padding-top: 20px;
     align-items: center;
+    /* height: 100px; */
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin:auto;
 }
-
-/* .forgot-password-button{
-margin-left: 0;
-} */
+.brand-login-container img{
+    width: 50px;
+    height: 50px;
+    margin: auto;
+}
 
 .signConatiner1{
     border: 1px solid var(--campfire-gray);
@@ -44,7 +51,7 @@ margin-left: 0;
     font-weight: 100;
     font-family: 'Quicksand';
     font-size: 1.7em;
-    margin-top: 20px;
+    margin-top: 40px;
 
 }
 .signConatiner2{

@@ -1,10 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebook,
-  faGoogle,
-  faApple,
-} from "@fortawesome/free-brands-svg-icons";
-import { Grid } from "@mui/material";
+import FB from '../../assets/fb.jpg';
+import Insta from '../../assets/ig.jpg';
+import Twitter from '../../assets/twitter.jpg';
+
 const OAuth = () => {
   return (
     <div className="oauth-container">
@@ -13,26 +10,9 @@ const OAuth = () => {
         <h5>Login with</h5>
       </div>
       <div className="brand-login-container">
-        <Grid container spacing={2} id="gridContainer">
-          <Grid item>
-            <FontAwesomeIcon
-              icon={faGoogle}
-              style={{ height: "40px" }}
-            ></FontAwesomeIcon>
-          </Grid>
-          <Grid item>
-            <FontAwesomeIcon
-              icon={faFacebook}
-              style={{ height: "40px" }}
-            ></FontAwesomeIcon>
-          </Grid>
-          <Grid item>
-            <FontAwesomeIcon
-              icon={faApple}
-              style={{ height: "40px" }}
-            ></FontAwesomeIcon>
-          </Grid>
-        </Grid>
+            <img src={FB}/>
+            <img src={Insta}/>
+            <img src={Twitter}/>
       </div>
     </div>
   );
