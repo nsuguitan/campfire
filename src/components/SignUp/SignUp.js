@@ -5,6 +5,7 @@ import { AuthState } from "../../context/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import * as AWS from "aws-sdk";
 import "./SignUp.css";
+import '../SignIn/SignIn.css';
 import AuthInput from "../AuthInput/AuthInput";
 import Image1 from "../../assets/addImage.jpg";
 
@@ -154,91 +155,119 @@ const SignUpComp = () => {
   };
 
   return (
-    <div className="sign-up-container">
-      <Box
-        sx={{
-          width: 1,
-          height: 0.95,
-          border: 1,
-          borderColor: "#212121",
-          borderWidth: "3px",
-        }}
-      >
-        <h1 style={{ marginBottom: "20px" }}>Campfire</h1>
-        <div className="sign-up-input-container">
-          <AuthInput
-            name="username"
-            label="Username"
-            value={textFields.username}
-            onChange={handleTextChange}
-          />
-          <AuthInput
-            name="password"
-            label="Password"
-            value={textFields.password}
-            onChange={handleTextChange}
-          />
-          <p id="passwordReq">
+    <div className="sign-in-container">
+      <Box>
+      <div className='signConatiner1'>
+          <h1>Tell us about your <span style={{color: 'var(--campfire-orange)'}}>(boring) </span>self</h1>
+          <div className="sign-up-input-container">
+            <div className='infoLine'> 
+              <p>Full name</p>
+              <AuthInput
+              name="fullname"
+              value={textFields.fullname}
+              onChange={handleTextChange}
+              />
+            </div>
+            <div className='infoLine'>
+              <p>Email address</p>
+              <AuthInput
+              name="email"
+              label="Email"
+              value={textFields.email}
+              onChange={handleTextChange}
+              />
+            </div>
+            <div className='infoLine'>
+              <p>Username</p>
+              <AuthInput
+              name="username"
+              label="Username"
+              value={textFields.username}
+              onChange={handleTextChange}
+              />
+            </div>
+            <div className='infoLine'>
+              <p>Pasword</p>
+              <AuthInput
+              name="password"
+              label="Password"
+              value={textFields.password}
+              onChange={handleTextChange}
+              />
+            </div>
+            <div className='infoLine'>
+              <p>Upload profile photo</p>
+              <label
+              htmlFor="profile-image-upload"
+              className="profile-image-upload-label"
+              >
+              Load Profile Picture
+              <input
+                id="profile-image-upload"
+                type="file"
+                onChange={onFileChange}
+                accept="image/*"
+              />
+              <img
+                className="profile-image-preview"
+                src={imageSrc}
+                alt="None"
+              ></img>
+              </label>
+            </div>
+            <textarea
+              id="profile-bio"
+              name="profile-bio"
+              onChange={handleBioChange}
+              rows="4"
+              cols="40"
+              placeholder="C'mon write a bio. Don't be lame."
+              value={bio}
+            ></textarea>
+            <Button
+              disableElevation
+              fullWidth
+              variant="contained"
+              sx={{
+                backgroundColor: "#ee7e00",
+                marginBottom: "10px",
+              }}
+              onClick={triggerSignUp}
+            >
+             Create account
+            </Button>
+    
+          </div>
+          {/* <p id="passwordReq">
             **your password must contain at least 6 characters, an uppercase, a
             lowercase, a number, and a special character**
-          </p>
-          <AuthInput
-            name="fullname"
-            label="Full Name"
-            value={textFields.fullname}
-            onChange={handleTextChange}
-          />
-          <AuthInput
-            name="email"
-            label="Email"
-            value={textFields.email}
-            onChange={handleTextChange}
-          />
-          <label
-            htmlFor="profile-image-upload"
-            className="profile-image-upload-label"
-          >
-            Load Profile Picture
-            <input
-              id="profile-image-upload"
-              type="file"
-              onChange={onFileChange}
-              accept="image/*"
-            />
-            <img
-              className="profile-image-preview"
-              src={imageSrc}
-              alt="None"
-            ></img>
-          </label>
+          </p> */}
+         
+        
 
-          <p>
-            <label htmlFor="profile-bio">Write your bio: </label>
-          </p>
-          <textarea
-            id="profile-bio"
-            name="profile-bio"
-            onChange={handleBioChange}
-            rows="4"
-            cols="40"
-            placeholder="C'mon write a bio. Don't be lame."
-            value={bio}
-          ></textarea>
-          <br></br>
-
-          <Button
-            disableElevation
-            fullWidth
-            variant="contained"
-            sx={{
-              backgroundColor: "#ee7e00",
-              marginBottom: "10px",
-            }}
-            onClick={triggerSignUp}
-          >
-            SignUp
-          </Button>
+          
         </div>
+        <div className='signConatiner2'>
+          <div className="bottom-container">
+            <p>Already have an account?</p>
+            <Button
+              disableElevation
+              variant="contained"
+              sx={{
+                backgroundColor: "transparent",
+                textTransform: "none",
+                color: "var(--campfire-orange)",
+                width: '130px',
+                fontFamily: "Quicksand",
+                fontSize: '1em'
+              }}
+              onClick={() => navigate("/SignUp")}
+            >
+              log in, dummy
+            </Button>
+          </div>
+
+        </div>  
       </Box>
       <Modal open={open} onClose={() => setOpen(false)}>
         <Box sx={{ ...style, width: 400 }}>

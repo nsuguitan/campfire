@@ -1,24 +1,16 @@
-.sign-up-container{
-    width:50%;
-    height:min-content;
-    margin: auto;
-    text-align: center;
-}
-
 .sign-up-input-container{
     width: 80%;
-    height: 50%;
     margin: auto;
 }
 
 .profile-image-preview{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     border: 2.5px solid black;
     
 }
 
-#passwordReq{
-    color: red;
-    font-size: .6em;
+
+.infoLine{
+    display: flex;
 }
