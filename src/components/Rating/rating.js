@@ -53,8 +53,8 @@ const Rater = ({ initialRating, commentId }) => {
   };
 
   return (
-    <div className="rating-container" >
-      <PopupState >
+    <div className="rating-container">
+      <PopupState variant="popover">
         {(popupState) => (
           <React.Fragment>
             <IconButton
@@ -65,9 +65,9 @@ const Rater = ({ initialRating, commentId }) => {
             >
               <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
             </IconButton>
-            <Menu {...bindMenu(popupState)}  >
+            <Menu {...bindMenu(popupState)}>
               <MenuItem
-                style={{backgroundColor: 'var(--campfire-dark-gray'}}
+                style={{ backgroundColor: "var(--campfire-dark-gray" }}
                 onClick={(e) => {
                   handleClick(e, -2, popupState);
                 }}
@@ -75,7 +75,7 @@ const Rater = ({ initialRating, commentId }) => {
                 Fluffernutter
               </MenuItem>
               <MenuItem
-                style={{backgroundColor: 'var(--campfire-dark-gray'}}
+                style={{ backgroundColor: "var(--campfire-dark-gray" }}
                 onClick={(e) => {
                   handleClick(e, -1, popupState);
                 }}
@@ -83,7 +83,7 @@ const Rater = ({ initialRating, commentId }) => {
                 Uncooked
               </MenuItem>
               <MenuItem
-                style={{backgroundColor: 'var(--campfire-dark-gray'}}
+                style={{ backgroundColor: "var(--campfire-dark-gray" }}
                 onClick={(e) => {
                   handleClick(e, 1, popupState);
                 }}
@@ -91,7 +91,7 @@ const Rater = ({ initialRating, commentId }) => {
                 Toasted
               </MenuItem>
               <MenuItem
-                style={{backgroundColor: 'var(--campfire-dark-gray'}}
+                style={{ backgroundColor: "var(--campfire-dark-gray" }}
                 onClick={(e) => {
                   handleClick(e, 2, popupState);
                 }}
@@ -99,7 +99,7 @@ const Rater = ({ initialRating, commentId }) => {
                 Roasted
               </MenuItem>
               <MenuItem
-                style={{backgroundColor: 'var(--campfire-dark-gray'}}
+                style={{ backgroundColor: "var(--campfire-dark-gray" }}
                 onClick={(e) => {
                   handleClick(e, 3, popupState);
                 }}
