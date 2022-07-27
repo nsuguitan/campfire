@@ -52,10 +52,11 @@ const SignInComp = () => {
               <Button
                 disableElevation
                 fullWidth
-                variant="contained"
                 sx={{
                   backgroundColor: "var(--campfire-orange)",
-                  width: '70%'
+                  width: '70%',
+                  color: 'var(--campfire-white)',
+                  fontFamily: 'Quicksand'
                 }}
                 onClick={triggerLogin}
               >
@@ -70,7 +71,8 @@ const SignInComp = () => {
                   backgroundColor: "transparent",
                   textTransform: "none",
                   color: "var(--campfire-orange)",
-                  width: '70%'
+                  width: '70%',
+                  fontFamily: 'Quicksand'
                 }}
               >
                 Forgot Password?
@@ -84,7 +86,6 @@ const SignInComp = () => {
             <p>Don't have an account?</p>
             <Button
               disableElevation
-              variant="contained"
               sx={{
                 backgroundColor: "transparent",
                 textTransform: "none",

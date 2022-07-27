@@ -7,7 +7,7 @@ import * as AWS from "aws-sdk";
 import "./SignUp.css";
 import '../SignIn/SignIn.css';
 import AuthInput from "../AuthInput/AuthInput";
-import Image1 from "../../assets/addImage.jpg";
+import Image1 from "../../assets/profilePicPlaceholder.jpg";
 
 const SignUpComp = () => {
   const [open, setOpen] = useState(false);
@@ -158,84 +158,108 @@ const SignUpComp = () => {
     <div className="sign-in-container">
       <Box>
       <div className='signConatiner1'>
-          <h1>Tell us about your <span style={{color: 'var(--campfire-orange)'}}>(boring) </span>self</h1>
+          <h2>Tell us about your <span style={{color: 'var(--campfire-orange)', fontSize: '.7em'}}>(boring) </span>self</h2>
           <div className="sign-up-input-container">
-            <div className='infoLine'> 
-              <p>Full name</p>
+            <div className='infoLine'>
+              <div className='infoCol1'>
+                <p>Full name</p>
+              </div>
+              <div className='infoCol2'>
               <AuthInput
               name="fullname"
               value={textFields.fullname}
               onChange={handleTextChange}
               />
+              </div>
             </div>
             <div className='infoLine'>
-              <p>Email address</p>
+              <div className='infoCol1'>
+                <p>Email address</p>
+              </div>
+              <div className='infoCol2'>
               <AuthInput
               name="email"
-              label="Email"
               value={textFields.email}
               onChange={handleTextChange}
               />
+              </div>
             </div>
             <div className='infoLine'>
-              <p>Username</p>
+              <div className='infoCol1'>
+                <p>Username</p>
+              </div>
+              <div className='infoCol2'>
               <AuthInput
               name="username"
-              label="Username"
               value={textFields.username}
               onChange={handleTextChange}
               />
+              </div>
             </div>
             <div className='infoLine'>
-              <p>Pasword</p>
+              <div className='infoCol1'>
+                <p>Pasword</p>
+              </div>
+              <div className='infoCol2'>
               <AuthInput
               name="password"
-              label="Password"
               value={textFields.password}
               onChange={handleTextChange}
               />
+              </div>
             </div>
             <div className='infoLine'>
-              <p>Upload profile photo</p>
+              <div className='infoCol1'>
+                <p>Upload profile photo</p>
+              </div>
+              <div className='infoCol2'>
               <label
               htmlFor="profile-image-upload"
               className="profile-image-upload-label"
               >
-              Load Profile Picture
+                <img
+                className="profile-image-preview"
+                src={imageSrc}
+                alt="None"
+              ></img>
               <input
                 id="profile-image-upload"
                 type="file"
                 onChange={onFileChange}
                 accept="image/*"
               />
-              <img
-                className="profile-image-preview"
-                src={imageSrc}
-                alt="None"
-              ></img>
               </label>
+              </div> 
             </div>
-            <textarea
+            <div className='infoLine'>
+              <div className='infoCol1'></div>
+              <div className='infoCol2'>
+              <textarea
               id="profile-bio"
               name="profile-bio"
               onChange={handleBioChange}
               rows="4"
-              cols="40"
+              cols="34"
               placeholder="C'mon write a bio. Don't be lame."
               value={bio}
-            ></textarea>
-            <Button
+              ></textarea>
+              </div>
+            </div>
+            <div className='createButtonContainer'>
+              <Button
+              className='createAccountButton'
               disableElevation
-              fullWidth
-              variant="contained"
-              sx={{
-                backgroundColor: "#ee7e00",
-                marginBottom: "10px",
-              }}
               onClick={triggerSignUp}
+              sx={{
+                backgroundColor: "var(--campfire-orange)",
+                color: 'var(--campfire-white)',
+                fontFamily: 'Quicksand'
+              }}
             >
              Create account
             </Button>
+            </div>
+           
     
           </div>
           {/* <p id="passwordReq">
@@ -252,7 +276,6 @@ const SignUpComp = () => {
             <p>Already have an account?</p>
             <Button
               disableElevation
-              variant="contained"
               sx={{
                 backgroundColor: "transparent",
                 textTransform: "none",
@@ -261,7 +284,7 @@ const SignUpComp = () => {
                 fontFamily: "Quicksand",
                 fontSize: '1em'
               }}
-              onClick={() => navigate("/SignUp")}
+              onClick={() => navigate("/SignIn")}
             >
               log in, dummy
             </Button>
