@@ -1,4 +1,5 @@
 import * as React from "react";
+import "./Postcard.css";
 import { IconButton, Menu, Modal, Box, Button } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -61,11 +62,11 @@ export const DeletePostMenu = (props) => {
   };
 
   return (
-    <div>
+    <div className="delete-post-container">
       {isUserPost ? (
         <IconButton
           aria-label="settings"
-          id="demo-positioned-button"
+          id="delete-post-button"
           aria-controls={open ? "demo-positioned-menu" : undefined}
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
@@ -94,6 +95,7 @@ export const DeletePostMenu = (props) => {
         }}
       >
         <MenuItem
+          style={{ backgroundColor: "var(--campfire-dark-gray" }}
           onClick={() => {
             setModalOpen(true);
             handleMenuClose();

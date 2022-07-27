@@ -23,3 +23,7 @@
 #commentTextField{
     color: var(--campfire-white);
 }
+
+.delete-post-container{
+    transform: translate(0%, 24%)
+}
