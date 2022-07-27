@@ -280,12 +280,13 @@ animation:move-twink-back 200s linear infinite;
   margin-top: 100px;
 }
 .col{
-  width: 486px;
-  height: 728px;
+  width: 50%;
 }
 .signInContainer{
   display: flex;
   align-content: center;
+  height: 750px;
+  max-width: 972px;
 }
 li{
   list-style-type: none;
