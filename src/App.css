@@ -299,7 +299,5 @@ li{
   background-image: url('./assets/campfireBackground.jpg');
   background-size: cover;
   text-align: center;
-}
-.col2{
-  border: 1px solid var(--campfire-gray);
+  background-position: center center;
 }

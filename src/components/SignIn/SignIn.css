@@ -1,7 +1,7 @@
 .sign-in-container{
-    /* width:50%;
-    height:min-content; */
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
     text-align: center;
 }
 
@@ -11,15 +11,10 @@
     margin: auto;
 }
 
-.forgot-password-button{
-    float: left;
-}
-
 .login-buttons-container{
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 5px;
+    margin: auto;
     margin-bottom: 20px;
+    text-align: center;
 
 }
 
@@ -37,3 +32,41 @@
 /* .forgot-password-button{
 margin-left: 0;
 } */
+
+.signConatiner1{
+    border: 1px solid var(--campfire-gray);
+    width: 90%;
+    margin: auto;
+    height: 550px;
+    margin-top: 50px;
+}
+.signConatiner1 h1{
+    font-weight: 100;
+    font-family: 'Quicksand';
+    font-size: 1.7em;
+    margin-top: 20px;
+
+}
+.signConatiner2{
+    border: 1px solid var(--campfire-gray);
+    width: 90%;
+    margin: auto;
+    height: 60px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+}
+.signInput{
+    border: 1px solid var(--campfire-gray);
+    background-color: azure;
+}
+.bottom-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.bottom-container p{
+    font-family: "Quicksand";
+    font-size: 1em;
+}

@@ -30,73 +30,77 @@ const SignInComp = () => {
 
   return (
     <div className="sign-in-container">
-      <Box
-        sx={{
-          width: 1,
-          height: 0.95,
-          border: 1,
-          borderColor: "#212121",
-          borderWidth: "3px",
-        }}
-      >
-        <h1 style={{ marginBottom: "20px" }}>Campfire</h1>
-        <div className="sign-in-input-container">
-          <AuthInput
-            name="username"
-            label="Username"
-            value={textFields.username}
-            onChange={handleTextChange}
-          />
-          <AuthInput
-            name="password"
-            label="Password"
-            value={textFields.password}
-            onChange={handleTextChange}
-          />
-
-          <Button
-            className="forgot-password-button"
-            size="medium"
-            disableRipple={true}
-            variant="text"
-            sx={{
-              backgroundColor: "transparent",
-              textTransform: "none",
-              color: "var(--campfire-orange)",
-            }}
-          >
-            Forgot Password?
-          </Button>
-        </div>
-        <div className="login-buttons-container">
-          <div className="button-container">
-            <Button
-              disableElevation
-              fullWidth
-              variant="contained"
-              sx={{
-                backgroundColor: "#ee7e00",
-              }}
-              onClick={triggerLogin}
-            >
-              Login
-            </Button>
+      <Box>
+        <div className='signConatiner1'>
+          <h1>Log in at your own risk...</h1>
+          <div className="sign-in-input-container">
+            <AuthInput
+              name="username"
+              label="Username"
+              value={textFields.username}
+              onChange={handleTextChange}
+              className='signInput'
+            />
+            <AuthInput
+              name="password"
+              label="Password"
+              value={textFields.password}
+              onChange={handleTextChange}
+            />
           </div>
-          <div className="button-container">
+          <div className="login-buttons-container">
+            <div className="button-container">
+              <Button
+                disableElevation
+                fullWidth
+                variant="contained"
+                sx={{
+                  backgroundColor: "var(--campfire-orange)",
+                  width: '70%'
+                }}
+                onClick={triggerLogin}
+              >
+                Login
+              </Button>
+              <Button
+                className="forgot-password-button"
+                size="medium"
+                disableRipple={true}
+                variant="text"
+                sx={{
+                  backgroundColor: "transparent",
+                  textTransform: "none",
+                  color: "var(--campfire-orange)",
+                  width: '70%'
+                }}
+              >
+                Forgot Password?
+              </Button>
+            </div>
+          </div>
+          <OAuth />
+        </div>
+        <div className='signConatiner2'>
+          <div className="bottom-container">
+            <p>Don't have an account?</p>
             <Button
               disableElevation
-              fullWidth
               variant="contained"
               sx={{
-                backgroundColor: "#f14726",
+                backgroundColor: "transparent",
+                textTransform: "none",
+                color: "var(--campfire-orange)",
+                width: '130px',
+                fontFamily: "Quicksand",
+                fontSize: '1em'
               }}
               onClick={() => navigate("/SignUp")}
             >
-              Create an Account
+              sign up here
             </Button>
           </div>
+
         </div>
-        <OAuth />
       </Box>
     </div>
   );
