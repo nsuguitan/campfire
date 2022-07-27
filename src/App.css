@@ -311,9 +311,9 @@ animation:move-twink-back 200s linear infinite;
   width: 75%;
   margin-top: 100px;
 }
-.col{
+/* .col{
   width: 50%;
-}
+} */
 .signInContainer{
   display: flex;
   align-content: center;
@@ -332,4 +332,17 @@ li{
   background-size: cover;
   text-align: center;
   background-position: center center;
+  width: 50%;
+}
+.col2{
+  width: 50%;
+}
+@media (max-width: 630px){
+  .col1{
+      width: 0%;
+  }
+  .col2{
+      width: 100%;
+  }
+
 }

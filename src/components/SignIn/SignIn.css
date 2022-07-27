@@ -73,3 +73,13 @@
     font-family: "Quicksand";
     font-size: 1em;
 }
+
+@media (max-width: 630px){
+    .infoCol1{
+        width: 0%;
+    }
+    .infoCol2{
+        width: 100%;
+    }
+
+}
