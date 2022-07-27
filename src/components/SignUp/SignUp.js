@@ -8,6 +8,18 @@ import "./SignUp.css";
 import '../SignIn/SignIn.css';
 import AuthInput from "../AuthInput/AuthInput";
 import Image1 from "../../assets/profilePicPlaceholder.jpg";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
+import { faSquareCaretUp } from "@fortawesome/free-regular-svg-icons";
+import * as React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import IconButton from "@mui/material/IconButton";
+
+const handleClick = (e, changeVal, popupState) => {
+  e.preventDefault();
+  popupState.close();
+};
 
 const SignUpComp = () => {
   const [open, setOpen] = useState(false);
@@ -199,6 +211,27 @@ const SignUpComp = () => {
             <div className='infoLine'>
               <div className='infoCol1'>
                 <p>Pasword</p>
+                <PopupState variant="popover">
+        {(popupState) => (
+          <React.Fragment>
+            <IconButton
+              {...bindTrigger(popupState)}
+              size="small"
+              sx={{ padding: 0.5 }}
+            >
+              <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
+            </IconButton>
+            <Menu {...bindMenu(popupState)}>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand'}}>your password must contain:</MenuItem>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand' }}> - at least 6 characters</MenuItem>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand' }}> - an uppercase letter</MenuItem>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand' }}> - a lowercase letter</MenuItem>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand' }}> - a number</MenuItem>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand' }}> - and a special character</MenuItem>
+            </Menu>
+          </React.Fragment>
+        )}
+      </PopupState>
               </div>
               <div className='infoCol2'>
               <AuthInput
@@ -262,10 +295,7 @@ const SignUpComp = () => {
            
     
           </div>
-          {/* <p id="passwordReq">
-            **your password must contain at least 6 characters, an uppercase, a
-            lowercase, a number, and a special character**
-          </p> */}
+          
          
         
 
