@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import Avatar from "../Avatar/Avatar";
-import { Carousel } from 'react-bootstrap';
+import { IconButton } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const Stories = () => {
   const [users, setUsers] = useState([]);
@@ -21,28 +23,76 @@ const Stories = () => {
       setUsers(await response.json());
     }
 
+    let fwdSlide = document.getElementById("slide-forward");
+    let backSlide = document.getElementById("slide-back");
+    fwdSlide.onclick = () => {
+      let container = document.getElementById("storiesContainer");
+      //container.scrollLeft += 20;
+      sideScroll(container, "right", 25, 210, 10);
+    };
+    backSlide.onclick = () => {
+      let container = document.getElementById("storiesContainer");
+      sideScroll(container, "left", 25, 210, 10);
+    };
+
     getUsers();
     return;
   }, []);
 
+  const sideScroll = (element, direction, speed, distance, step) => {
+    let scrollAmount = 0;
+    let slideTimer = setInterval(() => {
+      if (direction === "left") {
+        element.scrollLeft -= step;
+      } else {
+        element.scrollLeft += step;
+      }
+      scrollAmount += step;
+      if (scrollAmount >= distance) {
+        window.clearInterval(slideTimer);
+      }
+    }, speed);
+  };
+
   return (
-    <div className="storiesContainer">
-      {/* <Carousel show={3.5} slide={3} swiping={true}> */}
-      {users.map((user) => (
-        <div key={user._id} className="story">
-   
-          <Link to={`/Profile/${user.username}`}>
-            <Avatar
-              borderRadius="50%"
-              height="75px"
-              width="75px"
-              profilepic={user.profilePicURL}
-            />
-          </Link>
-          <p>{user.username}</p>
-        </div>
-      ))}
-      {/* </Carousel> */}
+    <div className="row">
+      <ul className="stories-nav">
+        <li>
+          <IconButton id="slide-back">
+            <FontAwesomeIcon icon={faAngleLeft} />
+          </IconButton>
+        </li>
+        <li>
+          <div className="storiesContainer" id="storiesContainer">
+            {/* <Carousel show={3.5} slide={3} swiping={true}> */}
+            <div className="row">
+              <ul className="stories">
+                {users.map((user) => (
+                  <li>
+                    <div key={user._id} className="story">
+                      <Link to={`/Profile/${user.username}`}>
+                        <Avatar
+                          borderRadius="50%"
+                          height="75px"
+                          width="75px"
+                          profilepic={user.profilePicURL}
+                        />
+                      </Link>
+                      <p>{user.username}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {/* </Carousel> */}
+          </div>
+        </li>
+        <li>
+          <IconButton id="slide-forward">
+            <FontAwesomeIcon icon={faAngleRight} />
+          </IconButton>
+        </li>
+      </ul>
     </div>
   );
 };
