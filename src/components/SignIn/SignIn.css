@@ -63,10 +63,6 @@
     display: flex;
     align-items: center;
 }
-.signInput{
-    border: 1px solid var(--campfire-gray);
-    background-color: azure;
-}
 .bottom-container{
     display: flex;
     justify-content: center;

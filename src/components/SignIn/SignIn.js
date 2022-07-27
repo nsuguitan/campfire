@@ -39,7 +39,6 @@ const SignInComp = () => {
               label="Username"
               value={textFields.username}
               onChange={handleTextChange}
-              className='signInput'
             />
             <AuthInput
               name="password"
