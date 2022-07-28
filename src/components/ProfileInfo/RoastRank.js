@@ -5,7 +5,7 @@ import Silver from '../../assets/silver.jpg';
 import Gold from '../../assets/gold.jpg';
 
 const RoastRank = (props) => {
-  const [roastRank, setRoastRank] = useState("Pleb");
+  const [roastRank, setRoastRank] = useState("Noob");
 
   useEffect(() => {
     const getRoastInfo = async () => {

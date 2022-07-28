@@ -11,12 +11,12 @@ const AuthInput = (props) => {
         backgroundColor: 'var(--campfire-dark-gray)',  
         color: 'white'
       }}
+      inputProps={{style: {color: 'var(--campfire-white'}}}
       label={props.label}
       name={props.name}
       value={props.value}
       size="small"
       onChange={props.onChange}
-      img={props.img}
     />
   );
 };

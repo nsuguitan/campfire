@@ -34,7 +34,7 @@ const SignInComp = () => {
 
   return (
     <div className="sign-in-container">
-      <Box>
+      <Box >
         <div className='signConatiner1'>
           <h1>Log in at your own risk...</h1>
           <div className="sign-in-input-container">
@@ -47,7 +47,6 @@ const SignInComp = () => {
               label="Username"
               value={textFields.username}
               onChange={handleTextChange}
-              // img={User}
               />
             </div>
             <div className='signInField'>
