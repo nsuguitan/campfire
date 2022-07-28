@@ -8,6 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareCaretUp } from "@fortawesome/free-regular-svg-icons";
 import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import IconButton from "@mui/material/IconButton";
+import Fluffernutter from "../../assets/fluffernutter.jpg";
+import Uncooked from "../../assets/uncooked.jpg";
+import Toasted from "../../assets/toasted.jpg";
+import Roasted from "../../assets/roasted.jpg";
+import Burned from "../../assets/burned.jpg";
 
 const Rating = (props) => {
   const intialRating = props.initialRating;
@@ -72,7 +77,11 @@ const Rater = ({ initialRating, commentId }) => {
                   handleClick(e, -2, popupState);
                 }}
               >
-                Fluffernutter
+                <img
+                  src={Fluffernutter}
+                  className="rating-image"
+                  alt="Fluffernutter"
+                />
               </MenuItem>
               <MenuItem
                 style={{ backgroundColor: "var(--campfire-dark-gray" }}
@@ -80,7 +89,7 @@ const Rater = ({ initialRating, commentId }) => {
                   handleClick(e, -1, popupState);
                 }}
               >
-                Uncooked
+                <img src={Uncooked} className="rating-image" alt="Uncooked" />
               </MenuItem>
               <MenuItem
                 style={{ backgroundColor: "var(--campfire-dark-gray" }}
@@ -88,7 +97,7 @@ const Rater = ({ initialRating, commentId }) => {
                   handleClick(e, 1, popupState);
                 }}
               >
-                Toasted
+                <img src={Toasted} className="rating-image" alt="Toasted" />
               </MenuItem>
               <MenuItem
                 style={{ backgroundColor: "var(--campfire-dark-gray" }}
@@ -96,7 +105,7 @@ const Rater = ({ initialRating, commentId }) => {
                   handleClick(e, 2, popupState);
                 }}
               >
-                Roasted
+                <img src={Roasted} className="rating-image" alt="Roasted" />
               </MenuItem>
               <MenuItem
                 style={{ backgroundColor: "var(--campfire-dark-gray" }}
@@ -104,7 +113,7 @@ const Rater = ({ initialRating, commentId }) => {
                   handleClick(e, 3, popupState);
                 }}
               >
-                Burned
+                <img src={Burned} className="rating-image" alt="Burned" />
               </MenuItem>
             </Menu>
           </React.Fragment>
