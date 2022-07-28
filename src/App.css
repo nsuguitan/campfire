@@ -334,3 +334,9 @@ li{
 .col2{
   border: 1px solid var(--campfire-gray);
 }
+
+.load-more-button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

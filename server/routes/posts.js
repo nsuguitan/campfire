@@ -24,11 +24,13 @@ postRoutes.route("/posts").get(function (req, res) {
 //for getting paginated posts
 postRoutes.route("/posts/paged").get((req, res) => {
   let db_connect = dbo.getDb();
-  let lastPost = req.query.lastPost;
-  let size = parseInt(req.query.size);
+  let myFilter = req.query.lastPost
+    ? { _id: { $lt: ObjectId(req.query.lastPost) } }
+    : {};
+  let size = req.query.size ? parseInt(req.query.size) : 5;
   db_connect
     .collection(POSTS_COLLECTION)
-    .find({ _id: { $lt: ObjectId(lastPost) } })
+    .find(myFilter)
     .sort({ _id: -1 })
     .limit(size)
     .toArray((err, result) => {
