@@ -339,14 +339,13 @@ li{
   width: 50%;
 }
 .col2{
-  border: 1px solid var(--campfire-gray);
+  width: 50%;
 }
 
 .load-more-button-container{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
 }
 @media (max-width: 698px){
   .col1{
