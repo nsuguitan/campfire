@@ -14,8 +14,24 @@ postRoutes.route("/posts").get(function (req, res) {
   db_connect
     .collection(POSTS_COLLECTION)
     .find({}, { author: 0, postDate: 0, photoURL: 0 })
-    .sort({ postDate: -1 })
+    .sort({ _id: -1 })
     .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
+//for getting paginated posts
+postRoutes.route("/posts/paged").get((req, res) => {
+  let db_connect = dbo.getDb();
+  let lastPost = req.query.lastPost;
+  let size = parseInt(req.query.size);
+  db_connect
+    .collection(POSTS_COLLECTION)
+    .find({ _id: { $lt: ObjectId(lastPost) } })
+    .sort({ _id: -1 })
+    .limit(size)
+    .toArray((err, result) => {
       if (err) throw err;
       res.json(result);
     });
