@@ -30,9 +30,7 @@ const Newsfeed = () => {
     let newPosts = await loadMorePosts(posts[posts.length - 1]._id, 5);
     if (newPosts.length === 0) {
       document.getElementById("loadPostsButton").disabled = true;
-      console.log("Button Disabled");
     } else {
-      console.log("Posts:", posts);
       setPosts((posts) => posts.concat(newPosts));
       document.getElementById("loadPostsButton").disabled = false;
     }
