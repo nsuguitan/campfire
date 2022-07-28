@@ -31,7 +31,8 @@ const NewPost = (props) => {
     transform: "translate(-50%, -50%)",
     width: 600,
     height: 600,
-    bgcolor: "background.paper",
+    
+    bgcolor: "var(--campfire-dark-gray)",
     border: "2px solid #000",
     boxShadow: 24,
     textAlign: "center",
@@ -174,13 +175,13 @@ const NewPost = (props) => {
     setPostImage(null);
   };
   return (
-    <Modal open={props.open} onClose={handleClose}>
-      <Box sx={{ ...style }}>
+    <Modal open={props.open} onClose={handleClose} >
+      <Box sx={{ ...style }} className='imageModal'>
         <Button
           variant="text"
           onClick={handleClose}
           style={{
-            color: "black",
+            color: "var(--campfire-white)",
             height: "30px",
             width: "30px",
             zIndex: "3",
@@ -205,20 +206,21 @@ const NewPost = (props) => {
             onCropComplete={onCropComplete}
           ></Cropper>
         ) : (
-          <label htmlFor="image-upload" className="image-upload-label">
+          <label htmlFor="image-upload" className="image-upload-label"  sx={{backgroundColor: 'var(--campfire-dark-gray)'}}>
             Load Image
             <input
               id="image-upload"
               type="file"
               onChange={onFileChange}
               accept="image/*"
+             
             />
           </label>
         )}
         <Button
           fullWidth
           variant="contained"
-          sx={{ left: 0, bottom: 0, position: "absolute" }}
+          sx={{ left: 0, bottom: 0, position: "absolute", backgroundColor:'var(--campfire-orange)', color: 'var(--campfire-white)' }}
           onClick={createPost}
         >
           Let the roasting begin

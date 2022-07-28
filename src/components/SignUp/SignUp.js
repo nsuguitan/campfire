@@ -5,8 +5,21 @@ import { AuthState } from "../../context/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import * as AWS from "aws-sdk";
 import "./SignUp.css";
+import '../SignIn/SignIn.css';
 import AuthInput from "../AuthInput/AuthInput";
-import Image1 from "../../assets/addImage.jpg";
+import Image1 from "../../assets/profilePicPlaceholder.jpg";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
+import { faSquareCaretUp } from "@fortawesome/free-regular-svg-icons";
+import * as React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import IconButton from "@mui/material/IconButton";
+
+const handleClick = (e, changeVal, popupState) => {
+  e.preventDefault();
+  popupState.close();
+};
 
 const SignUpComp = () => {
   const [open, setOpen] = useState(false);
@@ -154,91 +167,160 @@ const SignUpComp = () => {
   };
 
   return (
-    <div className="sign-up-container">
-      <Box
-        sx={{
-          width: 1,
-          height: 0.95,
-          border: 1,
-          borderColor: "#212121",
-          borderWidth: "3px",
-        }}
-      >
-        <h1 style={{ marginBottom: "20px" }}>Campfire</h1>
-        <div className="sign-up-input-container">
-          <AuthInput
-            name="username"
-            label="Username"
-            value={textFields.username}
-            onChange={handleTextChange}
-          />
-          <AuthInput
-            name="password"
-            label="Password"
-            value={textFields.password}
-            onChange={handleTextChange}
-          />
-          <p id="passwordReq">
-            **your password must contain at least 6 characters, an uppercase, a
-            lowercase, a number, and a special character**
-          </p>
-          <AuthInput
-            name="fullname"
-            label="Full Name"
-            value={textFields.fullname}
-            onChange={handleTextChange}
-          />
-          <AuthInput
-            name="email"
-            label="Email"
-            value={textFields.email}
-            onChange={handleTextChange}
-          />
-          <label
-            htmlFor="profile-image-upload"
-            className="profile-image-upload-label"
-          >
-            Load Profile Picture
-            <input
-              id="profile-image-upload"
-              type="file"
-              onChange={onFileChange}
-              accept="image/*"
-            />
-            <img
-              className="profile-image-preview"
-              src={imageSrc}
-              alt="None"
-            ></img>
-          </label>
+    <div className="sign-in-container">
+      <Box>
+      <div className='signConatiner1'>
+          <h2>Tell us about your <span style={{color: 'var(--campfire-orange)', fontSize: '.7em'}}>(boring) </span>self</h2>
+          <div className="sign-up-input-container">
+            <div className='infoLine'>
+              <div className='infoCol1'>
+                <p>Full name</p>
+              </div>
+              <div className='infoCol2'>
+              <AuthInput
+              name="fullname"
+              value={textFields.fullname}
+              onChange={handleTextChange}
+              />
+              </div>
+            </div>
+            <div className='infoLine'>
+              <div className='infoCol1'>
+                <p>Email address</p>
+              </div>
+              <div className='infoCol2'>
+              <AuthInput
+              name="email"
+              value={textFields.email}
+              onChange={handleTextChange}
+              />
+              </div>
+            </div>
+            <div className='infoLine'>
+              <div className='infoCol1'>
+                <p>Username</p>
+              </div>
+              <div className='infoCol2'>
+              <AuthInput
+              name="username"
+              value={textFields.username}
+              onChange={handleTextChange}
+              />
+              </div>
+            </div>
+            <div className='infoLine'>
+              <div className='infoCol1'>
+                <p>Pasword</p>
+                <PopupState variant="popover">
+        {(popupState) => (
+          <React.Fragment>
+            <IconButton
+              {...bindTrigger(popupState)}
+              size="small"
+              sx={{ padding: 0.5 }}
+            >
+              <FontAwesomeIcon icon={faSquareCaretUp} size="2xs" />
+            </IconButton>
+            <Menu {...bindMenu(popupState)}>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand'}}>your password must contain:</MenuItem>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand' }}> - at least 6 characters</MenuItem>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand' }}> - an uppercase letter</MenuItem>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand' }}> - a lowercase letter</MenuItem>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand' }}> - a number</MenuItem>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray", fontSize: '.7em', fontFamily: 'Quicksand' }}> - and a special character</MenuItem>
+            </Menu>
+          </React.Fragment>
+        )}
+      </PopupState>
+              </div>
+              <div className='infoCol2'>
+              <AuthInput
+              name="password"
+              value={textFields.password}
+              onChange={handleTextChange}
+              />
+              </div>
+            </div>
+            <div className='infoLine'>
+              <div className='infoCol1'>
+                <p>Upload profile photo</p>
+              </div>
+              <div className='infoCol2'>
+              <label
+              htmlFor="profile-image-upload"
+              className="profile-image-upload-label"
+              >
+                <img
+                className="profile-image-preview"
+                src={imageSrc}
+                alt="None"
+              ></img>
+              <input
+                id="profile-image-upload"
+                type="file"
+                onChange={onFileChange}
+                accept="image/*"
+              />
+              </label>
+              </div> 
+            </div>
+            <div className='infoLine'>
+              <div className='infoCol1'></div>
+              <div className='infoCol2'>
+              <textarea
+              id="profile-bio"
+              name="profile-bio"
+              onChange={handleBioChange}
+              rows="4"
+              cols="34"
+              placeholder="C'mon write a bio. Don't be lame."
+              value={bio}
+              ></textarea>
+              </div>
+            </div>
+            <div className='createButtonContainer'>
+              <Button
+              className='createAccountButton'
+              disableElevation
+              onClick={triggerSignUp}
+              sx={{
+                backgroundColor: "var(--campfire-orange)",
+                color: 'var(--campfire-white)',
+                fontFamily: 'Quicksand'
+              }}
+            >
+             Create account
+            </Button>
+            </div>
+           
+    
+          </div>
+          
+         
+        
 
-          <p>
-            <label htmlFor="profile-bio">Write your bio: </label>
-          </p>
-          <textarea
-            id="profile-bio"
-            name="profile-bio"
-            onChange={handleBioChange}
-            rows="4"
-            cols="40"
-            placeholder="C'mon write a bio. Don't be lame."
-            value={bio}
-          ></textarea>
-          <br></br>
-
-          <Button
-            disableElevation
-            fullWidth
-            variant="contained"
-            sx={{
-              backgroundColor: "#ee7e00",
-              marginBottom: "10px",
-            }}
-            onClick={triggerSignUp}
-          >
-            SignUp
-          </Button>
+          
         </div>
+        <div className='signConatiner2'>
+          <div className="bottom-container">
+            <p>Already have an account?</p>
+            <Button
+              disableElevation
+              sx={{
+                backgroundColor: "transparent",
+                textTransform: "none",
+                color: "var(--campfire-orange)",
+                width: '130px',
+                fontFamily: "Quicksand",
+                fontSize: '1em'
+              }}
+              onClick={() => navigate("/SignIn")}
+            >
+              log in, dummy
+            </Button>
+          </div>
+
+        </div>  
       </Box>
       <Modal open={open} onClose={() => setOpen(false)}>
         <Box sx={{ ...style, width: 400 }}>

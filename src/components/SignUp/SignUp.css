@@ -1,24 +1,49 @@
-.sign-up-container{
-    width:50%;
-    height:min-content;
-    margin: auto;
-    text-align: center;
-}
-
 .sign-up-input-container{
     width: 80%;
-    height: 50%;
     margin: auto;
 }
 
 .profile-image-preview{
-    width: 200px;
-    height: 200px;
-    border: 2.5px solid black;
-    
+    height: 100px;
+    border: 1px solid var(--campfire-gray);
+    background-color: var(--campfire-dark-gray); 
+}
+.infoLine{
+    display: flex;
+    align-items: center;
+}
+.infoLine p{
+    font-family: 'Quicksand';
+    font-size: .7em;
+}
+.infoCol2{
+    width: 75%;
+    display: flex;
+}
+.infoCol1{
+    width: 25%;
+    text-align: right;
+    padding-right: 5px;
+}
+.signConatiner1 h2{
+    font-family: 'Quicksand';
+    font-weight: 100;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.profile-image-upload-label{
+    color: var(--campfire-gray);
+    border:3px white;
+}
+textarea{
+    background-color: var(--campfire-dark-gray);
+    border: 1px solid var(--campfire-gray);
+    color: var(--campfire-white);
+    border-radius: 0px;
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
-#passwordReq{
-    color: red;
-    font-size: .6em;
-}
+.createAccountButton{
+    width: 90%;
+} 

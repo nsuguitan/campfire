@@ -1,39 +1,90 @@
 .sign-in-container{
-    /* width:50%;
-    height:min-content; */
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
     text-align: center;
 }
 
 .sign-in-input-container{
     width: 80%;
-    height: 50%;
+    padding-top: 40px;
+    padding-bottom: 20px;
     margin: auto;
 }
 
-.forgot-password-button{
-    float: left;
-}
-
 .login-buttons-container{
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 5px;
+    margin: auto;
     margin-bottom: 20px;
-
+    text-align: center;
+}
+.oauth-container h2{
+    font-family: 'Quicksand'; 
+    font-weight: 100;
+}
+.oauth-container h5{
+    font-family: 'Quicksand'; 
 }
 
 .brand-login-container{
-    margin-bottom: 5px;
-}
-#gridContainer{
-    margin-top: 5px;
-    justify-content: center;
-    justify-items: center;
-    align-content: space-evenly;
+    padding-top: 20px;
     align-items: center;
+    /* height: 100px; */
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin:auto;
+}
+.brand-login-container img{
+    width: 50px;
+    height: 50px;
+    margin: auto;
 }
 
-/* .forgot-password-button{
-margin-left: 0;
-} */
+.signConatiner1{
+    border: 1px solid var(--campfire-gray);
+    width: 90%;
+    margin: auto;
+    height: 550px;
+    margin-top: 50px;
+}
+.signConatiner1 h1{
+    font-weight: 100;
+    font-family: 'Quicksand';
+    font-size: 1.7em;
+    margin-top: 40px;
+
+}
+.signConatiner2{
+    border: 1px solid var(--campfire-gray);
+    width: 90%;
+    margin: auto;
+    height: 60px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+}
+.bottom-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.bottom-container p{
+    font-family: "Quicksand";
+    font-size: 1em;
+}
+
+@media (max-width: 630px){
+    .infoCol1{
+        width: 0%;
+    }
+    .infoCol2{
+        width: 100%;
+    }
+
+}
+.signInField{
+    display: flex;
+    align-items: center;
+    
+}
