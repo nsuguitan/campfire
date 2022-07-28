@@ -7,6 +7,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Postcard from "../components/Postcard/Postcard";
 import searchIcon from "../assets/search.jpg";
 
+import { Link } from "react-router-dom";
+
 const Search = () => {
   const [users, setUsers] = useState([]);
   const [searchImagesArray, setSearchImagesArray] = useState([]);
@@ -86,16 +88,34 @@ const Search = () => {
       ));
   };
 
+  const filterData = (query, data) => {
+    if (!query) {
+      return data;
+    } else {
+      return data.filter((d) => d.toLowerCase().includes(query));
+    }
+  };
+
   return (
     <div className="pageContainer">
       <div className="searchHeading">
         <img src={searchIcon} className="searchIcon" />
-        <Autocomplete
-          disablePortal
+        <Autocomplete 
+          clearOnEscape
           options={users.map((user) => user.username)}
-          sx={{ width: 300}}
-          renderInput={(params) => <TextField {...params } label="Search"/>}
+          sx={{ width: 300, backgrounColor: 'var(--campfire-dark-gray'}}
+          renderInput={(params) => 
+          <TextField 
+          to='/Profile/${user.username}'
+          {...params } 
+          label="Search" 
+          inputProps={{style: {color: 'var(--campfire-white'}}}
+          />}
         />
+        <button>Go</button>
+  
+
+
       </div>
       <div className="searchPhotosGrid">{displaySearchImages()}</div>
       <Modal open={open} onClose={handleClose}>
