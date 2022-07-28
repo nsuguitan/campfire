@@ -83,3 +83,8 @@
     }
 
 }
+.signInField{
+    display: flex;
+    align-items: center;
+    
+}

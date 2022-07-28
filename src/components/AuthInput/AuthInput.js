@@ -16,7 +16,7 @@ const AuthInput = (props) => {
       value={props.value}
       size="small"
       onChange={props.onChange}
-      color={props.color}
+      img={props.img}
     />
   );
 };

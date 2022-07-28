@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import OAuth from "../OAuth/OAuth";
 import "./SignIn.css";
 import AuthInput from "../AuthInput/AuthInput";
+import Pasword from '../../assets/password.jpg';
+import User from '../../assets/username.jpg';
+
+
 const SignInComp = () => {
   let navigate = useNavigate();
 
@@ -34,18 +38,30 @@ const SignInComp = () => {
         <div className='signConatiner1'>
           <h1>Log in at your own risk...</h1>
           <div className="sign-in-input-container">
-            <AuthInput
+            <div className='signInField'>
+              <div>
+              <img src={User} style={{width: '30px', marginRight: '10px'}}/>
+              </div>
+              <AuthInput
               name="username"
               label="Username"
               value={textFields.username}
               onChange={handleTextChange}
-            />
-            <AuthInput
+              // img={User}
+              />
+            </div>
+            <div className='signInField'>
+              <div>
+              <img src={Pasword} style={{width:'30px', marginRight: '10px'}}/>
+              </div>
+              <AuthInput
               name="password"
               label="Password"
               value={textFields.password}
               onChange={handleTextChange}
-            />
+              />
+            
+            </div>
           </div>
           <div className="login-buttons-container">
             <div className="button-container">
