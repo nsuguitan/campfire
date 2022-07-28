@@ -26,10 +26,16 @@ const Newsfeed = () => {
   }, []);
 
   const loadButtonClicked = async () => {
-    console.log(posts[posts.length - 1]._id);
+    document.getElementById("loadPostsButton").disabled = true;
     let newPosts = await loadMorePosts(posts[posts.length - 1]._id, 5);
-    console.log(newPosts);
-    setPosts((posts) => posts.concat(newPosts));
+    if (newPosts.length === 0) {
+      document.getElementById("loadPostsButton").disabled = true;
+      console.log("Button Disabled");
+    } else {
+      console.log("Posts:", posts);
+      setPosts((posts) => posts.concat(newPosts));
+      document.getElementById("loadPostsButton").disabled = false;
+    }
   };
 
   return (
@@ -52,6 +58,7 @@ const Newsfeed = () => {
       <div className="load-more-button-container">
         <Button
           onClick={loadButtonClicked}
+          id="loadPostsButton"
           className="centered-page-button"
           sx={{
             color: "var(--campfire-white)",
