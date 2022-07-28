@@ -61,6 +61,7 @@ animation:move-twink-back 200s linear infinite;
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
+
 .profileStatsContainer{
   text-align: center;
   align-items: center;
@@ -337,7 +338,7 @@ li{
 .col2{
   width: 50%;
 }
-@media (max-width: 630px){
+@media (max-width: 698px){
   .col1{
       width: 0%;
   }
