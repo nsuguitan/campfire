@@ -27,7 +27,6 @@ const Stories = () => {
     let backSlide = document.getElementById("slide-back");
     fwdSlide.onclick = () => {
       let container = document.getElementById("storiesContainer");
-      //container.scrollLeft += 20;
       sideScroll(container, "right", 25, 210, 10);
     };
     backSlide.onclick = () => {
@@ -64,7 +63,6 @@ const Stories = () => {
         </li>
         <li>
           <div className="storiesContainer" id="storiesContainer">
-            {/* <Carousel show={3.5} slide={3} swiping={true}> */}
             <div className="row">
               <ul className="stories">
                 {users.map((user) => (
@@ -84,7 +82,6 @@ const Stories = () => {
                 ))}
               </ul>
             </div>
-            {/* </Carousel> */}
           </div>
         </li>
         <li>

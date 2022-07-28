@@ -6,8 +6,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Postcard from "../components/Postcard/Postcard";
 import searchIcon from "../assets/search.jpg";
-
-import { Link } from "react-router-dom";
+import { useNavigate, Routes, Route, } from "react-router-dom";
 
 const Search = () => {
   const [users, setUsers] = useState([]);
@@ -60,6 +59,11 @@ const Search = () => {
     setOpen(false);
   };
 
+  let navigate = useNavigate(); 
+  const routeChange = (users) =>{ 
+    navigate(`/Profile/${users.username}`);
+  }
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -88,14 +92,6 @@ const Search = () => {
       ));
   };
 
-  const filterData = (query, data) => {
-    if (!query) {
-      return data;
-    } else {
-      return data.filter((d) => d.toLowerCase().includes(query));
-    }
-  };
-
   return (
     <div className="pageContainer">
       <div className="searchHeading">
@@ -109,10 +105,9 @@ const Search = () => {
           to='/Profile/${user.username}'
           {...params } 
           label="Search" 
-          inputProps={{style: {color: 'var(--campfire-white'}}}
           />}
         />
-        <button>Go</button>
+        <Button onClick={routeChange}>Go</Button>
   
 
 
