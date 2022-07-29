@@ -51,18 +51,19 @@ const NavBar = () => {
       <PopupState variant="popover">
         {(popupState) => (
           <React.Fragment>
-            <Button>
+            <Button style={{backgroundColor: 'var(--campfire-black)', border: 'none'}}>
               <img src={Hamburger} {...bindTrigger(popupState)} />
-              </Button>
+            </Button>
             <Menu {...bindMenu(popupState)}>
-              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray" }} >
+              <MenuItem as={Link} to="/Newsfeed" 
+              style={{ backgroundColor: "var(--campfire-dark-gray" }} >
               <p>Home</p>
               </MenuItem>
-              <MenuItem 
+              <MenuItem as={Link} to="/Search" 
                 style={{ backgroundColor: "var(--campfire-dark-gray" }}>
                 <p>Search</p>
               </MenuItem>
-              <MenuItem
+              <MenuItem 
                 style={{ backgroundColor: "var(--campfire-dark-gray" }}>
                 <div onClick={() => setOpen(true)}><p>Add Post</p></div>
               </MenuItem>
@@ -71,8 +72,9 @@ const NavBar = () => {
                 <p>DMs</p>
               </MenuItem>
               <MenuItem
+                as={Link} to={`/Profile/${username}`}
                 style={{ backgroundColor: "var(--campfire-dark-gray" }}>
-                <p to={`/Profile/${username}`}>Profile</p>
+                <p>Profile</p>
                 <NewPost open={open} closeFunc={handleClose} />
               </MenuItem>
             </Menu>
