@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
-import { Nav, Navbar, Button } from "react-bootstrap";
+import * as React from "react";
+import { Navbar, Button} from "react-bootstrap";
 import "./NavBar.css";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import { useState } from "react";
 import NewPost from "../NewPost/NewPost";
 import { AuthState } from "../../context/auth/AuthContext";
@@ -12,13 +16,13 @@ import Profile from '../../assets/profile.jpg';
 import Logo from '../../assets/logo.jpg';
 import Hamburger from '../../assets/hamburger.jpg'
 
+
+
 const NavBar = () => {
   const { isAuthenticated, username } = AuthState();
   let [open, setOpen] = useState(false);
   const [navExpanded, setNavExpanded] = useState(false);
-  const [blogs, setBlogs] = useState(null);
-  const closeNav = () => setNavExpanded(false);
-  const toggleNav = () => setNavExpanded(!navExpanded);
+
 
   const handleClose = () => {
     setOpen(false);
@@ -44,8 +48,38 @@ const NavBar = () => {
         <NewPost open={open} closeFunc={handleClose} />
       </div>
       <div className='navCol3'>
-       
-        <img src={Hamburger}/>
+      <PopupState variant="popover">
+        {(popupState) => (
+          <React.Fragment>
+            <Button>
+              <img src={Hamburger} {...bindTrigger(popupState)} />
+              </Button>
+            <Menu {...bindMenu(popupState)}>
+              <MenuItem style={{ backgroundColor: "var(--campfire-dark-gray" }} >
+              <p>Home</p>
+              </MenuItem>
+              <MenuItem 
+                style={{ backgroundColor: "var(--campfire-dark-gray" }}>
+                <p>Search</p>
+              </MenuItem>
+              <MenuItem
+                style={{ backgroundColor: "var(--campfire-dark-gray" }}>
+                <div onClick={() => setOpen(true)}><p>Add Post</p></div>
+              </MenuItem>
+              <MenuItem
+                style={{ backgroundColor: "var(--campfire-dark-gray" }}>
+                <p>DMs</p>
+              </MenuItem>
+              <MenuItem
+                style={{ backgroundColor: "var(--campfire-dark-gray" }}>
+                <p to={`/Profile/${username}`}>Profile</p>
+                <NewPost open={open} closeFunc={handleClose} />
+              </MenuItem>
+            </Menu>
+          </React.Fragment>
+        )}
+      </PopupState>
+        
       </div>
     </Navbar>
   );
