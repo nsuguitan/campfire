@@ -17,6 +17,9 @@
     height: 100px;
     width: auto;
 }
+.navCol1{
+    width: 40%
+}
 .navCol2{
     display: flex;
     justify-content: space-around;
@@ -25,4 +28,33 @@
 .navCol2 img{
     width: 40px;
     height: 40px;
+}
+
+.navCol3{
+    width: 0%;
+}
+.navCol3 img{
+    width: 0%
+}
+
+@media (max-width: 650px){
+    .navCol2{
+        width: 0%;
+    }
+    .navCol2 img{
+        width: 0px;
+        height: 0px;
+    }
+    .navCol3{
+        width: 60%;
+        display: flex;
+        justify-content: flex-end;
+
+    }
+    .navCol3 img{
+        width: 40px;
+        height: 40px;
+        margin-right: 30px;
+    }
+   
 }
