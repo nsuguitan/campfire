@@ -87,7 +87,6 @@ const SignInComp = () => {
                   backgroundColor: "transparent",
                   textTransform: "none",
                   color: "var(--campfire-orange)",
-                  width: '70%',
                   fontFamily: 'Quicksand'
                 }}
               >
