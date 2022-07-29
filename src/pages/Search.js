@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button, Modal, Box, Paper } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -12,7 +11,8 @@ const Search = () => {
   const [searchImagesArray, setSearchImagesArray] = useState([]);
   const [postSelected, setPostSelected] = useState("");
   const [open, setOpen] = useState(false);
-  let { profileUsername } = useParams();
+  const [searchUser, setSearchUser] = useState("");
+  let navigate = useNavigate();
 
   const style = {
     position: "absolute",
@@ -36,10 +36,12 @@ const Search = () => {
         return;
       }
 
-      setSearchImagesArray(await response.json());
+      setSearchImagesArray(
+        (await response.json()).sort((a, b) => 0.5 - Math.random())
+      );
     }
     loadSearchImages();
-  }, [profileUsername]);
+  }, []);
 
   useEffect(() => {
     async function getUsers() {
@@ -57,7 +59,6 @@ const Search = () => {
     getUsers();
     return;
   }, []);
-  console.log(users);
 
   const handleOpen = (event, postId) => {
     event.preventDefault();
@@ -68,53 +69,59 @@ const Search = () => {
     setOpen(false);
   };
 
-  let navigate = useNavigate();
-  const routeChange = (users) => {
-    navigate(`/Profile/${users.username}`);
+  const handleSearchUserInput = (evt) => {
+    setSearchUser(evt.target.value);
   };
 
-  const displaySearchImages = () => {
-    return searchImagesArray
-      .sort((a, b) => 0.5 - Math.random())
-      .map((post) => (
-        <Button
-          onClick={(event) => handleOpen(event, post._id)}
-          key={post._id}
-          style={{ padding: "2px" }}
-        >
-          <img
-            src={post.photoURL}
-            alt="http://placecorgi.com/250"
-            className="searchImage"
-          />
-        </Button>
-      ));
+  const routeChange = () => {
+    let usernames = users.map((a) => a.username);
+    if (usernames.includes(searchUser)) navigate(`/Profile/${searchUser}`);
   };
 
   return (
     <div className="pageContainer">
       <div className="searchHeading">
-        <img src={searchIcon} className="searchIcon" />
+        <img src={searchIcon} alt="search" className="searchIcon" />
         <Autocomplete
           clearOnEscape
           options={users.map((user) => user.username)}
-          sx={{ width: 300 }}
+          sx={{ width: 300, "& input": { color: "var(--campfire-white)" } }}
+          onChange={(event, value) => setSearchUser(value)}
           PaperComponent={({ children }) => (
             <Paper style={{ background: "var(--campfire-dark-gray)" }}>
               {children}
             </Paper>
           )}
+          onUpdateInput={handleSearchUserInput}
           renderInput={(params) => (
             <TextField
-              to="/Profile/${user.username}"
+              // to="/Profile/${user.username}"
               {...params}
+              InputLabelProps={{
+                style: { color: "var(--campfire-white)" },
+              }}
+              onChange={handleSearchUserInput}
               label="Search"
             />
           )}
         />
         <Button onClick={routeChange}>Go</Button>
       </div>
-      <div className="searchPhotosGrid">{displaySearchImages()}</div>
+      <div className="searchPhotosGrid" id="seachPhotosGrid">
+        {searchImagesArray.map((post) => (
+          <Button
+            onClick={(event) => handleOpen(event, post._id)}
+            key={post._id}
+            style={{ padding: "2px" }}
+          >
+            <img
+              src={post.photoURL}
+              alt="http://placecorgi.com/250"
+              className="searchImage"
+            />
+          </Button>
+        ))}
+      </div>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <Button
