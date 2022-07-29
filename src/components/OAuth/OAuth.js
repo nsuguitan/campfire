@@ -6,7 +6,7 @@ const OAuth = () => {
   return (
     <div className="oauth-container">
       <div>
-        <h2>- OR -</h2>
+        <h3>- OR -</h3>
         <h5>Login with</h5>
       </div>
       <div className="brand-login-container">

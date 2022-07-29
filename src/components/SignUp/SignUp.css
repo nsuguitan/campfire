@@ -28,8 +28,8 @@
 .signConatiner1 h2{
     font-family: 'Quicksand';
     font-weight: 100;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 .profile-image-upload-label{
     color: var(--campfire-gray);
