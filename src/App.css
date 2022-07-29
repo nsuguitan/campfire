@@ -326,10 +326,10 @@ li{
 }
 .postcardGlow{
   margin-bottom: 60px;
-  animation: animation .65s ease-in-out infinite alternate;
-  -moz-animation: animation .65s ease-in-out infinite alternate;
-  -webkit-animation: animation .65s ease-in-out infinite alternate;
-  -o-animation: animation .65s ease-in-out infinite alternate;
+  animation: animation .6s ease-in-out infinite alternate;
+  -moz-animation: animation .6s ease-in-out infinite alternate;
+  -webkit-animation: animation .6s ease-in-out infinite alternate;
+  -o-animation: animation .6s ease-in-out infinite alternate;
   
   /* box-shadow: 0 0 50px rgba(255, 217, 0, 0.795),            
             -10px 0 80px rgba(255, 166, 0, 0.726),        

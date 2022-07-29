@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import * as React from "react";
-import { Navbar, Button} from "react-bootstrap";
+import { Button} from "react-bootstrap";
 import "./NavBar.css";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -21,7 +21,6 @@ import Hamburger from '../../assets/hamburger.jpg'
 const NavBar = () => {
   const { isAuthenticated, username } = AuthState();
   let [open, setOpen] = useState(false);
-  const [navExpanded, setNavExpanded] = useState(false);
 
 
   const handleClose = () => {
@@ -29,10 +28,10 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar
+    <div
       className="navContainer"
       style={isAuthenticated ? { display: "flex" } : { display: "none" }}
-      expanded={navExpanded}
+
     >
       <div className='navCol1'>
         <img src={Logo}/>
@@ -56,23 +55,28 @@ const NavBar = () => {
             </Button>
             <Menu {...bindMenu(popupState)}>
               <MenuItem as={Link} to="/Newsfeed" 
-              style={{ backgroundColor: "var(--campfire-dark-gray" }} >
+              style={{ backgroundColor: "var(--campfire-dark-gray" }} 
+              onClick={popupState.close}>
               <p>Home</p>
               </MenuItem>
               <MenuItem as={Link} to="/Search" 
+                onClick={popupState.close}
                 style={{ backgroundColor: "var(--campfire-dark-gray" }}>
                 <p>Search</p>
               </MenuItem>
               <MenuItem 
+                onClick={popupState.close}
                 style={{ backgroundColor: "var(--campfire-dark-gray" }}>
                 <div onClick={() => setOpen(true)}><p>Add Post</p></div>
               </MenuItem>
               <MenuItem
+                onClick={popupState.close}
                 style={{ backgroundColor: "var(--campfire-dark-gray" }}>
                 <p>DMs</p>
               </MenuItem>
               <MenuItem
                 as={Link} to={`/Profile/${username}`}
+                onClick={popupState.close}
                 style={{ backgroundColor: "var(--campfire-dark-gray" }}>
                 <p>Profile</p>
                 <NewPost open={open} closeFunc={handleClose} />
@@ -83,7 +87,7 @@ const NavBar = () => {
       </PopupState>
         
       </div>
-    </Navbar>
+    </div>
   );
 };
 export default NavBar;

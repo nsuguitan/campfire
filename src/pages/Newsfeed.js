@@ -31,6 +31,7 @@ const Newsfeed = () => {
         <p>|</p>
         <p>For You</p>
       </div>
+      <br/>
       <div className="feedDisplay">
         <ul>
           {posts.map((post) => (
