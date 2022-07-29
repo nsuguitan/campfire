@@ -142,7 +142,10 @@ const Postcard = (props) => {
       {isLoading ? (
         <h1>Loading...</h1>
       ) : (
-        <Card sx={{ maxWidth: 540, backgroundColor: '#28292b'}} className="fullCard">
+        <Card
+          sx={{ maxWidth: 540, backgroundColor: "#28292b" }}
+          className="fullCard"
+        >
           <CardHeader
             avatar={
               <Avatar
@@ -167,13 +170,13 @@ const Postcard = (props) => {
                   color: "var(--campfire-white)",
                   fontWeight: "bold",
                   fontSize: "17.5px",
-                  textShadow: '1px 1px black'
+                  textShadow: "1px 1px black",
                 }}
               >
                 {postInfo.author.username}
               </Link>
             }
-            style={{backgroundColor: 'var(--campfire-dark-gray)'}}
+            style={{ backgroundColor: "var(--campfire-dark-gray)" }}
           />
           <CardMedia
             component="img"
@@ -188,7 +191,20 @@ const Postcard = (props) => {
             <div>{loadAllCommentsButton()}</div>
             <Modal open={open} onClose={handleClose}>
               <Box sx={style}>
-                <Button variant='text' onClick={handleClose} style={{ color: 'var(--campfire-white)', height: '30px', width: '30px', zIndex: '3', fontSize: '1.7em', marginLeft: '500px' }}>X</Button>
+                <Button
+                  variant="text"
+                  onClick={handleClose}
+                  style={{
+                    color: "var(--campfire-white)",
+                    height: "30px",
+                    width: "30px",
+                    zIndex: "3",
+                    fontSize: "1.7em",
+                    marginLeft: "500px",
+                  }}
+                >
+                  X
+                </Button>
                 <Postcard postId={postSelected} />
               </Box>
             </Modal>
@@ -199,22 +215,30 @@ const Postcard = (props) => {
               display: "flex",
               alignItems: "center",
               width: 1,
-              backgroundColor: '#28292b',
-              color: 'white'
+              backgroundColor: "#28292b",
+              color: "white",
             }}
           >
             <TextField
-              sx={{ ml: 1, flex: 1}}
+              sx={{ ml: 1, flex: 1 }}
               id="commentTextField"
               placeholder="Add a comment..."
               variant="standard"
               InputProps={{ disableUnderline: true }}
               onChange={handleCommentInput}
               value={newComment}
-              
             />
-            
-            <Button onClick={postComment} style={{color: 'var(--campfire-white)', backgroundColor: 'var(--campfire-orange', margin: "10px"}}>Post</Button>
+
+            <Button
+              onClick={postComment}
+              style={{
+                color: "var(--campfire-white)",
+                backgroundColor: "var(--campfire-orange",
+                margin: "10px",
+              }}
+            >
+              Post
+            </Button>
           </Paper>
         </Card>
       )}

@@ -116,7 +116,7 @@ animation:move-twink-back 200s linear infinite;
 .searchHeading{
   display: flex;
   top: 0px;
-  background-color: var(--campfire-dark-gray);
+  background-color: var(--campfire-black);
   color: var(--campfire-white);
   height: 100px;
   align-items: center;
@@ -325,11 +325,18 @@ li{
   list-style-type: none;
 }
 .postcardGlow{
-  margin-bottom: 40px;
-  box-shadow: 0 0 50px rgba(255, 217, 0, 0.795),            
+  margin-bottom: 60px;
+  animation: animation .65s ease-in-out infinite alternate;
+  -moz-animation: animation .65s ease-in-out infinite alternate;
+  -webkit-animation: animation .65s ease-in-out infinite alternate;
+  -o-animation: animation .65s ease-in-out infinite alternate;
+  
+  /* box-shadow: 0 0 50px rgba(255, 217, 0, 0.795),            
             -10px 0 80px rgba(255, 166, 0, 0.726),        
             10px 0 80px rgba(255, 68, 0, 0.801);         
+            10px 0 80px rgba(255, 68, 0, 0.801);          */
   /* box-shadow: var(--box-shadow); */
+
 }
 .col1{
   background-image: url('./assets/campfireBackground.jpg');
@@ -347,7 +354,8 @@ li{
   justify-content: center;
   align-items: center;
 }
-@media (max-width: 698px){
+
+@media (max-width: 650px){
   .col1{
       width: 0%;
   }
@@ -356,3 +364,42 @@ li{
   }
 
 }
+
+.searchBar{
+  width: 300px;
+  height: 60px;
+  border: 1px solid red;
+  background-color: aquamarine;
+}
+.rating-image{
+  width:20px;
+  height: auto;
+}
+
+
+@keyframes animation {
+  0% {
+    box-shadow: 0 0 5px #fefcc9,
+      5px -5px 5px #feec85,
+      -10px -10px 10px #ffae34,
+      10px -20px 15px #ec760c,
+      -10px -30px 20px #cd4606,
+      0 -40px 25px #973716,
+      5px -45px 20px #451b0e; 
+  }
+
+  100% {
+    box-shadow: 0 0 5px #fefcc9,
+      5px -5px 5px #fefcc9,
+      -10px -10px 10px #feec85,
+      11px -11px 20px #ffae34,
+      -11px -27px 15px #ec760c,
+      0 -41px 30px #cd4606,
+      5px -45px 30px #973716;
+    left: 0.5px;
+  }
+}
+
+
+
+

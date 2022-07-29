@@ -71,7 +71,8 @@ const SignInComp = () => {
                   backgroundColor: "var(--campfire-orange)",
                   width: '70%',
                   color: 'var(--campfire-white)',
-                  fontFamily: 'Quicksand'
+                  fontFamily: 'Quicksand',
+                  marginBottom: '10px'
                 }}
                 onClick={triggerLogin}
               >
@@ -86,7 +87,6 @@ const SignInComp = () => {
                   backgroundColor: "transparent",
                   textTransform: "none",
                   color: "var(--campfire-orange)",
-                  width: '70%',
                   fontFamily: 'Quicksand'
                 }}
               >

@@ -7,8 +7,8 @@
 
 .sign-in-input-container{
     width: 80%;
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding-top: 60px;
+    padding-bottom: 30px;
     margin: auto;
 }
 
@@ -44,22 +44,21 @@
     border: 1px solid var(--campfire-gray);
     width: 90%;
     margin: auto;
-    height: 550px;
-    margin-top: 50px;
+    height: 603px;
 }
 .signConatiner1 h1{
     font-weight: 100;
     font-family: 'Quicksand';
     font-size: 1.7em;
-    margin-top: 40px;
+    margin-top: 60px;
 
 }
 .signConatiner2{
     border: 1px solid var(--campfire-gray);
     width: 90%;
     margin: auto;
-    height: 60px;
-    margin-top: 50px;
+    height: 78px;
+    margin-top: 65px;
     display: flex;
     align-items: center;
 }
@@ -68,6 +67,11 @@
     justify-content: center;
     align-items: center;
     margin: auto;
+}
+.separator h3{
+    font-weight: 100;
+    font-family: 'Quicksand';
+    font-size: 1.7em;
 }
 .bottom-container p{
     font-family: "Quicksand";
@@ -88,3 +92,20 @@
     align-items: center;
     
 }
+.separator{
+    display:flex;
+    align-items: center;
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+  
+  .separator .line{
+    height: 1px;
+    flex: 1;
+    background-color: var(--campfire-gray);
+  }
+  
+  .separator h3{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
