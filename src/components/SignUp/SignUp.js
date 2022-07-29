@@ -210,7 +210,7 @@ const SignUpComp = () => {
             </div>
             <div className='infoLine'>
               <div className='infoCol1'>
-                <p>Pasword</p>
+                <p>Password</p>
                 <PopupState variant="popover">
         {(popupState) => (
           <React.Fragment>
