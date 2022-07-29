@@ -1,12 +1,11 @@
-
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Button, Modal, Box } from "@mui/material";
+import { Button, Modal, Box, Paper } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Postcard from "../components/Postcard/Postcard";
 import searchIcon from "../assets/search.jpg";
-import { useNavigate, Routes, Route, } from "react-router-dom";
+import { useNavigate, Routes, Route } from "react-router-dom";
 
 const Search = () => {
   const [users, setUsers] = useState([]);
@@ -14,6 +13,16 @@ const Search = () => {
   const [postSelected, setPostSelected] = useState("");
   const [open, setOpen] = useState(false);
   let { profileUsername } = useParams();
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 600,
+    boxShadow: 24,
+    p: 4,
+  };
 
   useEffect(() => {
     async function loadSearchImages() {
@@ -59,19 +68,9 @@ const Search = () => {
     setOpen(false);
   };
 
-  let navigate = useNavigate(); 
-  const routeChange = (users) =>{ 
+  let navigate = useNavigate();
+  const routeChange = (users) => {
     navigate(`/Profile/${users.username}`);
-  }
-
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 600,
-    boxShadow: 24,
-    p: 4,
   };
 
   const displaySearchImages = () => {
@@ -96,21 +95,24 @@ const Search = () => {
     <div className="pageContainer">
       <div className="searchHeading">
         <img src={searchIcon} className="searchIcon" />
-        <Autocomplete 
+        <Autocomplete
           clearOnEscape
           options={users.map((user) => user.username)}
-          sx={{ width: 300, backgrounColor: 'var(--campfire-dark-gray'}}
-          renderInput={(params) => 
-          <TextField 
-          to='/Profile/${user.username}'
-          {...params } 
-          label="Search" 
-          />}
+          sx={{ width: 300 }}
+          PaperComponent={({ children }) => (
+            <Paper style={{ background: "var(--campfire-dark-gray)" }}>
+              {children}
+            </Paper>
+          )}
+          renderInput={(params) => (
+            <TextField
+              to="/Profile/${user.username}"
+              {...params}
+              label="Search"
+            />
+          )}
         />
         <Button onClick={routeChange}>Go</Button>
-  
-
-
       </div>
       <div className="searchPhotosGrid">{displaySearchImages()}</div>
       <Modal open={open} onClose={handleClose}>
