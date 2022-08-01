@@ -1,0 +1,63 @@
+.searchHeading {
+    display: flex;
+    top: 0px;
+    background-color: var(--campfire-black);
+    color: var(--campfire-white);
+    height: 100px;
+    align-items: center;
+}
+
+.searchIcon {
+    height: 40px;
+    width: auto;
+    padding-right: 10px;
+}
+
+.sarchBar {
+    height: 40px;
+    width: 600px;
+    border: 3px solid black;
+}
+
+.searchPhotosGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.searchImage {
+    height: 195px;
+    width: 195px;
+}
+
+@media (max-width: 700px) {
+    .searchBar {
+        width: min-content;
+    }
+
+    .searchHeading {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media(max-width: 810px) {
+    .searchPhotosGrid {
+        max-width: 630px;
+        margin: auto;
+    }
+}
+
+@media(max-width: 615px) {
+    .searchPhotosGrid {
+        max-width: 410px;
+        margin: auto;
+    }
+}
+
+@media(max-width: 418px) {
+    .searchPhotosGrid {
+        max-width: 220px;
+        margin: auto;
+    }
+}
