@@ -348,6 +348,13 @@ li{
 .col2{
   width: 50%;
 }
+
+.load-more-button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 650px){
   .col1{
       width: 0%;
