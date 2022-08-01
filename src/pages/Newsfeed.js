@@ -10,7 +10,7 @@ const Newsfeed = () => {
   useEffect(() => {
     async function getPosts() {
       const response = await fetch(
-        process.env.REACT_APP_EXPRESS_URL + `/posts/paged/?lastPost=&size=`
+        process.env.REACT_APP_EXPRESS_URL + `/posts/paged`
       );
 
       if (!response.ok) {
