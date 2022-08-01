@@ -13,6 +13,7 @@ import Uncooked from "../../assets/uncooked.jpg";
 import Toasted from "../../assets/toasted.jpg";
 import Roasted from "../../assets/roasted.jpg";
 import Burned from "../../assets/burned.jpg";
+import './rating.css'
 
 const Rating = (props) => {
   const intialRating = props.initialRating;

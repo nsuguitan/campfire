@@ -1,5 +1,6 @@
 import SignInComp from "../components/SignIn/SignIn";
 import Logo from '../assets/logo.jpg';
+import '../components/SignIn/SignIn.css'
 
 const SignIn = () => {
   return (
