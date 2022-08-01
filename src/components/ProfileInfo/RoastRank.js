@@ -3,6 +3,7 @@ import Noob from '../../assets/noob.jpg';
 import Bronze from '../../assets/bronze.jpg';
 import Silver from '../../assets/silver.jpg';
 import Gold from '../../assets/gold.jpg';
+import './ProfileInfo.css';
 
 const RoastRank = (props) => {
   const [roastRank, setRoastRank] = useState("Noob");

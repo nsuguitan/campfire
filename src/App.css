@@ -52,67 +52,7 @@ animation:move-twink-back 200s linear infinite;
   margin: auto;
   min-height: 100vh;
 }
-.roast-rank-container img{
-  width: 50px;
-  height: auto;
-  padding-left: 10px;
-}
-.css-6hp17o-MuiList-root-MuiMenu-list{
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-}
 
-.profileStatsContainer{
-  text-align: center;
-  align-items: center;
-  text-align: center;
-}
-.roastRatingProfileContainer{
-  display: flex;
-  justify-content: center;
-  
-}
-.topProfileContainer{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0px 80px 0px 40px;
-}
-
-.profileDataContainer{
-  display: flex;
-  flex-direction: row;
-}
-.statEntry{
-  padding: 20px;
-}
-.imageGridContainer{
-  display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
-  max-width: 740px;
-  margin: auto;
-}
-
-.singleGridPhoto{
-  height: 225px;
-  width: 225px;
-  padding-left: 2.5px;
-  padding-right: 2.5px;
-}
-.bioContainer{
-  padding-left: 40px;
-  max-width: 45%;
-}
-.fullName{
-  display: flex;
-  margin-bottom: 5px;
-}
-.flame{
-  width: 40px;
-  height: auto;
-  padding-left: 7px;
-}
 .searchHeading{
   display: flex;
   top: 0px;
@@ -149,12 +89,7 @@ animation:move-twink-back 200s linear infinite;
     margin-right: 10px;
   }
 }
-@media (max-width: 740px){
-  .imageGridContainer{
-    max-width: 500px;
-  
-  }
-}
+
 @media(max-width: 810px){
   .searchPhotosGrid{
     max-width: 630px;
@@ -167,44 +102,11 @@ animation:move-twink-back 200s linear infinite;
     margin:auto;
   }
 }
-@media(max-width: 499px){
-  .imageGridContainer{
-    max-width: 220px;
-    margin: auto;
-  }
-}
+
 @media(max-width: 418px){
   .searchPhotosGrid{
     max-width: 220px;
     margin: auto;
-  }
-}
-@media (max-width: 600px){
-  .topProfileContainer{
-    margin: 0px 40px 0px 40px;
-    justify-content: center;
-  }
-  .bioContainer{
-    min-width: fit-content;
-    margin-right: 40px;
-    margin-left: 0px;
-    
-  }
-  .profileInfoContainer{
-    font-size: .7em;
-  }
-  .profileStatsContainer{
-    margin: 0px 0px 0px 0px;
-  }
-  .profileInfoContainer{
-    margin: auto;
-  }
-  .fullCard{
-    width: 350px;
-  }
-  .singleCardMedia{
-    width:350px;
-    height: 350px;
   }
 }
 
@@ -218,16 +120,6 @@ animation:move-twink-back 200s linear infinite;
   }
 }
 
-@media(max-width: 500px){
-  .profileDataContainer{
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 100px;
-    margin: auto;
-  }
-
-}
 
 .feedDisplay{
   display: flex;
@@ -260,9 +152,7 @@ animation:move-twink-back 200s linear infinite;
   width: 75%;
   margin-top: 100px;
 }
-/* .col{
-  width: 50%;
-} */
+
 .signInContainer{
   display: flex;
   align-content: center;
