@@ -17,6 +17,7 @@ const AuthInput = (props) => {
       value={props.value}
       size="small"
       onChange={props.onChange}
+      type= {props.type}
     />
   );
 };

@@ -9,7 +9,6 @@ import AuthInput from "../AuthInput/AuthInput";
 import Pasword from '../../assets/password.jpg';
 import User from '../../assets/username.jpg';
 
-
 const SignInComp = () => {
   let navigate = useNavigate();
 
@@ -56,11 +55,10 @@ const SignInComp = () => {
               <AuthInput
               name="password"
               label="Password"
-              type='password'
+              type="password"
               value={textFields.password}
               onChange={handleTextChange}
               />
-            
             </div>
           </div>
           <div className="login-buttons-container">
