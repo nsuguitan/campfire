@@ -117,25 +117,7 @@ const Postcard = (props) => {
     setOpen(false);
   };
 
-  const loadAllCommentsButton = () => {
-    return (
-      <Button
-        className="load-comments-button"
-        onClick={(event) => handleOpen(event, postInfo._id)}
-        key={postInfo._id}
-        size="medium"
-        disableRipple={true}
-        variant="text"
-        style={{
-          backgroundColor: "transparent",
-          textTransform: "none",
-          color: "#BEBEBE",
-        }}
-      >
-        View all {postComments.length} comments
-      </Button>
-    );
-  };
+
 
   return (
     <div>
@@ -187,28 +169,6 @@ const Postcard = (props) => {
           />
           <PostInfo postDate={postInfo.postDate} />
           <PostComments postComments={postComments} />
-          <CardActions>
-            <div>{loadAllCommentsButton()}</div>
-            <Modal open={open} onClose={handleClose}>
-              <Box sx={style}>
-                <Button
-                  variant="text"
-                  onClick={handleClose}
-                  style={{
-                    color: "var(--campfire-white)",
-                    height: "30px",
-                    width: "30px",
-                    zIndex: "3",
-                    fontSize: "1.7em",
-                    marginLeft: "500px",
-                  }}
-                >
-                  X
-                </Button>
-                <Postcard postId={postSelected} />
-              </Box>
-            </Modal>
-          </CardActions>
           <Paper
             sx={{
               p: "2px 4px",
