@@ -3,6 +3,7 @@ import ProfileInfo from "../components/ProfileInfo/ProfileInfo";
 import { useEffect, useState } from "react";
 import { Button, Modal, Box } from "@mui/material";
 import Postcard from "../components/Postcard/Postcard";
+import '../components/ProfileInfo/ProfileInfo.css'
 
 const Profile = () => {
   const [profileImagesArray, setProfileImagesArray] = useState([]);

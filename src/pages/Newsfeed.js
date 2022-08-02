@@ -4,6 +4,8 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import { useEffect } from "react";
 import { loadMorePosts } from "../services/GetPosts";
+import './Newsfeed.css'
+
 
 const Newsfeed = () => {
   const [posts, setPosts] = useState([]);

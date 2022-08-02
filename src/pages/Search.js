@@ -5,6 +5,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import Postcard from "../components/Postcard/Postcard";
 import searchIcon from "../assets/search.jpg";
 import { useNavigate, Routes, Route } from "react-router-dom";
+import './Search.css'
 
 const Search = () => {
   const [users, setUsers] = useState([]);

@@ -7,6 +7,7 @@ import { faComment, faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import PostTime from './PostTime.js';
 
 
+
 const PostInfo = (props) => {
     return (
         <div className='postInfoContainer'>

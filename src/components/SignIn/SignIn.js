@@ -56,6 +56,7 @@ const SignInComp = () => {
               <AuthInput
               name="password"
               label="Password"
+              type='password'
               value={textFields.password}
               onChange={handleTextChange}
               />

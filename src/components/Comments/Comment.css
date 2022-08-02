@@ -16,3 +16,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+.test{
+    max-height: 130px;
+    overflow: scroll;
+}

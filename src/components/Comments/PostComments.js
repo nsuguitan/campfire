@@ -10,7 +10,7 @@ const PostComments = (props) => {
         `
   );
   return (
-    <CardContentNoBottomPadding>
+    <CardContentNoBottomPadding className='test'>
       <ul style={{ listStyleType: "none" }}>
         {props.postComments.map((item) => (
           <li key={item._id} className='commentLine'>

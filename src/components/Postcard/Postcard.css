@@ -1,29 +1,44 @@
-.rating-container{
+.rating-container {
     padding-left: 5px;
     display: flex;
     align-items: center;
     overflow: hidden;
 }
 
-.load-comments-button{
+.load-comments-button {
     text-transform: none;
 }
 
-#postTime{
+#postTime {
     color: var(--campfire-gray);
-    margin-left: 10px ;
+    margin-left: 10px;
 }
-#rating{
+
+#rating {
     padding-left: 5px;
 }
-.fullCard{
+
+.fullCard {
     margin: auto;
     background-color: var(--campfire-dark-gray);
 }
-#commentTextField{
+
+#commentTextField {
     color: var(--campfire-white);
 }
 
-.delete-post-container{
+.delete-post-container {
     transform: translate(0%, 24%)
+}
+
+
+@media(max-width: 376px) {
+    .fullCard {
+        width: 300px;
+    }
+
+    .singleCardMedia {
+        width: 300px;
+        height: 300px;
+    }
 }
