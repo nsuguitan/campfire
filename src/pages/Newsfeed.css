@@ -32,7 +32,14 @@
     -webkit-animation: animation .6s ease-in-out infinite alternate;
     -o-animation: animation .6s ease-in-out infinite alternate;
   }
+  .load-more-button-container{
+    display: flex;
+    justify-content: center;
+  }
   
+  #loadPostsButton{
+    margin: auto;
+  }
   
   @keyframes animation {
     0% {
