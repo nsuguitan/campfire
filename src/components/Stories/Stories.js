@@ -6,7 +6,7 @@ import Avatar from "../Avatar/Avatar";
 import { IconButton } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import './Stories.css'
+import "./Stories.css";
 
 const Stories = () => {
   const [users, setUsers] = useState([]);
@@ -55,7 +55,7 @@ const Stories = () => {
   };
 
   return (
-    <div className="row">
+    <div className="row" id="storiesRow">
       <ul className="stories-nav">
         <li>
           <IconButton id="slide-back">

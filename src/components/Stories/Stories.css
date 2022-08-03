@@ -2,6 +2,9 @@
     text-align: center;
     margin: 15px;
   }
+  #storiesRow{
+    max-width: 800px;
+  }
   .storiesContainer{
     display: flex;
     justify-content: left;
@@ -30,7 +33,33 @@
     align-items: center;
     max-width: 800px;
   }
+
+ 
   
   ::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 800px){.stories-nav{
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .storiesContainer{
+    display: flex;
+    justify-content: left;
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+    margin: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    max-width: calc(100vw - 56px);
+    position: relative;
+   
+  }
+}
