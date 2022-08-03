@@ -34,20 +34,21 @@ const SignInComp = () => {
       [e.currentTarget.name]: e.currentTarget.value,
     });
 
-  const isCorrect = () => {
-    //check inputs
-  }
+  // const isCorrect = () => {
+  //   //check inputs
+  //   //future feat. make this check the actual error code and run it in the next function
+  // }
 
   const triggerLogin = async (event) => {
     //runs if correct inputs
-    const result = isCorrect();
+    // const result = isCorrect();
     try {event.preventDefault();
     await login(textFields).then(() => {
       navigate("/Newsfeed");
     });
   }
     catch(err) {
-      window.alert(err)
+      window.alert('username or password is incorrect')
     }
   };
 
