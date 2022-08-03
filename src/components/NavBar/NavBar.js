@@ -16,12 +16,9 @@ import Profile from '../../assets/profile.jpg';
 import Logo from '../../assets/logo.jpg';
 import Hamburger from '../../assets/hamburger.jpg'
 
-
-
 const NavBar = () => {
   const { isAuthenticated, username } = AuthState();
   let [open, setOpen] = useState(false);
-
 
   const handleClose = () => {
     setOpen(false);

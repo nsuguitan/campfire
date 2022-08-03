@@ -36,9 +36,10 @@ const SignUpComp = () => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
+    bgcolor: "var(--campfire-dark-gray)",
+    border: "2px solid var(--campfire-gray)",
     boxShadow: 24,
+    color: 'white',
     pt: 2,
     px: 4,
     pb: 3,
@@ -299,14 +300,7 @@ const SignUpComp = () => {
              Create account
             </Button>
             </div>
-           
-    
-          </div>
-          
-         
-        
-
-          
+          </div>  
         </div>
         <div className='signConatiner2'>
           <div className="bottom-container">
@@ -330,7 +324,7 @@ const SignUpComp = () => {
         </div>  
       </Box>
       <Modal open={open} onClose={() => setOpen(false)}>
-        <Box sx={{ ...style, width: 400 }}>
+        <Box sx={{ ...style, width: 400, backgroundColor: 'var(--campfire-dark-gray)' }}>
           <h2> Verification Code</h2>
           <TextField
             fullWidth
@@ -339,8 +333,9 @@ const SignUpComp = () => {
             size="small"
             variant="outlined"
             onChange={handleVerificationCode}
+            sx={{color: 'white', border: '1px solid var(--campfire-gray)'}}
           />
-          <Button onClick={triggerVerification}>Submit</Button>
+          <Button onClick={triggerVerification} styles={{color: 'var(--campfire-white)', backgroundColor: 'var(--campfire-orange)'}}>Submit</Button>
         </Box>
       </Modal>
     </div>
