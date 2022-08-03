@@ -11,7 +11,7 @@ import { AuthState } from "../../context/auth/AuthContext";
 import Home from "../../assets/home.jpg";
 import Search from "../../assets/search.jpg";
 import addImage from "../../assets/addPost.jpg";
-import DM from "../../assets/email.jpg";
+import Logout from "../../assets/logout.jpg";
 import Profile from "../../assets/profile.jpg";
 import Logo from "../../assets/logo.jpg";
 import Hamburger from "../../assets/hamburger.jpg";
@@ -47,12 +47,12 @@ const NavBar = () => {
         <div onClick={() => setOpen(true)}>
           <img src={addImage} />
         </div>
-        <Button onClick={triggerLogout}>
-          <img src={DM} alt="" />
-        </Button>
         <Link to={`/Profile/${username}`}>
           <img src={Profile} />
         </Link>
+        <div onClick={triggerLogout}>
+          <img src={Logout} alt="" />
+        </div>
         <NewPost open={open} closeFunc={handleClose} />
       </div>
       <div className="navCol3">
