@@ -15,6 +15,7 @@ import { faSquareCaretUp } from "@fortawesome/free-regular-svg-icons";
 import * as React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import IconButton from "@mui/material/IconButton";
+import { useForm } from "react-hook-form";
 
 const handleClick = (e, changeVal, popupState) => {
   e.preventDefault();
@@ -27,6 +28,7 @@ const SignUpComp = () => {
   const [bio, setBio] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const { login, signup, verify, isAuthenticated } = AuthState();
+  const { register, handleSubmit, watch, errors } = useForm();
 
   const style = {
     position: "absolute",
@@ -181,6 +183,7 @@ const SignUpComp = () => {
               name="fullname"
               value={textFields.fullname}
               onChange={handleTextChange}
+              required
               />
               </div>
             </div>
@@ -193,6 +196,7 @@ const SignUpComp = () => {
               name="email"
               value={textFields.email}
               onChange={handleTextChange}
+              required
               />
               </div>
             </div>
@@ -205,6 +209,7 @@ const SignUpComp = () => {
               name="username"
               value={textFields.username}
               onChange={handleTextChange}
+              required
               />
               </div>
             </div>
@@ -238,6 +243,7 @@ const SignUpComp = () => {
               name="password"
               value={textFields.password}
               onChange={handleTextChange}
+              required
               />
               </div>
             </div>
@@ -260,6 +266,7 @@ const SignUpComp = () => {
                 type="file"
                 onChange={onFileChange}
                 accept="image/*"
+                required
               />
               </label>
               </div> 
