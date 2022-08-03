@@ -324,7 +324,7 @@ const SignUpComp = () => {
         </div>  
       </Box>
       <Modal open={open} onClose={() => setOpen(false)}>
-        <Box sx={{ ...style, width: 400, backgroundColor: 'var(--campfire-dark-gray)' }}>
+        <Box sx={{ ...style, width: 400}}>
           <h2> Verification Code</h2>
           <TextField
             fullWidth
