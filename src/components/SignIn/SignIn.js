@@ -10,6 +10,16 @@ import Pasword from "../../assets/password.jpg";
 import User from "../../assets/username.jpg";
 
 const SignInComp = () => {
+
+
+  //     if (!response.ok) {
+  //       const message = `An error occurred: ${response.statusText}`;
+  //       window.alert(message);
+  //       return;
+  //     }
+
+
+
   let navigate = useNavigate();
 
   const [textFields, setTextFields] = useState({
@@ -28,11 +38,22 @@ const SignInComp = () => {
       [e.currentTarget.name]: e.currentTarget.value,
     });
 
+  // const isCorrect = () => {
+  //   //check inputs
+  //   //future feat. make this check the actual error code and run it in the next function
+  // }
+
   const triggerLogin = async (event) => {
-    event.preventDefault();
+    //runs if correct inputs
+    // const result = isCorrect();
+    try {event.preventDefault();
     await login(textFields).then(() => {
       navigate("/Newsfeed");
     });
+  }
+    catch(err) {
+      window.alert('username or password is incorrect')
+    }
   };
 
   return (
