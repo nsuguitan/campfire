@@ -7,6 +7,10 @@ import {
 } from "amazon-cognito-identity-js";
 import { authReducer } from "./AuthReducer";
 import UserPool from "../../config/UserPool";
+import {
+  userSetLoginCreds,
+  userGetLoginCreds,
+} from "../../services/UserLoginCreds";
 
 //https://github.com/aws-amplify/amplify-js/tree/main/packages/amazon-cognito-identity-js
 
@@ -15,13 +19,21 @@ const Auth = createContext();
 const AuthContext = ({ children }) => {
   const initialState = {
     token: "",
-    isAuthenticated: false,
+    isAuthenticated: userGetLoginCreds() === null ? false : true,
     loading: true,
-    username: null,
+    username: userGetLoginCreds(),
     error: null,
   };
 
   const [state, dispatch] = useReducer(authReducer, initialState);
+
+  const logout = () => {
+    const user = UserPool.getCurrentUser();
+    if (user !== null) {
+      user.signOut();
+      dispatch({ type: "LOGOUT" });
+    }
+  };
 
   const login = async (userData) => {
     const user = new CognitoUser({
@@ -73,7 +85,6 @@ const AuthContext = ({ children }) => {
           alert(err.message || JSON.stringify(err));
           return;
         }
-        let cognitoUser = result.user;
       }
     );
     return true;
@@ -109,7 +120,7 @@ const AuthContext = ({ children }) => {
         signup,
         login,
         verify,
-        //logout,
+        logout,
         //onLoad
         //clearErrors
       }}

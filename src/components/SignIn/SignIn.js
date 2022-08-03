@@ -1,13 +1,13 @@
 import { Box } from "@mui/material";
 import { Button } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AuthState } from "../../context/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import OAuth from "../OAuth/OAuth";
 import "./SignIn.css";
 import AuthInput from "../AuthInput/AuthInput";
-import Pasword from '../../assets/password.jpg';
-import User from '../../assets/username.jpg';
+import Pasword from "../../assets/password.jpg";
+import User from "../../assets/username.jpg";
 
 const SignInComp = () => {
   let navigate = useNavigate();
@@ -17,6 +17,10 @@ const SignInComp = () => {
     password: "",
   });
   const { login, isAuthenticated } = AuthState();
+
+  useEffect(() => {
+    if (isAuthenticated) navigate("/Newsfeed");
+  }, []);
 
   const handleTextChange = (e) =>
     setTextFields({
@@ -33,31 +37,37 @@ const SignInComp = () => {
 
   return (
     <div className="sign-in-container">
-      <Box >
-        <div className='signConatiner1'>
+      <Box>
+        <div className="signConatiner1">
           <h1>Log in at your own risk...</h1>
           <div className="sign-in-input-container">
-            <div className='signInField'>
+            <div className="signInField">
               <div>
-              <img src={User} style={{width: '30px', marginRight: '10px'}}/>
+                <img
+                  src={User}
+                  style={{ width: "30px", marginRight: "10px" }}
+                />
               </div>
               <AuthInput
-              name="username"
-              label="Username"
-              value={textFields.username}
-              onChange={handleTextChange}
+                name="username"
+                label="Username"
+                value={textFields.username}
+                onChange={handleTextChange}
               />
             </div>
-            <div className='signInField'>
+            <div className="signInField">
               <div>
-              <img src={Pasword} style={{width:'30px', marginRight: '10px'}}/>
+                <img
+                  src={Pasword}
+                  style={{ width: "30px", marginRight: "10px" }}
+                />
               </div>
               <AuthInput
-              name="password"
-              label="Password"
-              type="password"
-              value={textFields.password}
-              onChange={handleTextChange}
+                name="password"
+                label="Password"
+                type="password"
+                value={textFields.password}
+                onChange={handleTextChange}
               />
             </div>
           </div>
@@ -68,10 +78,10 @@ const SignInComp = () => {
                 fullWidth
                 sx={{
                   backgroundColor: "var(--campfire-orange)",
-                  width: '70%',
-                  color: 'var(--campfire-white)',
-                  fontFamily: 'Quicksand',
-                  marginBottom: '10px'
+                  width: "70%",
+                  color: "var(--campfire-white)",
+                  fontFamily: "Quicksand",
+                  marginBottom: "10px",
                 }}
                 onClick={triggerLogin}
               >
@@ -86,7 +96,7 @@ const SignInComp = () => {
                   backgroundColor: "transparent",
                   textTransform: "none",
                   color: "var(--campfire-orange)",
-                  fontFamily: 'Quicksand'
+                  fontFamily: "Quicksand",
                 }}
               >
                 Forgot Password?
@@ -95,7 +105,7 @@ const SignInComp = () => {
           </div>
           <OAuth />
         </div>
-        <div className='signConatiner2'>
+        <div className="signConatiner2">
           <div className="bottom-container">
             <p>Don't have an account?</p>
             <Button
@@ -104,16 +114,15 @@ const SignInComp = () => {
                 backgroundColor: "transparent",
                 textTransform: "none",
                 color: "var(--campfire-orange)",
-                width: '130px',
+                width: "130px",
                 fontFamily: "Quicksand",
-                fontSize: '1em'
+                fontSize: "1em",
               }}
               onClick={() => navigate("/SignUp")}
             >
               sign up here
             </Button>
           </div>
-
         </div>
       </Box>
     </div>
