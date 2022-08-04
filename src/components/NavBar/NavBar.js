@@ -93,20 +93,23 @@ const NavBar = () => {
                   </div>
                 </MenuItem>
                 <MenuItem
-                  onClick={popupState.close}
-                  style={{ backgroundColor: "var(--campfire-dark-gray" }}
-                >
-                  <p>DMs</p>
-                </MenuItem>
-                <MenuItem
                   as={Link}
                   to={`/Profile/${username}`}
                   onClick={popupState.close}
                   style={{ backgroundColor: "var(--campfire-dark-gray" }}
                 >
                   <p>Profile</p>
-                  <NewPost open={open} closeFunc={handleClose} />
+
                 </MenuItem>
+                <MenuItem
+                  onClick={popupState.close}
+                  style={{ backgroundColor: "var(--campfire-dark-gray" }}
+                >
+                  <div onClick={triggerLogout}>
+                    <p>Log Out</p>
+                  </div>
+                </MenuItem>
+                <NewPost open={open} closeFunc={handleClose} />
               </Menu>
             </React.Fragment>
           )}
