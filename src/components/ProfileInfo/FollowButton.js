@@ -28,7 +28,12 @@ const FollowButton = (props) => {
     });
   };
 
-  return <Button variant="contained" onClick={(e) => toggleFollowStatus(e)}>{isFollowing ? "Unfollow" : "Follow"}</Button>;
+  return <Button disableElevation fullWidth sx={{
+    backgroundColor: "var(--campfire-orange)",
+    color: "var(--campfire-white)",
+    fontFamily: "Quicksand",
+    marginBottom: "10px",
+  }} onClick={(e) => toggleFollowStatus(e)}>{isFollowing ? "Unfollow" : "Follow"}</Button>;
 };
 
 export default FollowButton;
