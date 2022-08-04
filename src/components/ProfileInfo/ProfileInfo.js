@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import blueFlame from "../../assets/verified.jpg";
 import Avatar from "../Avatar/Avatar";
+import FollowButton from "./FollowButton";
 import RoastRank from "./RoastRank";
+import { AuthState } from "../../context/auth/AuthContext";
 
 const ProfileInfo = (props) => {
   const [userInfo, setUserInfo] = useState({
@@ -12,6 +14,9 @@ const ProfileInfo = (props) => {
     followers: [],
     following: [],
   });
+
+  const { username } = AuthState();
+
   const [verified, setVerified] = useState(false);
   useEffect(() => {
     const getUserInfo = async () => {
@@ -41,15 +46,15 @@ const ProfileInfo = (props) => {
     <div className="profileInfoContainer">
       <div className="topProfileContainer">
         <div>
-        <h1>{props.profileUsername}</h1>
-        <div className="profilePicContainer">
-          <Avatar
-            profilepic={userInfo.profilePicURL}
-            borderRadius="10%"
-            height="200px"
-            width="200px"
-          />
-        </div>
+          <h1>{props.profileUsername}</h1>
+          <div className="profilePicContainer">
+            <Avatar
+              profilepic={userInfo.profilePicURL}
+              borderRadius="10%"
+              height="200px"
+              width="200px"
+            />
+          </div>
         </div>
         <div className="profileStatsContainer">
           <div className="roastRatingProfileContainer">
@@ -70,16 +75,23 @@ const ProfileInfo = (props) => {
               <p>Followers</p>
             </div>
           </div>
+          {username === userInfo.username ? (
+            <React.Fragment />
+          ) : (
+              <FollowButton
+                userInfo={userInfo} setUserInfo={setUserInfo}
+              />
+            )}
         </div>
       </div>
       <div className="bioContainer">
         <div className="fullName">
           <h2>{userInfo.name}</h2>
           {verified ? (
-            <img src={blueFlame} alt="" className="flame"/>
+            <img src={blueFlame} alt="" className="flame" />
           ) : (
-            <React.Fragment />
-          )} 
+              <React.Fragment />
+            )}
         </div>
         <div className="bio">
           <p>{userInfo.bio}</p>
