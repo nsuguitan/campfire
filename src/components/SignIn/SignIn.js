@@ -10,16 +10,6 @@ import Pasword from "../../assets/password.jpg";
 import User from "../../assets/username.jpg";
 
 const SignInComp = () => {
-
-
-  //     if (!response.ok) {
-  //       const message = `An error occurred: ${response.statusText}`;
-  //       window.alert(message);
-  //       return;
-  //     }
-
-
-
   let navigate = useNavigate();
 
   const [textFields, setTextFields] = useState({
