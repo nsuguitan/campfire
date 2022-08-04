@@ -6,7 +6,7 @@ import Gold from '../../assets/gold.jpg';
 import './ProfileInfo.css';
 
 const RoastRank = (props) => {
-  const [roastRank, setRoastRank] = useState("Noob");
+  const [roastRank, setRoastRank] = useState(Noob);
 
   useEffect(() => {
     const getRoastInfo = async () => {
