@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { TextField, Box, Modal } from "@mui/material";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { AuthState } from "../../context/auth/AuthContext";
@@ -10,13 +10,30 @@ import Pasword from "../../assets/password.jpg";
 import User from "../../assets/username.jpg";
 
 const SignInComp = () => {
+  const [verificationCode, setVerificationCode] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [open, setOpen] = useState(false);
   let navigate = useNavigate();
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "var(--campfire-dark-gray)",
+    border: "2px solid var(--campfire-gray)",
+    boxShadow: 24,
+    pt: 2,
+    px: 4,
+    pb: 3,
+  };
 
   const [textFields, setTextFields] = useState({
     username: "",
     password: "",
   });
-  const { login, isAuthenticated } = AuthState();
+  const { forgotPass, resetPass, login, isAuthenticated } = AuthState();
 
   useEffect(() => {
     if (isAuthenticated) navigate("/Newsfeed");
@@ -27,7 +44,24 @@ const SignInComp = () => {
       ...textFields,
       [e.currentTarget.name]: e.currentTarget.value,
     });
+  const handleVerificationCode = (evt) => {
+    setVerificationCode(evt.target.value);
+  };
+  const handleNewPassword = (evt) => {
+    setNewPassword(evt.target.value);
+  };
 
+  const triggerPasswordReset = async (event) => {
+    event.preventDefault();
+    //https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html#confirmSignUp-property
+    let params = {
+      ClientId: "4gjkaose7v4olc8mvsd40nf11f",
+      ConfirmationCode: verificationCode,
+      User: textFields.username,
+      Password: newPassword,
+    };
+    const successfulReset = await resetPass(params);
+  };
   // const isCorrect = () => {
   //   //check inputs
   //   //future feat. make this check the actual error code and run it in the next function
@@ -36,13 +70,13 @@ const SignInComp = () => {
   const triggerLogin = async (event) => {
     //runs if correct inputs
     // const result = isCorrect();
-    try {event.preventDefault();
-    await login(textFields).then(() => {
-      navigate("/Newsfeed");
-    });
-  }
-    catch(err) {
-      window.alert('username or password is incorrect')
+    try {
+      event.preventDefault();
+      await login(textFields).then(() => {
+        navigate("/Newsfeed");
+      });
+    } catch (err) {
+      window.alert("username or password is incorrect");
     }
   };
 
@@ -109,6 +143,10 @@ const SignInComp = () => {
                   color: "var(--campfire-orange)",
                   fontFamily: "Quicksand",
                 }}
+                onClick={() => {
+                  forgotPass(textFields.username);
+                  setOpen(true);
+                }}
               >
                 Forgot Password?
               </Button>
@@ -136,6 +174,50 @@ const SignInComp = () => {
           </div>
         </div>
       </Box>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <Box sx={{ ...style, width: 400 }}>
+          <h2> Password Reset</h2>
+          <TextField
+            fullWidth
+            label="Verification Code"
+            value={verificationCode}
+            size="small"
+            variant="outlined"
+            onChange={handleVerificationCode}
+            sx={{
+              marginBottom: "10px",
+              border: "1px solid var(--campfire-gray)",
+              backgroundColor: "var(--campfire-dark-gray)",
+              color: "white",
+            }}
+            inputProps={{ style: { color: "var(--campfire-white" } }}
+          />
+          <TextField
+            fullWidth
+            label="New Password"
+            value={newPassword}
+            size="small"
+            variant="outlined"
+            onChange={handleNewPassword}
+            sx={{
+              marginBottom: "10px",
+              border: "1px solid var(--campfire-gray)",
+              backgroundColor: "var(--campfire-dark-gray)",
+              color: "white",
+            }}
+            inputProps={{ style: { color: "var(--campfire-white" } }}
+          />
+          <Button
+            onClick={triggerPasswordReset}
+            styles={{
+              color: "var(--campfire-white)",
+              backgroundColor: "var(--campfire-orange)",
+            }}
+          >
+            Submit
+          </Button>
+        </Box>
+      </Modal>
     </div>
   );
 };

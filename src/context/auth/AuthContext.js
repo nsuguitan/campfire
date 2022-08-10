@@ -90,6 +90,47 @@ const AuthContext = ({ children }) => {
     return true;
   };
 
+  const forgotPass = (username) => {
+    const user = new CognitoUser({
+      Username: username,
+      Pool: UserPool,
+    });
+
+    user.forgotPassword({
+      onSuccess: function (data) {
+        console.log("Forgot Pass request sent: ", data);
+      },
+      onFailure: function (err) {
+        alert(err.message || JSON.stringify(err));
+      },
+    });
+  };
+  const resetPass = (params) => {
+    console.log("Username:", params);
+    console.log("Pool:", UserPool);
+    const user = new CognitoUser({
+      Username: params.User,
+      Pool: UserPool,
+    });
+    //Optional automatic callback
+    const inputVerificationCode = () => {
+      var verificationCode = params.ConfirmationCode;
+      var newPassword = params.Password;
+      user.confirmPassword(verificationCode, newPassword, {
+        onSuccess() {
+          window.location.reload();
+          alert("Password change successful");
+          return true;
+        },
+        onFailure(err) {
+          alert(err.message || JSON.stringify(err));
+          return;
+        },
+      });
+    };
+    inputVerificationCode();
+  };
+
   const verify = (params) => {
     const user = new CognitoUser({
       Username: params.Username,
@@ -121,6 +162,8 @@ const AuthContext = ({ children }) => {
         login,
         verify,
         logout,
+        forgotPass,
+        resetPass,
         //onLoad
         //clearErrors
       }}
